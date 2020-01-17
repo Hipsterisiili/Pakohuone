@@ -8,11 +8,21 @@
 
 ![Kuva 1.1.](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_esimerkkihuone.jpg)
 
-Kuva 1.1. esimerkki ongelmatilanteesta
+Kuva 1.1. esimerkki ratkaistavasta labyrintistä
 
-<p> **Säännöt**
-  : Labyrintissa voi edetä kerralla yhden askeleen johonkin neljästä ilmansuunasta, mikäli seinä (mustakis väritetty ruutu) ei ole tiellä. jotta "Ovesta" voi kulkea, on sitä ennen haettava oven kirjainta vastaava avain saapumalla sen sisältämään ruutuun.<p>
+### Säännöt:
+<p>Labyrintissa voi edetä kerralla yhden askeleen johonkin neljästä ilmansuunasta, mikäli seinä (kuvassa mustaksi väritetty ruutu) ei ole tiellä. jotta "Ovesta" voi kulkea, on sitä ennen haettava oven kirjainta vastaava avain saapumalla sen sisältämään ruutuun.<p>
+  
+ <p>Tarkoitukseni on luoda käsin pieni joukko mielekkäitä testilabyrintteja, joita algoritmi pyrkii ratkaisemaan ja myöhemmmin sovellus, joka luo sattuanvaraisesti lisää testattavia labyrintteja. Labyrintin tallennusmuoto on kaksiuloitteinen taulukko char[x][y], jossa x on labyrintin leveys ja y on sen korkeus. Taulukon arvot kertovat mitä kyseisessä "ruudussa" on:
+  
+  > #       = SEINÄ
+  > .       = TYHJÄ RUUTU
+  > a,b,c   = Avaimia
+  > A,B,C   = Ovia
+  > 0       = Lähtöpiste
+  > 1       = Maali
+  
+  Alustavasti labyrintin huoneiden on tarkoitus olla nelikulmaisia huoneita, mutta jos loppukurssista jää aikaa sovelluksen täydentämiseen, on mahdollista että täydennän algoritmin toimintaa siten, että se osaa etsiä reittejä myös vaikeammissa huoneissa.
+  <p>
 
-<p>     <br>
 
-<p>
