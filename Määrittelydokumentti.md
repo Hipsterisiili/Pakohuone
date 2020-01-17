@@ -32,16 +32,27 @@ Kuva 1. esimerkki ratkaistavasta labyrintistä
   **Vaiheessa 1** ohjelma selvittää huoneiden määrän, mitä ruutuja ja avaimia kukin huone sisältä2ä, käyttäen **Union-find-rakennetta** ja tallentaen tieton labyrintin union-find-rakenteesta myöhempää käyttöä ja muokkaamista varten. 
   
    Huoneita alkutilanteessa voi pahimmillaan olla standardini mukaisesa labyrintissä korkeintaan (x/2)\*(y/2), missä x = labyrintin leveys ja y = labyrintin korkeus.
+   
+   Muodostan Union-Find-rakenteesta hieman poikkeavan rakenteen, jossa joukon edustaja on aina se ruutu, joka on huoneen vasemmassa yläkulmassa. (Jos huoneita myöhemmin yhdistetään, pienemmän huoneen edellinen edustaja saa edustajakseen suuremman huoneen vasemman ylänurkan)  
+   Tällaisessa Union-Find-rakenteessa yhden alkion edustajan  löytäminen vie aikaa O(x+y), x ja y ovat labyrintin leveys ja korkeus. Vaiheen 1 aikavaativuus on siis kaikkien labyrintin ruutujen edustajan etsimisten aikavaativuuksien summa. Labyrintissä on korkeintaan x\*y ruutua, joten vaiheen 1 aikavaativuus = O((x\*y)\*(x+y)) = **O(xxy + xyy)**. Tämä tarkoittaa että suurten labyrinttien ratkaiseminen on todella aikaavievää, vaikka tämä onkin tehostettu union-find -malli.
+   
+   Vaihtoehtoinen ratkaisu kunkin ruudun edustajan löytämiseen on etsiä labyrintistä kaikkien huoneiden vasemmat ylänurkat (eli etsiä kaikki ruudut, joiden vasemmalla puolella ja yläpuolella on seinää. Tämän jälkeen siivutetaan huonetta seinien sisällä käyden läpi kaikki sen ruudut ja nimittäen niille edustajaksi vasen ylänurkka. Kuvassa 2 näkyy järjestys, jossa ruutuja käydään läpi.
+   
+   Vaihtoehtoisen ratkaisun aikavaativuus on ruutujen määrä x\*y + ruutujen määrä x\*y Eli aikavaativuus = O(2(x\*y))Tämä on merkittävästi vähemmän, kuin aiemman menetelmän aikavaativuus. Lisäksi jälkimmäinen menetelmä on todennäköisesti helpompi toteuttaa.
+   
+![Kuva 2](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_edustajanetsinta.jpg)
+
+Kuva 2 Järjestys jossa labyrintin ruudut käydään läpi kum huoneiden edustajat selvitetään
   
 **Vaiheessa 2** ohjelma selvittää kaikki mahdolliset järjestykset, joissa avaimet voi noutaa niin että lopulta saavutaan maaliin. Tämä tapahtuu **syvyyshakua** (DFS) käyttämällä. Haku perustuu joka askeleella päivittyvään listaan tavoitettavissa olevia avaimia, siten että aina mentäessä astel syvemmälle, seurava vaihe saa uuden listan sillä hetkellä saatavilla olevista avaimista ja maaleista. **Kunkin avaimen on sisällettävä tieto siitä mnkä kahden ruudun välille se muodostaa yhteyden**
   
   Mahdollisia järjestyksiä voi olla 0 - n!, missä n = avainten määrä. Kukin mahdollinen järjestys tallennetaan erikseen listaksi, jotta niitä voidaan vertailla vaiheessa 3. Mikäli järjestyksiä on vain 0, ohjelma keskeytyy ja tiedämme että labyrintti ei ole ratkaistavissa. 
   
-  **Vaiheessa 3** Tutkitaan mikä vaiheessa 2 muodostetuista avainten järjestykistä on nopeinta toteuttaa. Tätä varten verkkoa tehostetaan luomalla yhteyksiä avainten ja ovien väleille huoneiden sisällä. Tämä on lähes välttämätöntä, jotta ohjelman ei tarvitse kuluttäa paljon aikaa kaikkien mahdollisten polkujen läpikäymiseen huoneen sisällä. Kuvassa 2 näkyy minkälaiset reitit huoneen sisällä ovat optimaalisia. 
+  **Vaiheessa 3** Tutkitaan mikä vaiheessa 2 muodostetuista avainten järjestykistä on nopeinta toteuttaa. Tätä varten verkkoa tehostetaan luomalla yhteyksiä avainten ja ovien väleille huoneiden sisällä. Tämä on lähes välttämätöntä, jotta ohjelman ei tarvitse kuluttäa paljon aikaa kaikkien mahdollisten polkujen läpikäymiseen huoneen sisällä. Kuvassa 3 näkyy minkälaiset reitit huoneen sisällä ovat optimaalisia. 
 
-![Kuva 2](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_lyhimmatreitit.jpg)
+![Kuva 3](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_lyhimmatreitit.jpg)
 
-Kuva 2 Lyhimmät ratkaisut olennaisiin reitteihin erään huoneen sisällä.
+Kuva 3 Lyhimmät ratkaisut olennaisiin reitteihin erään huoneen sisällä.
 
   Käytännössä kuvan 2 mukaiset lyhimmät reitit löytää nopeasti vertailemalla niiden alku-ja loppupisteiden koordinaatteja, joten tämä reitinhakualgoritmi on melko yksinkertainen. Lyhin etäisyys pisteiden (x1,y1) ja (x2,y2) välillä on |x1-x2| + |y1-y2|. 
 
