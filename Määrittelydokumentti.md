@@ -29,7 +29,8 @@ Kuva 1. esimerkki ratkaistavasta labyrintistä
  
   ### Algoritmit
   
-  **Vaiheessa 1** ohjelma selvittää huoneiden määrän, mitä ruutuja ja avaimia kukin huone sisältää, käyttäen **Union-find-rakennetta** ja tallentaen tiedon labyrintin union-find-rakenteesta myöhempää käyttöä ja muokkaamista varten. 
+  #### Algoritmi 1
+  Ohjelma selvittää huoneiden määrän, mitä ruutuja ja avaimia kukin huone sisältää, käyttäen **Union-find-rakennetta** ja tallentaen tiedon labyrintin union-find-rakenteesta myöhempää käyttöä ja muokkaamista varten. 
   
    Huoneita alkutilanteessa voi pahimmillaan olla standardini mukaisessa labyrintissä korkeintaan (x/2)\*(y/2), missä x = labyrintin leveys ja y = labyrintin korkeus.
    
@@ -44,11 +45,13 @@ Kuva 1. esimerkki ratkaistavasta labyrintistä
 
 Kuva 2 Järjestys jossa labyrintin ruudut käydään läpi kun huoneiden edustajat selvitetään. Kun vasemmassa kuvassa saavutaan johonkin vasempaan ylänurkkaan (ympyröidyt numerot), josta halutaan tehdä huoneen edustaja, voidaan pysähtyä käymään läpi kaikki huoneen ruudut. Kun kohdataan seinä, hypätään takaisin rivin alkuun.
   
-**Vaiheessa 2** ohjelma selvittää kaikki mahdolliset järjestykset, joissa avaimet voi noutaa niin että lopulta saavutaan maaliin. Tämä tapahtuu tarkoituksenmukaisesti muokattua **syvyyshakua** (DFS) käyttämällä. Haku perustuu joka askeleella päivittyvään listaan tavoitettavissa olevia avaimia, siten että aina mentäessä askel syvemmälle, seuraava vaihe saa uuden listan sillä hetkellä saatavilla olevista avaimista ja maaleista. **Kunkin avaimen on sisällettävä tieto siitä minkä kahden ruudun välille se muodostaa yhteyden**
+  #### Algoritmi 2
+   Seuraavaksi ohjelma selvittää kaikki mahdolliset järjestykset, joissa avaimet voi noutaa niin että lopulta saavutaan maaliin. Tämä tapahtuu tarkoituksenmukaisesti muokattua **syvyyshakua** (DFS) käyttämällä. Haku perustuu joka askeleella päivittyvään listaan tavoitettavissa olevia avaimia, siten että aina mentäessä askel syvemmälle, seuraava vaihe saa uuden listan sillä hetkellä saatavilla olevista avaimista ja maaleista. **Kunkin avaimen on sisällettävä tieto siitä minkä kahden ruudun välille se muodostaa yhteyden**
   
   Mahdollisia järjestyksiä voi olla 0 - n!, missä n = avainten määrä. Kukin mahdollinen järjestys tallennetaan erikseen listaksi, jotta niitä voidaan vertailla vaiheessa 3. Mikäli järjestyksiä on vain 0, ohjelma keskeytyy ja tiedämme että labyrintti ei ole ratkaistavissa. 
   
-  **Vaiheessa 3** Tutkitaan mikä vaiheessa 2 muodostetuista avainten järjestyksistä on nopeinta toteuttaa. Tätä varten verkkoa tehostetaan luomalla yhteyksiä avainten ja ovien väleille huoneiden sisällä. Tämä on lähes välttämätöntä, jotta ohjelman ei tarvitse kuluttaa paljon aikaa kaikkien mahdollisten polkujen läpikäymiseen huoneen sisällä. Kuvassa 3 näkyy minkälaiset reitit huoneen sisällä ovat optimaalisia. 
+  #### Algoritmi 3
+  Viimeiseksi Tutkitaan mikä vaiheessa 2 muodostetuista avainten järjestyksistä on nopeinta toteuttaa. Tätä varten verkkoa tehostetaan luomalla yhteyksiä avainten ja ovien väleille huoneiden sisällä. Tämä on lähes välttämätöntä, jotta ohjelman ei tarvitse kuluttaa paljon aikaa kaikkien mahdollisten polkujen läpikäymiseen huoneen sisällä. Kuvassa 3 näkyy minkälaiset reitit huoneen sisällä ovat optimaalisia. 
 
 ![Kuva 3](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_lyhimmatreitit.jpg) 
 
@@ -58,7 +61,7 @@ Kuva 3 Lyhimmät ratkaisut olennaisiin reitteihin erään huoneen sisällä.
 
   Lopuksi käydään läpi kaikki vaiheessa 2 muodostetut järjestykset ja erotellaan niistä lyhin. Kutakin järjestystä seuratessa on luotava uusi lähes kaareton verkko, johon syntyy kaaria sitä mukaa kun avaimissa vieraillaan. 
 
-  **Esimerkki algoritmin etenemisestä vaiheessa 3 kuvien 1 ja 4 mukaisessa labyrintissä:** Aluksi verkossa on vain kaaret lähtöpisteestä sen huoneessa oleviin kiinnostaviin kohteisiin. Kiinnostavia kohteita ovat poimimattomat avaimet sekä avoimet oviaukot. Täten verkossa on ainoastaan kaari (L-a). Ensimmäiseksi siis missä tahansa avainjärjestyksessä saavutaan avaimeen a. Tällöin lisätään verkkoon uudet kaaret (A-a), (A-b), (A-c). Jos seuraavaksi poimitaan avain b, lisätään kaaret (B-A), (B-e). (Huom kaarta B-a ei tarvitse enää muodostaa, sillä ei ole tarvetta vierailla avaimessa a enää.) Lisäksi voidaan myös poistaa kaari (A-a). (Kun avain on kerran poimittu ja siitä on poistuttu, kaikki sen kautta kulkevat kaaret voi poistaa verkosta, koska sen kautta ei tarvitse kulkea enää.) Kuvassa 4 on hahmoteltu verkon muodostumista edellä kuvatussa tilanteessa.
+  **Esimerkki kolmannen algoritmin etenemisestä  kuvien 1 ja 4 mukaisessa labyrintissä:** Aluksi verkossa on vain kaaret lähtöpisteestä sen huoneessa oleviin kiinnostaviin kohteisiin. Kiinnostavia kohteita ovat poimimattomat avaimet sekä avoimet oviaukot. Täten verkossa on ainoastaan kaari (L-a). Ensimmäiseksi siis missä tahansa avainjärjestyksessä saavutaan avaimeen a. Tällöin lisätään verkkoon uudet kaaret (A-a), (A-b), (A-c). Jos seuraavaksi poimitaan avain b, lisätään kaaret (B-A), (B-e). (Huom kaarta B-a ei tarvitse enää muodostaa, sillä ei ole tarvetta vierailla avaimessa a enää.) Lisäksi voidaan myös poistaa kaari (A-a). (Kun avain on kerran poimittu ja siitä on poistuttu, kaikki sen kautta kulkevat kaaret voi poistaa verkosta, koska sen kautta ei tarvitse kulkea enää.) Kuvassa 4 on hahmoteltu verkon muodostumista edellä kuvatussa tilanteessa.
 
   Jos reittiä jäljitellessä ohjelma huomaa jo kulkeneensa pitemmän matkan kuin mitä jokin aikaisempi ratkaisu on vaatinut, voidaan siirtyä seuraavaan polkuun, sillä muodostettava reitti ei voi olla enää lyhin. 
   
