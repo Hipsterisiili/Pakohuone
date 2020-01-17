@@ -50,7 +50,7 @@ Kuva 2 Järjestys jossa labyrintin ruudut käydään läpi kum huoneiden edustaj
   
   **Vaiheessa 3** Tutkitaan mikä vaiheessa 2 muodostetuista avainten järjestykistä on nopeinta toteuttaa. Tätä varten verkkoa tehostetaan luomalla yhteyksiä avainten ja ovien väleille huoneiden sisällä. Tämä on lähes välttämätöntä, jotta ohjelman ei tarvitse kuluttäa paljon aikaa kaikkien mahdollisten polkujen läpikäymiseen huoneen sisällä. Kuvassa 3 näkyy minkälaiset reitit huoneen sisällä ovat optimaalisia. 
 
-![Kuva 3](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_lyhimmatreitit.jpg)
+![Kuva 3](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_lyhimmatreitit.jpg) 
 
 Kuva 3 Lyhimmät ratkaisut olennaisiin reitteihin erään huoneen sisällä.
 
