@@ -42,7 +42,7 @@ Kuva 1. esimerkki ratkaistavasta labyrintistä
 
 ![Kuva 2](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_etsiedustaja.jpg)
 
-Kuva 2 Järjestys jossa labyrintin ruudut käydään läpi kum huoneiden edustajat selvitetään
+Kuva 2 Järjestys jossa labyrintin ruudut käydään läpi kum huoneiden edustajat selvitetään. Kun vasemmassa kuvassa saavutaan johonkin vasenpaan ylänurkkaan (ympyröidyt numerot), josta halutaan tehdä huoneen edustaja, voidaan pysähtyä käymään läpi kaikki huoneen ruudut. Kun kohdataan seinä, hypätään takaisin rivin alkuun.
   
 **Vaiheessa 2** ohjelma selvittää kaikki mahdolliset järjestykset, joissa avaimet voi noutaa niin että lopulta saavutaan maaliin. Tämä tapahtuu **syvyyshakua** (DFS) käyttämällä. Haku perustuu joka askeleella päivittyvään listaan tavoitettavissa olevia avaimia, siten että aina mentäessä astel syvemmälle, seurava vaihe saa uuden listan sillä hetkellä saatavilla olevista avaimista ja maaleista. **Kunkin avaimen on sisällettävä tieto siitä mnkä kahden ruudun välille se muodostaa yhteyden**
   
