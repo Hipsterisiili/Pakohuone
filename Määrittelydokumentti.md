@@ -2,13 +2,13 @@
 
 
 ### Ongelma:
-1.) Voinko ratkaista kuvan 1.1. mukaisen labyrintin?<br>
+1.) Voinko ratkaista kuvan 1. mukaisen labyrintin?<br>
 2.) Jos voin, minkälaista polkua pitkin?<br>
 3.) Mikä on nopein mahdollinen polku, joka ratkaisee labyrintin?<br>
 
-![Kuva 1.1.](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_esimerkkihuone.jpg)
+![Kuva 1](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_esimerkkihuone.jpg)
 
-Kuva 1.1. esimerkki ratkaistavasta labyrintistä
+Kuva 1. esimerkki ratkaistavasta labyrintistä
 
 ### Säännöt:
 <p>Labyrintissa voi edetä kerralla yhden askeleen johonkin neljästä ilmansuunasta, mikäli seinä (kuvassa mustaksi väritetty ruutu) ei ole tiellä. jotta "Ovesta" voi kulkea, on sitä ennen haettava oven kirjainta vastaava avain saapumalla sen sisältämään ruutuun.<p>
@@ -29,7 +29,7 @@ Tarkoitukseni on luoda käsin pieni joukko mielekkäitä testilabyrintteja, joit
  
   ### Algoritmit
   
-  **Vaiheessa 1** ohjelma selvittää huoneiden määrän, mitä ruutuja ja avaimia kukin huone sisältää, käyttäen **Union-find-rakennetta** ja tallentaen tieton labyrintin union-find-rakenteesta myöhempää käyttöä ja muokkaamista varten.
+  **Vaiheessa 1** ohjelma selvittää huoneiden määrän, mitä ruutuja ja avaimia kukin huone sisältä2ä, käyttäen **Union-find-rakennetta** ja tallentaen tieton labyrintin union-find-rakenteesta myöhempää käyttöä ja muokkaamista varten.
   
    Huoneita alkutilanteessa voi pahimmillaan olla standardini mukaisesa labyrintissä korkeintaan (x/2)\*(y/2), missä x = labyrintin leveys ja y = labyrintin korkeus.
   
@@ -38,7 +38,16 @@ Tarkoitukseni on luoda käsin pieni joukko mielekkäitä testilabyrintteja, joit
   
   Mahdollisia järjestyksiä voi olla 0 - n!, missä n = avainten määrä. Kukin mahdollinen järjestys tallennetaan erikseen listaksi, jotta niitä voidaan vertailla vaiheessa 3. Mikäli järjestyksiä on vain 0, ohjelma keskeytyy ja tiedämme että labyrintti ei ole ratkaistavissa.
   
-  **Vaiheessa 3** Tutkitaan mikä vaiheessa 2 muodostetuista avainten järjestykistä on nopeinta toteuttaa. Tätä varten verkkoa tehostetaan luomalla yhteyksiä avainten ja ovien väleille huoneiden sisällä. Tämä on lähes välttämätöntä, jotta ohjelman ei tarvitse kuluttäa paljon aikaa kaikkien mahdollisten polkujen läpikäymiseen huoneen sisällä.
-  
+  **Vaiheessa 3** Tutkitaan mikä vaiheessa 2 muodostetuista avainten järjestykistä on nopeinta toteuttaa. Tätä varten verkkoa tehostetaan luomalla yhteyksiä avainten ja ovien väleille huoneiden sisällä. Tämä on lähes välttämätöntä, jotta ohjelman ei tarvitse kuluttäa paljon aikaa kaikkien mahdollisten polkujen läpikäymiseen huoneen sisällä. Kuvassa 2 näkyy minkälaiset reitit huoneen sisällä ovat optimaalisia.
 
+![Kuva 2](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_lyhimmatreitit.jpg)
 
+Kuva 2 Lyhimmät ratkaisut olennaisiin reitteihin erään huoneen sisällä.
+
+Käytännössä kuvan 2 mukaiset lyhimmät reitit löytää nopeasti vertailemalla niiden alku-ja loppupisteiden koordinaatteja, joten tämä reitinhakualgoritmi on melko yksinkertainen. Lyhin etäisyys pisteiden (x1,y1) ja (x2,y2) välillä on |x1-x2| + |y1-y2|.
+
+Lopuksi käydään läpi kaikki vaiheessa 2 muodostetut järjestykset ja erotellaan niistä lyhin. Kutakin järjestystä seuratessa on luotava uusi lähes kaareton verkko, johon syntyy kaaria sitä mukaa kun avaimissa vieraillaan. 
+
+Esimerkki algoritmin etenemisestä kuvan 1 mukaisessa labytintissä: Aluksi verkossa on vain kaaret lähtöpisteestä sen huoneessa oleviin kiinnostaviin kohteisiin. Kiinnostavia kohteita ovat poimimattomat avaimet sekä avoimet oviaukot. Täten verkossa on ainoastaan kaari (L-a). Ensimmäiseksi siis missä tahansa avainjärjestyksessä saavutaan avaimeen a. Tällöin lisätään verkkoon uudet kaaret (A-a), (A-b), (A-c). Jos seuraavaksi poimitaan avain b, lisätään kaaret (B-A), (B-e). (Huom kaarta B-a ei tarvitse enää muodostaa, sillä ei ole tarvetta vierailla avaimessa a enää.) Lisäksi voidaan myös poistaa kaari (A-a). (Kun avain on kerran poimittu ja siitä on poistuttu, kaikki sen kautta kulkevat kaaret voi poistaa verkosta, koska sen kautta ei tarvitse kulkea enää.)
+
+Jos reittiä jäljitellessä ohjelma huomaa jo kulkeneensa pitemmän matkan kuin mitä jokin aikaisempi ratkaisu on vaatinut, voidaan siirtyä seuraavaan polkuun, sillä muodostettava reitti ei voi olla enää lyhin.  
