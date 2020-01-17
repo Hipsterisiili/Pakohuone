@@ -15,12 +15,12 @@ Kuva 1.1. esimerkki ratkaistavasta labyrintistä
   
  <p>Tarkoitukseni on luoda käsin pieni joukko mielekkäitä testilabyrintteja, joita algoritmi pyrkii ratkaisemaan ja myöhemmmin sovellus, joka luo sattuanvaraisesti lisää testattavia labyrintteja. Labyrintin tallennusmuoto on kaksiuloitteinen taulukko char[x][y], jossa x on labyrintin leveys ja y on sen korkeus. Taulukon arvot kertovat mitä kyseisessä "ruudussa" on:
   
-  > #       = SEINÄ
-  > .       = TYHJÄ RUUTU
-  > a,b,c   = Avaimia
-  > A,B,C   = Ovia
-  > 0       = Lähtöpiste
-  > 1       = Maali
+  > #       = SEINÄ<br>
+  > .       = TYHJÄ RUUTU<br>
+  > a,b,c   = Avaimia<br>
+  > A,B,C   = Ovia<br>
+  > 0       = Lähtöpiste<br>
+  > 1       = Maali<br>
   
   Alustavasti labyrintin huoneiden on tarkoitus olla nelikulmaisia huoneita, mutta jos loppukurssista jää aikaa sovelluksen täydentämiseen, on mahdollista että täydennän algoritmin toimintaa siten, että se osaa etsiä reittejä myös vaikeammissa huoneissa.
   <p>
