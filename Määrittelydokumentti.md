@@ -41,6 +41,7 @@ Kuva 1. esimerkki ratkaistavasta labyrintistä
    Vaihtoehtoisen ratkaisun aikavaativuus on ruutujen määrä x\*y + ruutujen määrä x\*y Eli aikavaativuus = O(2(x\*y))Tämä on merkittävästi vähemmän, kuin aiemman menetelmän aikavaativuus. Lisäksi jälkimmäinen menetelmä on todennäköisesti helpompi toteuttaa.
    
 ![Kuva 2](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_edustajanetsinta.jpg)
+![Kuva 2](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_edustajanetsinta.jpg)
 
 Kuva 2 Järjestys jossa labyrintin ruudut käydään läpi kum huoneiden edustajat selvitetään
   
