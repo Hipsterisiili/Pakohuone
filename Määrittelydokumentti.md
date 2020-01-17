@@ -44,7 +44,7 @@ Kuva 1. esimerkki ratkaistavasta labyrintistä
 
 Kuva 2 Järjestys jossa labyrintin ruudut käydään läpi kum huoneiden edustajat selvitetään. Kun vasemmassa kuvassa saavutaan johonkin vasenpaan ylänurkkaan (ympyröidyt numerot), josta halutaan tehdä huoneen edustaja, voidaan pysähtyä käymään läpi kaikki huoneen ruudut. Kun kohdataan seinä, hypätään takaisin rivin alkuun.
   
-**Vaiheessa 2** ohjelma selvittää kaikki mahdolliset järjestykset, joissa avaimet voi noutaa niin että lopulta saavutaan maaliin. Tämä tapahtuu **syvyyshakua** (DFS) käyttämällä. Haku perustuu joka askeleella päivittyvään listaan tavoitettavissa olevia avaimia, siten että aina mentäessä astel syvemmälle, seurava vaihe saa uuden listan sillä hetkellä saatavilla olevista avaimista ja maaleista. **Kunkin avaimen on sisällettävä tieto siitä mnkä kahden ruudun välille se muodostaa yhteyden**
+**Vaiheessa 2** ohjelma selvittää kaikki mahdolliset järjestykset, joissa avaimet voi noutaa niin että lopulta saavutaan maaliin. Tämä tapahtuu tarkoituksenmukaisesti muokattua **syvyyshakua** (DFS) käyttämällä. Haku perustuu joka askeleella päivittyvään listaan tavoitettavissa olevia avaimia, siten että aina mentäessä askel syvemmälle, seurava vaihe saa uuden listan sillä hetkellä saatavilla olevista avaimista ja maaleista. **Kunkin avaimen on sisällettävä tieto siitä mnkä kahden ruudun välille se muodostaa yhteyden**
   
   Mahdollisia järjestyksiä voi olla 0 - n!, missä n = avainten määrä. Kukin mahdollinen järjestys tallennetaan erikseen listaksi, jotta niitä voidaan vertailla vaiheessa 3. Mikäli järjestyksiä on vain 0, ohjelma keskeytyy ja tiedämme että labyrintti ei ole ratkaistavissa. 
   
@@ -61,6 +61,7 @@ Kuva 3 Lyhimmät ratkaisut olennaisiin reitteihin erään huoneen sisällä.
   **Esimerkki algoritmin etenemisestä vaiheessa 3 kuvien 1 ja 4 mukaisessa labytintissä:** Aluksi verkossa on vain kaaret lähtöpisteestä sen huoneessa oleviin kiinnostaviin kohteisiin. Kiinnostavia kohteita ovat poimimattomat avaimet sekä avoimet oviaukot. Täten verkossa on ainoastaan kaari (L-a). Ensimmäiseksi siis missä tahansa avainjärjestyksessä saavutaan avaimeen a. Tällöin lisätään verkkoon uudet kaaret (A-a), (A-b), (A-c). Jos seuraavaksi poimitaan avain b, lisätään kaaret (B-A), (B-e). (Huom kaarta B-a ei tarvitse enää muodostaa, sillä ei ole tarvetta vierailla avaimessa a enää.) Lisäksi voidaan myös poistaa kaari (A-a). (Kun avain on kerran poimittu ja siitä on poistuttu, kaikki sen kautta kulkevat kaaret voi poistaa verkosta, koska sen kautta ei tarvitse kulkea enää.) Kuvassa 4 on hahmoteltu verkon muodostumista edellä kuvatussa tilanteessa.
 
   Jos reittiä jäljitellessä ohjelma huomaa jo kulkeneensa pitemmän matkan kuin mitä jokin aikaisempi ratkaisu on vaatinut, voidaan siirtyä seuraavaan polkuun, sillä muodostettava reitti ei voi olla enää lyhin. 
+  
   ![Kuva 4](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_verkonmuodostus.jpg)
   
   Kuva 4 Verkon muodostuminen esimerkkitilanteessa kun on saavuttu avaimen b kohdalle ja täten avattu juuri ovi B. Viivat ruutujen välillä ovat muodostettuja kaaria, katkoviivat ovat jo poistettuja kaaria. Kaarien pituuksia ei ole merkattu kuvaan.
