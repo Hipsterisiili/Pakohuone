@@ -50,6 +50,8 @@ Kuva 2 Järjestys jossa labyrintin ruudut käydään läpi kun huoneiden edustaj
   
   Mahdollisia järjestyksiä voi olla 0 - n!, missä n = avainten määrä. Kukin mahdollinen järjestys tallennetaan erikseen listaksi, jotta niitä voidaan vertailla vaiheessa 3. Mikäli järjestyksiä on vain 0, ohjelma keskeytyy ja tiedämme että labyrintti ei ole ratkaistavissa. 
   
+  Kussakin syvyyshaun vaiheessa aikaa menee saatetaan lisätä kaaria korkeintaan yhtä monta kuin avaimia on ja voidaan joutua kulkemaan 1-n huoneen läpi, missä n = huoneiden määrä eli yhden vaiheen aikavaativuus on **O( a + (x\*y)/4 )** (a = avainten määrä). Eri etenemisvaihtoehtoja haulla on a! ja jokaisen etenemisen jokaisessa vaiheessa on 0-(a-1) vaihtoehtoa siitä mihin seuraavaksi voi edetä. Täten aikavaativuus on **O( a! \* a-1 * (a + (x\*y)/4) )**. Normaalikäytössä ei tule tilannetta, jossa ohjelmalla ei ole jatkuvasti maksimimäärää mahdollisimman vaikeita etenemisvaihtoehtoja, joista kaikki johtavat maaliin.
+  
   #### Algoritmi 3
   Viimeiseksi Tutkitaan mikä vaiheessa 2 muodostetuista avainten järjestyksistä on nopeinta toteuttaa. Tätä varten verkkoa tehostetaan luomalla yhteyksiä avainten ja ovien väleille huoneiden sisällä. Tämä on lähes välttämätöntä, jotta ohjelman ei tarvitse kuluttaa paljon aikaa kaikkien mahdollisten polkujen läpikäymiseen huoneen sisällä. Kuvassa 3 näkyy minkälaiset reitit huoneen sisällä ovat optimaalisia. 
 
@@ -61,8 +63,8 @@ Kuva 3 Lyhimmät ratkaisut olennaisiin reitteihin erään huoneen sisällä.
 
   Lopuksi käydään läpi kaikki vaiheessa 2 muodostetut järjestykset ja erotellaan niistä lyhin. Kutakin järjestystä seuratessa on luotava uusi lähes kaareton verkko, johon syntyy kaaria sitä mukaa kun avaimissa vieraillaan. 
 
-  #### Esimerkki kolmannen algoritmin etenemisestä  kuvien 1 ja 4 mukaisessa labyrintissä:
-  Aluksi verkossa on vain kaaret lähtöpisteestä sen huoneessa oleviin kiinnostaviin kohteisiin. Kiinnostavia kohteita ovat poimimattomat avaimet sekä avoimet oviaukot. Täten verkossa on ainoastaan kaari (L-a). Ensimmäiseksi siis missä tahansa avainjärjestyksessä saavutaan avaimeen a. Tällöin lisätään verkkoon uudet kaaret (A-a), (A-b), (A-c). Jos seuraavaksi poimitaan avain b, lisätään kaaret (B-A), (B-e). (Huom kaarta B-a ei tarvitse enää muodostaa, sillä ei ole tarvetta vierailla avaimessa a enää.) Lisäksi voidaan myös poistaa kaari (A-a). (Kun avain on kerran poimittu ja siitä on poistuttu, kaikki sen kautta kulkevat kaaret voi poistaa verkosta, koska sen kautta ei tarvitse kulkea enää.) Kuvassa 4 on hahmoteltu verkon muodostumista edellä kuvatussa tilanteessa.
+  #### Esimerkki kolmannen algoritmin etenemisestä esimerkkilabyrintissä:
+  Käytetään kuvissa 1 ja 4 esiintyvää labyrinttia esimerkkinä. Aluksi verkossa on vain kaaret lähtöpisteestä sen huoneessa oleviin kiinnostaviin kohteisiin. Kiinnostavia kohteita ovat poimimattomat avaimet sekä avoimet oviaukot. Täten verkossa on ainoastaan kaari (L-a). Ensimmäiseksi siis missä tahansa avainjärjestyksessä saavutaan avaimeen a. Tällöin lisätään verkkoon uudet kaaret (A-a), (A-b), (A-c). Jos seuraavaksi poimitaan avain b, lisätään kaaret (B-A), (B-e). (Huom kaarta B-a ei tarvitse enää muodostaa, sillä ei ole tarvetta vierailla avaimessa a enää.) Lisäksi voidaan myös poistaa kaari (A-a). (Kun avain on kerran poimittu ja siitä on poistuttu, kaikki sen kautta kulkevat kaaret voi poistaa verkosta, koska sen kautta ei tarvitse kulkea enää.) Kuvassa 4 on hahmoteltu verkon muodostumista edellä kuvatussa tilanteessa.
 
   Jos reittiä jäljitellessä ohjelma huomaa jo kulkeneensa pitemmän matkan kuin mitä jokin aikaisempi ratkaisu on vaatinut, voidaan siirtyä seuraavaan polkuun, sillä muodostettava reitti ei voi olla enää lyhin. 
   
