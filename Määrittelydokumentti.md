@@ -10,7 +10,8 @@
 
 Kuva 1.1. esimerkki ongelmatilanteesta
 
-<p>**Säännöt**: Labyrintissa voi edetä kerralla yhden askeleen johonkin neljästä ilmansuunasta, mikäli seinä (mustakis väritetty ruutu) ei ole tiellä. jotta "Ovesta" voi kulkea, on sitä ennen haettava oven kirjainta vastaava avain saapumalla sen sisältämään ruutuun.<p>
+<p> **Säännöt**
+  : Labyrintissa voi edetä kerralla yhden askeleen johonkin neljästä ilmansuunasta, mikäli seinä (mustakis väritetty ruutu) ei ole tiellä. jotta "Ovesta" voi kulkea, on sitä ennen haettava oven kirjainta vastaava avain saapumalla sen sisältämään ruutuun.<p>
 
 <p>     <br>
 
