@@ -8,7 +8,7 @@
 
 ![Kuva 1](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_esimerkkihuone.jpg)
 
-Kuva 1. esimerkki ratkaistavasta labyrintistä
+Kuva 1: Esimerkki ratkaistavasta labyrintistä
 
 ### Säännöt:
   Labyrintissa voi edetä kerralla yhden askeleen johonkin neljästä ilmansuunasta, mikäli seinä (kuvassa mustaksi väritetty ruutu) ei ole tiellä. Jotta "Ovesta" voi kulkea, on sitä ennen haettava oven kirjainta vastaava avain saapumalla sen sisältämään ruutuun.
@@ -43,7 +43,7 @@ Kuva 1. esimerkki ratkaistavasta labyrintistä
 
 ![Kuva 2](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_etsiedustaja.jpg)
 
-Kuva 2 Järjestys jossa labyrintin ruudut käydään läpi kun huoneiden edustajat selvitetään. Kun vasemmassa kuvassa saavutaan johonkin vasempaan ylänurkkaan (ympyröidyt numerot), josta halutaan tehdä huoneen edustaja, voidaan pysähtyä käymään läpi kaikki huoneen ruudut. Kun kohdataan seinä, hypätään takaisin rivin alkuun.
+Kuva 2: Järjestys jossa labyrintin ruudut käydään läpi kun huoneiden edustajat selvitetään. Kun vasemmassa kuvassa saavutaan johonkin vasempaan ylänurkkaan (ympyröidyt numerot), josta halutaan tehdä huoneen edustaja, voidaan pysähtyä käymään läpi kaikki huoneen ruudut. Kun kohdataan seinä, hypätään takaisin rivin alkuun.
   
   #### Algoritmi 2
    Seuraavaksi ohjelma selvittää kaikki mahdolliset järjestykset, joissa avaimet voi noutaa niin että lopulta saavutaan maaliin. Tämä tapahtuu tarkoituksenmukaisesti muokattua **syvyyshakua** (DFS) käyttämällä. Haku perustuu joka askeleella päivittyvään listaan tavoitettavissa olevia avaimia, siten että aina mentäessä askel syvemmälle, seuraava vaihe saa uuden listan sillä hetkellä saatavilla olevista avaimista ja maaleista. **Kunkin avaimen on sisällettävä tieto siitä minkä kahden ruudun välille se muodostaa yhteyden**
@@ -57,7 +57,7 @@ Kuva 2 Järjestys jossa labyrintin ruudut käydään läpi kun huoneiden edustaj
 
 ![Kuva 3](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_lyhimmatreitit.jpg) 
 
-Kuva 3 Lyhimmät ratkaisut olennaisiin reitteihin erään huoneen sisällä.
+Kuva 3: Lyhimmät ratkaisut olennaisiin reitteihin erään huoneen sisällä.
 
   Käytännössä kuvan 2 mukaiset lyhimmät reitit löytää nopeasti vertailemalla niiden alku- ja loppupisteiden koordinaatteja, joten tämä reitinhakualgoritmi on melko yksinkertainen. Lyhin etäisyys pisteiden (x1,y1) ja (x2,y2) välillä on |x1-x2| + |y1-y2|. 
 
@@ -70,4 +70,4 @@ Kuva 3 Lyhimmät ratkaisut olennaisiin reitteihin erään huoneen sisällä.
   
   ![Kuva 4](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_verkonmuodostus.jpg)
   
-  Kuva 4 Verkon muodostuminen esimerkkitilanteessa kun on saavuttu avaimen b kohdalle ja täten avattu juuri ovi B. Viivat ruutujen välillä ovat muodostettuja kaaria, katkoviivat ovat jo poistettuja kaaria. Kaarien pituuksia ei ole merkattu kuvaan.
+  Kuva 4: Verkon muodostuminen esimerkkitilanteessa kun on saavuttu avaimen b kohdalle ja täten avattu juuri ovi B. Viivat ruutujen välillä ovat muodostettuja kaaria, katkoviivat ovat jo poistettuja kaaria. Kaarien pituuksia ei ole merkattu kuvaan.
