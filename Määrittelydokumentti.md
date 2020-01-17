@@ -39,8 +39,7 @@ Kuva 1. esimerkki ratkaistavasta labyrintistä
    Vaihtoehtoinen ratkaisu kunkin ruudun edustajan löytämiseen on etsiä labyrintistä kaikkien huoneiden vasemmat ylänurkat (eli etsiä kaikki ruudut, joiden vasemmalla puolella ja yläpuolella on seinää. Tämän jälkeen siivutetaan huonetta seinien sisällä käyden läpi kaikki sen ruudut ja nimittäen niille edustajaksi vasen ylänurkka. Kuvassa 2 näkyy järjestys, jossa ruutuja käydään läpi.
    
    Vaihtoehtoisen ratkaisun aikavaativuus on ruutujen määrä x\*y + ruutujen määrä x\*y Eli aikavaativuus = O(2(x\*y))Tämä on merkittävästi vähemmän, kuin aiemman menetelmän aikavaativuus. Lisäksi jälkimmäinen menetelmä on todennäköisesti helpompi toteuttaa.
-   
-![Kuva 2](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_lyhimmatreitit.jpg)
+
 ![Kuva 2](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_edustajanetsinta.jpg)
 
 Kuva 2 Järjestys jossa labyrintin ruudut käydään läpi kum huoneiden edustajat selvitetään
