@@ -73,3 +73,9 @@ Kuva 3: Lyhimmät ratkaisut olennaisiin reitteihin erään huoneen sisällä.
   Kuva 4: Verkon muodostuminen esimerkkitilanteessa kun on saavuttu avaimen b kohdalle ja täten avattu juuri ovi B. Viivat ruutujen välillä ovat muodostettuja kaaria, katkoviivat ovat jo poistettuja kaaria. Kaarien pituuksia ei ole merkattu kuvaan.
 
    Aikavaativuus kolmannelle algoritmille on kaikkien reittien määrä \* reitteihin kuuluvien kaarien määrät eli O( n! * ((x\*y) / 4 ) 
+
+
+## Lähteet
+
+Algoritmien muodostaminen ja niiden tyypillisimpien ilmentymien aikavaativuudet:
+tirakirja (Antti Laaksonen 2019) https://www.cs.helsinki.fi/u/ahslaaks/tirakirja/
