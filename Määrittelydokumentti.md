@@ -31,12 +31,14 @@ Tarkoitukseni on luoda käsin pieni joukko mielekkäitä testilabyrintteja, joit
   
   **Vaiheessa 1** ohjelma selvittää huoneiden määrän, mitä ruutuja ja avaimia kukin huone sisältää, käyttäen **Union-find-rakennetta** ja tallentaen tieton labyrintin union-find-rakenteesta myöhempää käyttöä ja muokkaamista varten.
   
+   Huoneita alkutilanteessa voi pahimmillaan olla standardini mukaisesa labyrintissä korkeintaan (x/2)\*(y/2), missä x = labyrintin leveys ja y = labyrintin korkeus.
+  
   **Vaiheessa 2** ohjelma selvittää kaikki mahdolliset järjestykset, joissa avaimet voi noutaa niin että lopulta saavutaan maaliin. Tämä tapahtuu **syvyyshakua** (DFS) käyttämällä. Haku perustuu joka askeleella päivittyvään listaan tavoitettavissa olevia avaimia, siten että aina mentäessä astel syvemmälle, seurava vaihe saa uuden listan sillä hetkellä saatavilla olevista avaimista ja maaleista.
   **Kunkin avaimen on sisällettävä tieto siitä mnkä kahden ruudun välille se muodostaa yhteyden**
   
   Mahdollisia järjestyksiä voi olla 0 - n!, missä n = avainten määrä. Kukin mahdollinen järjestys tallennetaan erikseen listaksi, jotta niitä voidaan vertailla vaiheessa 3. Mikäli järjestyksiä on vain 0, ohjelma keskeytyy ja tiedämme että labyrintti ei ole ratkaistavissa.
   
-  
+  **Vaiheessa 3** Tutkitaan mikä vaiheessa 2 muodostetuista avainten järjestykistä on nopeinta toteuttaa. Tätä varten verkkoa tehostetaan luomalla yhteyksiä avainten ja ovien väleille huoneiden sisällä. Tämä on lähes välttämätöntä, jotta ohjelman ei tarvitse kuluttäa paljon aikaa kaikkien mahdollisten polkujen läpikäymiseen huoneen sisällä.
   
 
 
