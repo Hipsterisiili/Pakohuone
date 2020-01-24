@@ -5,4 +5,6 @@ Kurssilla Tiralabra k20 tehtävä harjoitustyö
 
 [Viikkoraportti vko2](https://github.com/Hipsterisiili/Pakohuone/blob/master/Viikkoraportti_vko2.md).
 
+[Testausdokumentti](https://github.com/Hipsterisiili/Pakohuone/blob/master/Testausdokumentti.md).
+
 
