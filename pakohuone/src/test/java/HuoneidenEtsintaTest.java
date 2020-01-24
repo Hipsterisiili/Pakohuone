@@ -1,10 +1,14 @@
-
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import juuri.sovelluslogiikka.HuoneidenEtsinta;
-import juuri.main.pakohuone;
+import pakohuone.Main.Labyrintti;
+import pakohuone.Main.Main;
+import pakohuone.sovelluslogiikka.Avain;
+import pakohuone.sovelluslogiikka.Ovi;
+import pakohuone.sovelluslogiikka.Huone;
+import pakohuone.tyokalut.EtaisyydenEtsija;
+import pakohuone.tyokalut.HuoneidenEtsinta;
 
 public class HuoneidenEtsintaTest {
 
@@ -53,4 +57,7 @@ public class HuoneidenEtsintaTest {
         );
     }
 }
+
+
+
 
