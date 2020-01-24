@@ -6,6 +6,7 @@ vaatimusten mukaiseen muotoon eli ohjelma kykenee erittelemään huoneet ja niid
 
 
 ![Kuva 1](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Ohjelman_syote_viikko2.png)
+
 Kuvassa näkyy tulostus, jonka nykyinen ohjelma antaa main-luokassa olevalle testilabyrintille. Ylemmässä
 ruudukossa on eritelty kukin ruutu huoneen mukaan (numeroitu 1-4) ja alemmassa ruudukossa on kuva koko
 labyrintista.
