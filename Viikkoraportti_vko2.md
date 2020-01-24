@@ -30,4 +30,6 @@ Arvelen että minulla on joko jotakin vialla projektitiedostossa, tai omalle kon
   
 ### Mitä on jäänyt käteen?
 
-Viikon aikana on koitunut hieman haasteita ohjelman järkevän rakenteen hahmottelun kanssa, mutta koen kehittyneeni, erityisesti muutamien virheiden kautta skaalautuvan, muokattavan ja helppolukuisen koodin rakentamisessa. Koska suunnittelemani ohjelma sisältää suuren määrän toisistaan riippuvaisia toiminnallisuuksia, on eirtyisen tärkeää, että jo kerran tehtyyn koodiin olisi helpompi kajota uudelleen myöhemmillä viikoilla, ilman suurempaa päänvaivaa.
+<c>Viikon aikana on koitunut hieman haasteita ohjelman järkevän rakenteen hahmottelun kanssa, mutta koen kehittyneeni, erityisesti muutamien virheiden kautta skaalautuvan, muokattavan ja helppolukuisen koodin rakentamisessa. Koska suunnittelemani ohjelma sisältää suuren määrän toisistaan riippuvaisia toiminnallisuuksia, on eirtyisen tärkeää, että jo kerran tehtyyn koodiin olisi helpompi kajota uudelleen myöhemmillä viikoilla, ilman suurempaa päänvaivaa.<c>
+
+<c>Projektitiedostojen hallinta on osoittautunut aikaisemminkin minulle haastavaksi aiheeksi aiemminkin, joten on todennäköistä että ohjelman ajaminen ei onnistu johtuen jostakin virheestä esimerkiksi pom.xml-tiedostossa. Tietysti tämankaltaisten projektien parissa työskentely tekee jatkivasti siitäkin tutumpaa.<c>
