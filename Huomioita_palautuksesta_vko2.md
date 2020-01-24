@@ -1,5 +1,3 @@
-VIIKKO 2
-
 <c>Tämänhetkisessä palautuksessa ohjelman main-luokassa sijaitsee koodi, joka luo testilabyrintin ja sen jälkeen suoraan
 tarkastelee sitä. Määrittlydokumentissa mainituista kolmesta algoritmista ensimmäinen on jo käytännössä toteutettu
 vaatimusten mukaiseen muotoon eli ohjelma kykenee erittelemään huoneet ja niiden muodot annetusta taulukosta.<c>
@@ -7,12 +5,12 @@ vaatimusten mukaiseen muotoon eli ohjelma kykenee erittelemään huoneet ja niid
 
 ![Kuva 1](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Ohjelman_syote_viikko2.png)
 
-Kuvassa näkyy tulostus, jonka nykyinen ohjelma antaa main-luokassa olevalle testilabyrintille. Ylemmässä
+<c>Kuvassa näkyy tulostus, jonka nykyinen ohjelma antaa main-luokassa olevalle testilabyrintille. Ylemmässä
 ruudukossa on eritelty kukin ruutu huoneen mukaan (numeroitu 1-4) ja alemmassa ruudukossa on kuva koko
-labyrintista.
+labyrintista.<c>
 
 
-Jostakin syystä en saa netbeansissa itse ajettua projektitiedostoa, kun yritän sitä, ohjelma palauttaa seuraavan 
+<c>Jostakin syystä en saa netbeansissa itse ajettua projektitiedostoa, kun yritän sitä, ohjelma palauttaa seuraavan 
 virheraportin:
 
 >Plugin org.apache.maven.plugins:maven-compiler-plugin:3.3 or one of its dependencies could not be resolved: 
@@ -22,6 +20,11 @@ virheraportin:
 >http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.3/maven-compiler-plugin-3.3.pom. 
 >Return code is: 501 , ReasonPhrase:HTTPS Required. -> [Help 1]
 
-Arvelen että minulla on joko jotakin vialla projektitiedostossa, tai omalle koneelle asennetussa mavenissa.
+Arvelen että minulla on joko jotakin vialla projektitiedostossa, tai omalle koneelle asennetussa mavenissa. Tätä täytynee
+tarkastella esimerkiksi ensi viikon laskareissa. <c>
+
+<c>Rakensin kuitenkin ohjelman viikkopalautuksen mukaiseen muotoonsa toisessa tiedostossa ja refaktoroin sen 
+palautusrepositoriooni.<c>
+
 
 
