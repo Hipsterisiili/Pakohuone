@@ -1,13 +1,11 @@
-<c>Tämänhetkisessä palautuksessa ohjelman main-luokassa sijaitsee koodi, joka luo testilabyrintin ja sen jälkeen suoraan
-tarkastelee sitä. Määrittlydokumentissa mainituista kolmesta algoritmista ensimmäinen on jo käytännössä toteutettu
-vaatimusten mukaiseen muotoon eli ohjelma kykenee erittelemään huoneet ja niiden muodot annetusta taulukosta.<c>
+<c> Viikon aikana viimeistelin algoritmien alustavan suunnittelun. Aion pitäytyä määrittelydokumentin mukaisessa arkkitehtuurissa. aloitin ohjelman rakentamisen sekä sen testaamisen
+
+<c>Tämänhetkisessä palautuksessa ohjelman main-luokassa sijaitsee koodi, joka luo testilabyrintin ja sen jälkeen suoraan tarkastelee sitä. Määrittlydokumentissa mainituista kolmesta algoritmista ensimmäinen on jo käytännössä toteutettu vaatimusten mukaiseen muotoon eli ohjelma kykenee erittelemään huoneet ja niiden muodot annetusta taulukosta.<c>
 
 
 ![Kuva 1](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Ohjelman_syote_viikko2.png)
 
-<c>Kuvassa näkyy tulostus, jonka nykyinen ohjelma antaa main-luokassa olevalle testilabyrintille. Ylemmässä
-ruudukossa on eritelty kukin ruutu huoneen mukaan (numeroitu 1-4) ja alemmassa ruudukossa on kuva koko
-labyrintista.<c>
+<c>Kuvassa näkyy tulostus, jonka nykyinen ohjelma antaa main-luokassa olevalle testilabyrintille. Ylemmässä ruudukossa on eritelty kukin ruutu huoneen mukaan (numeroitu 1-4) ja alemmassa ruudukossa on kuva koko labyrintista.<c>
 
 
 <c>Jostakin syystä en saa netbeansissa itse ajettua projektitiedostoa, kun yritän sitä, ohjelma palauttaa seuraavan 
