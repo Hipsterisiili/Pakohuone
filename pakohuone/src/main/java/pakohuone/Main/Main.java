@@ -41,14 +41,5 @@ public class Main {
         laby.tulostaHuoneet();
         System.out.println("\nTULOSTETAAN LABYRINTTI:\n");
         laby.tulostaLabyrintti();
-
-        System.out.println("\nAVAINTEN SIJAINNIT");
-        System.out.println(laby.getAvaimet()[0].getSijaintiX() == 2);
-        System.out.println(laby.getAvaimet()[0].getSijaintiY() == 2);
-        System.out.println(laby.getAvaimet()[1].getSijaintiX() == 7);
-        System.out.println(laby.getAvaimet()[1].getSijaintiY() == 4);
-
-
-
     }
 }
