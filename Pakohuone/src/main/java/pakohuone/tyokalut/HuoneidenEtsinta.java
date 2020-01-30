@@ -7,48 +7,53 @@ import pakohuone.sovelluslogiikka.Ovi;
 public class HuoneidenEtsinta {
 
     private char[][] labyrintti;
-    private int[][] huoneet;
+    private int[][] huoneTaulukko;
     private Avain[] avaimet;
     private Ovi[] ovet;
+    private Huone[] huoneet;
     private int korkeus;
     private int leveys;
+    private int avaintenMaara = 0;
 
     private int huoneidenMaara = 0;
     private char seina = '#';
     private char tyhja = '.';
-    
+
     /**
-   * HuoneidenEtsinta muodostaa kuvan siitä mitä labyrintissa on eli
-   * millaisia huoneita siinä on ja mitä avaimia ja ovia huoneesta
-   * löytyy. Käytännössä tämä olio pureskelee annetun parametrin 
-   * hyödynnettävään muotoon.
-   */
+     * HuoneidenEtsinta muodostaa kuvan siitä mitä labyrintissa on eli millaisia
+     * huoneita siinä on ja mitä avaimia ja ovia huoneesta löytyy. Käytännössä
+     * tämä olio pureskelee annetun parametrin hyödynnettävään muotoon.
+     */
     public HuoneidenEtsinta(char[][] laby) {
         this.labyrintti = laby;
         this.korkeus = laby.length;
         this.leveys = laby[0].length;
-        this.huoneet = new int[korkeus][leveys];
+        this.huoneTaulukko = new int[korkeus][leveys];
         this.avaimet = new Avain[26];
         this.ovet = new Ovi[26];
 
         for (int i = 1; i < korkeus - 1; i++) {
             for (int j = 1; j < leveys - 1; j++) {
-                huoneet[i][j] = 0;
+                huoneTaulukko[i][j] = 0;
             }
         }
         for (int i = 0; i < 26; i++) {
-            avaimet[i] = new Avain(0, 0);
+            //Luodaan placeholderit avaimille, jotka eivät ole vielä olemassa
+            avaimet[i] = new Avain(0, 0, '@');
+            //Luodaan placeholderit oville, jotka eivät ole vielä olemassa
+            ovet[i] = new Ovi(0, 0, 0, 0);
         }
     }
 
     /**
-   * Metodi tulkitse pureskelee annetun labyrintin hyödylliseen muotoon
-   * Se selvittää itse ensin huoneiden muodot metodin luoHuone avulla ja 
-   * tunnistaa avainten ja ovien paikat. Sitten se kutsuu metodia 
-   * TeeAvainTaiOvi, joka luo avaimet ja ovet tunnistettuihin paikkoihin. 
-   * @return kaksiuloitteinen taulukko, jossa kussakin ruudussa numero,
-   * joka kertoo mihin huoneeseen se kuuluu.
-   */
+     * Metodi tulkitse pureskelee annetun labyrintin hyödylliseen muotoon Se
+     * selvittää itse ensin huoneiden muodot metodin taytaHuoneNumeroilla avulla
+     * ja tunnistaa avainten ja ovien paikat. Sitten se kutsuu metodia
+     * TeeAvainTaiOvi, joka luo avaimet ja ovet tunnistettuihin paikkoihin.
+     *
+     * @return kaksiuloitteinen taulukko, jossa kussakin ruudussa numero, joka
+     * kertoo mihin huoneeseen se kuuluu.
+     */
     public int[][] tulkitse() {
         taytaNollilla();
         for (int i = 1; i < korkeus - 1; i++) {
@@ -56,7 +61,7 @@ public class HuoneidenEtsinta {
                 if (labyrintti[i][j - 1] == seina
                         && labyrintti[i - 1][j] == seina
                         && labyrintti[i][j] == tyhja) {
-                    luoHuone(i, j);
+                    taytaHuoneNumeroilla(i, j);
                 }
                 if (labyrintti[i][j] != seina && labyrintti[i][j] != tyhja) {
                     teeAvainTaiOvi(i, j, labyrintti[i][j]);
@@ -64,33 +69,36 @@ public class HuoneidenEtsinta {
             }
         }
         yhdistaAvaimetJaOvet();
-        return huoneet;
+        muodostaHuoneetListaksi();
+        return huoneTaulukko;
     }
+
     /**
-   * Metodi täyttää taulukon "huoneet" arvot nollilla, eli käytännössä nollaa
-   * koko taulukon.
-   */
-    private void taytaNollilla(){
+     * Metodi täyttää taulukon "huoneTaulukko" arvot nollilla, eli käytännössä
+     * nollaa koko taulukon.
+     */
+    private void taytaNollilla() {
         for (int i = 1; i < korkeus - 1; i++) {
             for (int j = 1; j < leveys - 1; j++) {
-                huoneet[i][j] = 0;
+                huoneTaulukko[i][j] = 0;
             }
         }
     }
 
-     /**
-   * Täyttää annetusta pisteestä alkavan huoneen huoneen numerolla. Metodi
-   * tunnistaa huoneen rajat for-looppien avulla.
-   * @param alkux huoneen pienin x-koordinaatti
-   * @param alkuy huoneen pienin y-koordinaatti. 
-   */
-    private void luoHuone(int alkux, int alkuy) {
+    /**
+     * Täyttää annetusta pisteestä alkavan huoneen huoneen numerolla. Metodi
+     * tunnistaa huoneen rajat for-looppien avulla.
+     *
+     * @param alkux huoneen pienin x-koordinaatti
+     * @param alkuy huoneen pienin y-koordinaatti.
+     */
+    private void taytaHuoneNumeroilla(int alkux, int alkuy) {
         int a = alkux;
         int b = alkuy;
         huoneidenMaara++;
         while (labyrintti[alkux][b] != seina) {
             while (labyrintti[a][alkuy] != seina) {
-                huoneet[a][b] = huoneidenMaara;
+                huoneTaulukko[a][b] = huoneidenMaara;
                 a++;
             }
             a = alkux;
@@ -114,7 +122,8 @@ public class HuoneidenEtsinta {
         if (arvo > 96) {
             //System.out.println("TEHDÄÄN AVAIN " + x + "," + y + ", " + c);
             arvo -= 97;
-            avaimet[arvo] = new Avain(x, y);
+            avaimet[arvo] = new Avain(x, y, c);
+            avaintenMaara++;
 
             //PIENET KIRJAIMET 97-122
         } else {
@@ -132,14 +141,13 @@ public class HuoneidenEtsinta {
     }
 
     /**
-     * Metodi yhdistää avaimet ja ovet
-     * Se käy läpi koko avaimet-taulun ja aina kun löytyy olemassa oleva 
-     * avain, etsitään sen kirjainta vastannut ovi ja lisätään avaimelle
-     * sille kuuluva ovi edellisen placeholderin tilalle.
+     * Metodi yhdistää avaimet ja ovet Se käy läpi koko avaimet-taulun ja aina
+     * kun löytyy olemassa oleva avain, etsitään sen kirjainta vastannut ovi ja
+     * lisätään avaimelle sille kuuluva ovi edellisen placeholderin tilalle.
      */
     private void yhdistaAvaimetJaOvet() {
         for (int i = 0; i < 26; i++) {
-            if (avaimet[i].getSijaintiX() != 0) {
+            if (avaimet[i].getKirjain() != '@') {
                 System.out.println("YHDISTYS");
                 System.out.println("avain: " + avaimet[i].getSijaintiX()
                         + "," + avaimet[i].getSijaintiY());
@@ -148,8 +156,70 @@ public class HuoneidenEtsinta {
         }
     }
 
-    public int[][] getHuoneet() {
-        return huoneet;
+    /**
+     * Metodi tarkastaa montako huonetta labyrintissa on (jo selvillä tässä
+     * vaiheessa ja sitten kutsuu kahta metodia. Ensimmäinen lisää kaikki
+     * avaimet niihin huoneisiin, joihin ne kuuluvat. Toinen tekee saman oville
+     * (huom, kukin ovi on periaatteessa kahdessa huoneessa samaan aikaan)
+     */
+    private void muodostaHuoneetListaksi() {
+        //Huonetta 0 ei ole olemassa.
+        this.huoneet = new Huone[this.huoneidenMaara + 1];
+        for (int i = 0; i <= huoneidenMaara; i++) {
+            huoneet[i] = new Huone();
+        }
+        lisaaAvaimiaHuoneisiin();
+        lisaaOviaHuoneisiin();
+    }
+
+    /**
+     * Metodi lisää kaikki avaimet niitä vastaaviin huoneisiin. Vastaava huone
+     * on helppo selvittää taulukosta int[][] huoneTaulukko, kun tuntee avaimen
+     * omat koordinaatit;
+     */
+    private void lisaaAvaimiaHuoneisiin() {
+        int tempX;
+        int tempY;
+        int huonenumero;
+        for (Avain a : avaimet) {
+            //Merkistä @ tunnistaa olemattoman huoneen
+            if (a.getKirjain() == '@') {
+                return;
+            }
+            tempX = a.getSijaintiX();
+            tempY = a.getSijaintiY();
+            huonenumero = huoneTaulukko[tempX][tempY];
+            huoneet[huonenumero].lisaaAvain(a);
+            System.out.println("LISÄTTY HUONEESEEN " + huonenumero + " " + a.toString());
+        }
+    }
+
+    /**
+     * Metodi lisää kaikki ovet niitä vastaaviin huoneisiin. Vastaava huone on
+     * helppo selvittää taulukosta int[][] huoneTaulukko, kun tuntee oven omat
+     * koordinaatit;
+     */
+    private void lisaaOviaHuoneisiin() {
+        int tempX;
+        int tempY;
+        int huonenumero;
+        for (Ovi o : ovet) {
+            if (o.getAlkuX() == 0 && o.getAlkuY() == 0) {
+                return;
+            }
+            tempX = o.getAlkuX();
+            tempY = o.getAlkuY();
+            huonenumero = huoneTaulukko[tempX][tempY];
+            huoneet[huonenumero].lisaaOvi(o);
+            tempX = o.getLoppuX();
+            tempY = o.getLoppuY();
+            huonenumero = huoneTaulukko[tempX][tempY];
+            huoneet[huonenumero].lisaaOvi(o);
+        }
+    }
+
+    public int[][] getHuoneTaulukko() {
+        return huoneTaulukko;
     }
 
     public Avain[] getAvaimet() {
@@ -158,5 +228,9 @@ public class HuoneidenEtsinta {
 
     public Ovi[] getOvet() {
         return ovet;
+    }
+
+    public int getAvaintenMaara() {
+        return this.avaintenMaara;
     }
 }

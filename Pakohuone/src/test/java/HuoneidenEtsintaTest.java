@@ -56,6 +56,15 @@ public class HuoneidenEtsintaTest {
                 && labyrintti[8][8] == ruutu
         );
     }
+    
+    @Test
+    public void olemattomatAvaimet() {
+        int[][] huoneet = h.tulkitse();
+        
+        assertTrue(h.getAvaimet()[10].getKirjain() == '@');
+        assertTrue(h.getAvaimet()[10].getSijaintiX() == 0 
+                && h.getAvaimet()[10].getSijaintiY() == 0);
+    }
 }
 
 

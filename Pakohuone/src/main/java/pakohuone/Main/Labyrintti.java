@@ -9,6 +9,7 @@ public class Labyrintti {
     private char[][] kuva;
     private int[][] huoneet;
     private int leveys, korkeus;
+    private int avaintenMaara;
     private HuoneidenEtsinta huoEts;
     private Ovi[] ovet;
     private Avain[] avaimet;
@@ -17,11 +18,12 @@ public class Labyrintti {
         kuva = taulukko;
         huoEts = new HuoneidenEtsinta(taulukko);
         huoEts.tulkitse();
-        huoneet = huoEts.getHuoneet();
+        huoneet = huoEts.getHuoneTaulukko();
         korkeus = taulukko.length - 1;
         leveys = taulukko[0].length - 1;
         ovet = huoEts.getOvet();
         avaimet = huoEts.getAvaimet();
+        avaintenMaara = huoEts.getAvaintenMaara();
     }
 
     public char[][] getKuva() {
@@ -76,5 +78,9 @@ public class Labyrintti {
 
     public Avain[] getAvaimet() {
         return avaimet;
+    }
+    
+    public int getAvaintenMaara() {
+        return this.avaintenMaara;
     }
 }

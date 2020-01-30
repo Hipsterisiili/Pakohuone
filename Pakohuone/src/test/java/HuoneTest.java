@@ -14,8 +14,8 @@ import pakohuone.tyokalut.HuoneidenEtsinta;
 public class HuoneTest {
 
     Huone h = new Huone();
-    Avain a = new Avain(1, 2);
-    Avain aa = new Avain(3, 4);
+    Avain a = new Avain(1, 2, 'a');
+    Avain aa = new Avain(3, 4, 'b');
     Ovi o = new Ovi(1, 2, 3, 4);
     Ovi oo = new Ovi(5, 6, 7, 8);
 
@@ -27,8 +27,8 @@ public class HuoneTest {
 
     @Test
     public void AvaimetToimii() {
-        a = new Avain(1, 2);
-        aa = new Avain(3, 4);
+        a = new Avain(1, 2, 'a');
+        aa = new Avain(3, 4, 'b');
         o = new Ovi(1, 2, 3, 4);
         oo = new Ovi(5, 6, 7, 8);
         a.setOvi(o);

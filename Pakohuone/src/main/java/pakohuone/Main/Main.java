@@ -13,9 +13,9 @@ public class Main {
         //kahdessa eri muodossa
         
         //Luotavan labyrintin korkeus
-        int korkeus = 100;
+        int korkeus = 20;
         //Luotavan labyrintin leveys
-        int leveys = 10;
+        int leveys = 15;
         
         char[][] labyrintti = new char[korkeus + 1][leveys + 1];
 
