@@ -6,7 +6,7 @@
 2.) Jos voin, minkälaista polkua pitkin?<br>
 3.) Mikä on nopein mahdollinen polku, joka ratkaisee labyrintin?<br>
 
-![Kuva 1](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_esimerkkihuone.jpg)
+![Kuva 1](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Dokumentointikansio/Kuvat/pakohuone_esimerkkihuone.jpg)
 
 Kuva 1: Esimerkki ratkaistavasta labyrintistä
 
@@ -41,7 +41,7 @@ Kuva 1: Esimerkki ratkaistavasta labyrintistä
    
    Vaihtoehtoisen ratkaisun aikavaativuus on ruutujen määrä x\*y + ruutujen määrä x\*y. Täten aikavaativuus = O(2(x\*y)) Tämä on merkittävästi vähemmän, kuin aiemman menetelmän aikavaativuus. Lisäksi jälkimmäinen menetelmä on todennäköisesti helpompi toteuttaa.
 
-![Kuva 2](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_etsiedustaja.jpg)
+![Kuva 2](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Dokumentointikansio/Kuvat/pakohuone_etsiedustaja.jpg)
 
 Kuva 2: Järjestys jossa labyrintin ruudut käydään läpi kun huoneiden edustajat selvitetään. Kun vasemmassa kuvassa saavutaan johonkin vasempaan ylänurkkaan (ympyröidyt numerot), josta halutaan tehdä huoneen edustaja, voidaan pysähtyä käymään läpi kaikki huoneen ruudut. Kun kohdataan seinä, hypätään takaisin rivin alkuun.
   
@@ -55,7 +55,7 @@ Kuva 2: Järjestys jossa labyrintin ruudut käydään läpi kun huoneiden edusta
   #### Algoritmi 3
   Viimeiseksi Tutkitaan mikä vaiheessa 2 muodostetuista avainten järjestyksistä on nopeinta toteuttaa. Tätä varten verkkoa tehostetaan luomalla yhteyksiä avainten ja ovien väleille huoneiden sisällä. Tämä on lähes välttämätöntä, jotta ohjelman ei tarvitse kuluttaa paljon aikaa kaikkien mahdollisten polkujen läpikäymiseen huoneen sisällä. Kuvassa 3 näkyy minkälaiset reitit huoneen sisällä ovat optimaalisia. 
 
-![Kuva 3](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_lyhimmatreitit.jpg) 
+![Kuva 3](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Dokumentointikansio/Kuvat/pakohuone_lyhimmatreitit.jpg) 
 
 Kuva 3: Lyhimmät ratkaisut olennaisiin reitteihin erään huoneen sisällä.
 
@@ -68,7 +68,7 @@ Kuva 3: Lyhimmät ratkaisut olennaisiin reitteihin erään huoneen sisällä.
 
   Jos reittiä jäljitellessä ohjelma huomaa jo kulkeneensa pitemmän matkan kuin mitä jokin aikaisempi ratkaisu on vaatinut, voidaan siirtyä seuraavaan polkuun, sillä muodostettava reitti ei voi olla enää lyhin. 
   
-  ![Kuva 4](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/pakohuone_verkonmuodostus.jpg)
+  ![Kuva 4](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Dokumentointikansio/Kuvat/pakohuone_verkonmuodostus.jpg)
   
   Kuva 4: Verkon muodostuminen esimerkkitilanteessa kun on saavuttu avaimen b kohdalle ja täten avattu juuri ovi B. Viivat ruutujen välillä ovat muodostettuja kaaria, katkoviivat ovat jo poistettuja kaaria. Kaarien pituuksia ei ole merkattu kuvaan.
 
