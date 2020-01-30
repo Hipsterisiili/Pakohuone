@@ -41,7 +41,7 @@ public class HuoneidenEtsintaTest {
         assertTrue(huoneet[0][0] == 0
                 && huoneet[1][1] == 1
                 && huoneet[5][5] == 0
-                && huoneet[8][8] == 5
+                && huoneet[8][8] == 4
         );
     }
 

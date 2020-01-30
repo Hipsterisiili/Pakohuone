@@ -46,17 +46,28 @@ public class Main {
         System.out.println("\nTULOSTETAAN LABYRINTTI:\n");
         laby.tulostaLabyrintti();
         
-        Huone h = new Huone();
-    Avain a = new Avain(1,2);
-    Avain aa = new Avain(3,4);
-    Ovi o = new Ovi(1,2,3,4);
-    Ovi oo = new Ovi(5,6,7,8);
-        a.setOvi(o);
-        System.out.println(a.getOvi() == o);
-        h.LisaaAvain(a);
-        h.LisaaAvain(aa);
-        aa.setOvi(oo);
-        System.out.println(h.getAvaimet()[0].getOvi() == o);
-        System.out.println(h.getAvaimet()[1].getOvi() == oo);
+
+        labyrintti = new char[10][10];
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                labyrintti[i][j] = '.';
+            }
+        }
+        for (int i = 0; i < 10; i++) {
+            labyrintti[0][i] = '#';
+            labyrintti[9][i] = '#';
+            labyrintti[i][0] = '#';
+            labyrintti[i][9] = '#';
+            labyrintti[5][i] = '#';
+            labyrintti[i][7] = '#';
+        }
+        HuoneidenEtsinta h = new HuoneidenEtsinta(labyrintti);
+        
+        int[][] huoneet = h.tulkitse();
+
+        System.out.println(huoneet[0][0] == 0);
+        System.out.println(huoneet[1][1] == 1);
+        System.out.println(huoneet[5][5] == 0);
+        System.out.println(huoneet[8][8] == 4);
     }
 }
