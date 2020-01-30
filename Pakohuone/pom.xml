@@ -35,21 +35,28 @@
                 <artifactId>pitest-maven</artifactId>
                 <version>1.1.8</version>
             </plugin>
+            
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.6-SNAPSHOT</version>
+            </plugin>
+            
         </plugins>
     </build>
     
     <reporting>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-checkstyle-plugin</artifactId>
-            <version>3.0.0</version>
-            <configuration>
-                <configLocation>checkstyle.xml</configLocation>
-            </configuration>
-        </plugin>
-    </plugins>
-</reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <configLocation>checkstyle.xml</configLocation>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 
 
 
