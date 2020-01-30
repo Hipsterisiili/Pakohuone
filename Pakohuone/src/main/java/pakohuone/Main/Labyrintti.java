@@ -18,8 +18,8 @@ public class Labyrintti {
         huoEts = new HuoneidenEtsinta(taulukko);
         huoEts.tulkitse();
         huoneet = huoEts.getHuoneet();
-        korkeus = taulukko.length;
-        leveys = taulukko[0].length;
+        korkeus = taulukko.length-1;
+        leveys = taulukko[0].length-1;
         ovet = huoEts.getOvet();
         avaimet = huoEts.getAvaimet();
     }
@@ -42,9 +42,9 @@ public class Labyrintti {
             System.out.print(" " + i);
         }
         System.out.println("");
-        for (int i = 0; i < leveys; i++) {
-            for (int j = 0; j < korkeus; j++) {
-                System.out.print(kuva[j][i] + " ");
+        for (int i = 0; i < korkeus+1; i++) {
+            for (int j = 0; j < leveys+1; j++) {
+                System.out.print(kuva[i][j] + " ");
             }
             if(i == 0){
                 System.out.println("  y");
@@ -58,12 +58,12 @@ public class Labyrintti {
    * kertoo mihin huoneeseen kyseinen ruutu kuuluu
    */
     public void tulostaHuoneet(){
-        for (int i = 0; i < korkeus; i++) {
-            for (int j = 0; j < leveys; j++) {
-                if (huoneet[j][i] == 0) {
+        for (int i = 0; i < korkeus+1; i++) {
+            for (int j = 0; j < leveys+1; j++) {
+                if (huoneet[i][j] == 0) {
                     System.out.print("# ");
                 } else {
-                    System.out.print(huoneet[j][i] + " ");
+                    System.out.print(huoneet[i][j] + " ");
                 }
             }
             System.out.println("");

@@ -11,22 +11,26 @@ public class Main {
         //Tällä hetkellä main-oliossa luodaan labyrintti ,jolla ohjelmaa
         //testataan ja sen jälkeen tulostetaan testattu labyrintti 
         //kahdessa eri muodossa
-        char[][] labyrintti = new char[11][11];
+        
+        int korkeus = 100;
+        int leveys = 10;
+        
+        char[][] labyrintti = new char[korkeus+1][leveys+1];
 
-        for (int i = 0; i < 11; i++) {
-            for (int j = 0; j < 10; j++) {
+        for (int i = 0; i < korkeus; i++) {
+            for (int j = 0; j < leveys; j++) {
                 labyrintti[i][j] = '.';
             }
         }
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < leveys; i++) {
             labyrintti[0][i] = '#';
-            labyrintti[10][i] = '#';
+            labyrintti[korkeus][i] = '#';
             labyrintti[5][i] = '#';
         }
 
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < korkeus; i++) {
             labyrintti[i][0] = '#';
-            labyrintti[i][10] = '#';
+            labyrintti[i][leveys] = '#';
             labyrintti[i][6] = '#';
         }
         labyrintti[5][2] = 'A';
