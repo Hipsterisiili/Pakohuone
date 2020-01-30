@@ -33,8 +33,8 @@ public class HuoneTest {
         oo = new Ovi(5, 6, 7, 8);
         a.setOvi(o);
         assertTrue(a.getOvi() == o);
-        h.LisaaAvain(a);
-        h.LisaaAvain(aa);
+        h.lisaaAvain(a);
+        h.lisaaAvain(aa);
         aa.setOvi(oo);
         assertTrue(h.getAvaimet()[0].getOvi() == o);
         assertTrue(h.getAvaimet()[1].getOvi() == oo);
@@ -51,11 +51,11 @@ public class HuoneTest {
     @Test
     public void EiVoiLisataLiikaaAvaimiaTaiOvia() {
         for (int i = 0; i < 100; i++) {
-            h.LisaaAvain(a);
-            h.LisaaOvi(o);
+            h.lisaaAvain(a);
+            h.lisaaOvi(o);
         }
-        h.LisaaAvain(aa);
-        h.LisaaOvi(oo);
+        h.lisaaAvain(aa);
+        h.lisaaOvi(oo);
         assertTrue(h.getOvet()[99] != oo);
         assertTrue(h.getAvaimet()[99] != aa);
     }

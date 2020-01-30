@@ -26,10 +26,10 @@ public class Ovi {
         return loppuY;
     }
     
-    public String toString(){
+    public String toString() {
         return "Oven sijainti"
-                + " x: " + (alkuX+loppuX)/2 
-                + " y: " + (alkuY+loppuY)/2;
+                + " x: " + (alkuX + loppuX) / 2 
+                + " y: " + (alkuY + loppuY) / 2  ;
     }
 }
 

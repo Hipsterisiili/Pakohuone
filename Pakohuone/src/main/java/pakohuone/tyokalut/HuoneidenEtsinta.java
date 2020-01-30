@@ -59,7 +59,7 @@ public class HuoneidenEtsinta {
                     luoHuone(i, j);
                 }
                 if (labyrintti[i][j] != seina && labyrintti[i][j] != tyhja) {
-                    TeeAvainTaiOvi(i, j, labyrintti[i][j]);
+                    teeAvainTaiOvi(i, j, labyrintti[i][j]);
                 }
             }
         }
@@ -68,7 +68,7 @@ public class HuoneidenEtsinta {
     }
     /**
    * Metodi täyttää taulukon "huoneet" arvot nollilla, eli käytännössä nollaa
-   * koko taulukon
+   * koko taulukon.
    */
     private void taytaNollilla(){
         for (int i = 1; i < korkeus - 1; i++) {
@@ -106,7 +106,7 @@ public class HuoneidenEtsinta {
      * @param c kirjain, joka kertoo onko kohde avain vai ovi (iso vai pieni
      * kirjain) ja myös yksilöi kohteen muista.
      */
-    private void TeeAvainTaiOvi(int x, int y, char c) {
+    private void teeAvainTaiOvi(int x, int y, char c) {
         int arvo = c;
         //System.out.println("OLLAAN TEKEMÄSSÄ " + c);
 
@@ -135,7 +135,7 @@ public class HuoneidenEtsinta {
      * Metodi yhdistää avaimet ja ovet
      * Se käy läpi koko avaimet-taulun ja aina kun löytyy olemassa oleva 
      * avain, etsitään sen kirjainta vastannut ovi ja lisätään avaimelle
-     * sille kuuluva ovi edellisen proxyn tilalle.
+     * sille kuuluva ovi edellisen placeholderin tilalle.
      */
     private void yhdistaAvaimetJaOvet() {
         for (int i = 0; i < 26; i++) {

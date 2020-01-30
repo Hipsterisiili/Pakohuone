@@ -21,7 +21,9 @@
     </dependencies>
 
     <build>
+        
         <plugins>
+            
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
@@ -56,11 +58,15 @@
                     </execution>
                 </executions>
             </plugin>
+            
         </plugins>
+        
     </build>
     
     <reporting>
+        
         <plugins>
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -69,7 +75,22 @@
                     <configLocation>checkstyle.xml</configLocation>
                 </configuration>
             </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.1.0</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>checkstyle</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        
         </plugins>
+        
     </reporting>
 
 

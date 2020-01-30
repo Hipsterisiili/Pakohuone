@@ -1,9 +1,9 @@
 package pakohuone.Main;
-import pakohuone.sovelluslogiikka.Avain;
-import pakohuone.sovelluslogiikka.Ovi;
-import pakohuone.sovelluslogiikka.Huone;
-import pakohuone.tyokalut.EtaisyydenEtsija;
-import pakohuone.tyokalut.HuoneidenEtsinta;
+//import pakohuone.sovelluslogiikka.Avain;
+//import pakohuone.sovelluslogiikka.Ovi;
+//import pakohuone.sovelluslogiikka.Huone;
+//import pakohuone.tyokalut.EtaisyydenEtsija;
+//import pakohuone.tyokalut.HuoneidenEtsinta;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,10 +12,12 @@ public class Main {
         //testataan ja sen jälkeen tulostetaan testattu labyrintti 
         //kahdessa eri muodossa
         
+        //Luotavan labyrintin korkeus
         int korkeus = 100;
+        //Luotavan labyrintin leveys
         int leveys = 10;
         
-        char[][] labyrintti = new char[korkeus+1][leveys+1];
+        char[][] labyrintti = new char[korkeus + 1][leveys + 1];
 
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
@@ -45,20 +47,5 @@ public class Main {
         laby.tulostaHuoneet();
         System.out.println("\nTULOSTETAAN LABYRINTTI:\n");
         laby.tulostaLabyrintti();
-        
-
-        Huone h = new Huone();
-    Avain a = new Avain(1,2);
-    Avain aa = new Avain(3,4);
-    Ovi o = new Ovi(1,2,3,4);
-    Ovi oo = new Ovi(5,6,7,8);
-        
-        a.setOvi(o);
-        System.out.println(a.getOvi() == o);
-        h.LisaaAvain(a);
-        h.LisaaAvain(aa);
-        aa.setOvi(oo);
-        System.out.println(h.getAvaimet()[0].getOvi() == o);
-        System.out.println(h.getAvaimet()[1].getOvi() == oo);
     }
 }

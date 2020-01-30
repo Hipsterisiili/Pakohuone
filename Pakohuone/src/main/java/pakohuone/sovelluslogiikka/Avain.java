@@ -9,7 +9,7 @@ public class Avain {
         this.sijaintiX = sijaintiX;
         this.sijaintiY = sijaintiY;
         //Ovea ei ole vielä määritetty
-        this.ovi = new Ovi(0,0,0,0);
+        this.ovi = new Ovi(0, 0, 0, 0);
     }
 
     public int getSijaintiX() {
@@ -28,7 +28,7 @@ public class Avain {
         this.ovi = ovi;
     }
     
-    public String toString(){
+    public String toString() {
         return "x: " + sijaintiX + " y: " + sijaintiY + "\n" + ovi.toString(); 
     }
 }
