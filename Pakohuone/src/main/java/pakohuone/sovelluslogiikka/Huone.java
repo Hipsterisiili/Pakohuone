@@ -31,6 +31,7 @@ public class Huone {
         if(ovienMaara >= 99){
             return;
         }
+        //System.out.println("LAITETAAN UUSI OVI KOHTAAN " + ovienMaara);
         ovet[ovienMaara] = o;
         ovienMaara++;
     }

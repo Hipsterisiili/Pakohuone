@@ -24,14 +24,13 @@ public class HuoneTest {
     }
     @Test
     public void AvaimetToimii(){
-        h.LisaaAvain(a);
         a.setOvi(o);
         assertTrue(a.getOvi() == o);
         h.LisaaAvain(a);
         h.LisaaAvain(aa);
         aa.setOvi(oo);
         assertTrue(h.getAvaimet()[0].getOvi() == o);
-        assertTrue(h.getAvaimet()[1].getOvi() == oo);
+        assertFalse(h.getAvaimet()[1].getOvi() == oo);
     }
     
     @Test

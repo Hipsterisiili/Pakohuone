@@ -45,5 +45,18 @@ public class Main {
         laby.tulostaHuoneet();
         System.out.println("\nTULOSTETAAN LABYRINTTI:\n");
         laby.tulostaLabyrintti();
+        
+        Huone h = new Huone();
+    Avain a = new Avain(1,2);
+    Avain aa = new Avain(3,4);
+    Ovi o = new Ovi(1,2,3,4);
+    Ovi oo = new Ovi(5,6,7,8);
+        a.setOvi(o);
+        System.out.println(a.getOvi() == o);
+        h.LisaaAvain(a);
+        h.LisaaAvain(aa);
+        aa.setOvi(oo);
+        System.out.println(h.getAvaimet()[0].getOvi() == o);
+        System.out.println(h.getAvaimet()[1].getOvi() == oo);
     }
 }
