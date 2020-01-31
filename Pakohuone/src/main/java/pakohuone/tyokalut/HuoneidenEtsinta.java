@@ -23,6 +23,10 @@ public class HuoneidenEtsinta {
      * HuoneidenEtsinta muodostaa kuvan siitä mitä labyrintissa on eli millaisia
      * huoneita siinä on ja mitä avaimia ja ovia huoneesta löytyy. Käytännössä
      * tämä olio pureskelee annetun parametrin hyödynnettävään muotoon.
+     * Lisäksi Huoneidenetsinta sisältää sen privaatteja palauttavat metodit
+     * (mallia .getXXXXX), jotta esim. Labyrintti, joka sisältää oman
+     * HuoneidenEtsinta-olion voi selvittää esim siihen kuuluvien huoneiden
+     * luonteen.
      */
     public HuoneidenEtsinta(char[][] laby) {
         this.labyrintti = laby;
@@ -116,16 +120,16 @@ public class HuoneidenEtsinta {
      */
     private void teeAvainTaiOvi(int x, int y, char c) {
         int arvo = c;
-        //System.out.println("OLLAAN TEKEMÄSSÄ " + c);
-
-        //ISOT KIRJAIMET 65-90
+        //ISOT KIRJAIMET ASCIISSA OVAT 65-90
+        //Tallennetaan avaimet taulukkoon avaimetseuraavasti: 
+        //avaimet[0] = Avain a, avaimet[3] = Avain d;
         if (arvo > 96) {
-            //System.out.println("TEHDÄÄN AVAIN " + x + "," + y + ", " + c);
             arvo -= 97;
             avaimet[arvo] = new Avain(x, y, c);
             avaintenMaara++;
-
-            //PIENET KIRJAIMET 97-122
+            //PIENET KIRJAIMET ASCIISSA OVAT 97-122
+            //Tallennetaan ovet taulukkoon ovet seuraavasti: 
+            //ovet[0] = Ovi A, ovet[3] = Ovi D;
         } else {
             arvo -= 65;
             //TARKASTELLAAN KUMPAAN SUUNTAAN OVI AUKEAA
@@ -163,7 +167,7 @@ public class HuoneidenEtsinta {
      * (huom, kukin ovi on periaatteessa kahdessa huoneessa samaan aikaan)
      */
     private void muodostaHuoneetListaksi() {
-        //Huonetta 0 ei ole olemassa.
+        //Huom: huonetta 0 ei ole olemassa.
         this.huoneet = new Huone[this.huoneidenMaara + 1];
         for (int i = 0; i <= huoneidenMaara; i++) {
             huoneet[i] = new Huone();
@@ -190,7 +194,7 @@ public class HuoneidenEtsinta {
             tempY = a.getSijaintiY();
             huonenumero = huoneTaulukko[tempX][tempY];
             huoneet[huonenumero].lisaaAvain(a);
-            System.out.println("LISÄTTY HUONEESEEN " + huonenumero + " " + a.toString());
+            //System.out.println("LISÄTTY HUONEESEEN " + huonenumero + " " + a.toString());
         }
     }
 

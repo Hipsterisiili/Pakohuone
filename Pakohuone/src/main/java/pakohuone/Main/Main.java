@@ -24,6 +24,7 @@ public class Main {
                 labyrintti[i][j] = '.';
             }
         }
+        //Luodaan seiniä labyrinttiin, # = seinä Labyrintin reunat ovat aina seiniä
         for (int i = 0; i < leveys; i++) {
             labyrintti[0][i] = '#';
             labyrintti[korkeus][i] = '#';
@@ -35,6 +36,8 @@ public class Main {
             labyrintti[i][leveys] = '#';
             labyrintti[i][6] = '#';
         }
+        //Iso kirjain A = ovi ja pieni kirjain a = avain. avain avaa aina
+        //sen kirjainta vastaaman ison kirjaimen omaavan oven
         labyrintti[5][2] = 'A';
         labyrintti[3][6] = 'B';
         labyrintti[5][8] = 'C';

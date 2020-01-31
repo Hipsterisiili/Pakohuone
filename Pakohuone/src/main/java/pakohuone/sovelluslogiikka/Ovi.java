@@ -1,8 +1,11 @@
 package pakohuone.sovelluslogiikka;
-
+/**
+   * Ovet ovat olioita, jotka tuntevat niiden alkupisteen ja loppupisteen 
+   * koordinaatit. ovi ei tunne sen avaavaa avainta, mutta avain tuntee ovensa.
+   */
 public class Ovi {
     private int alkuX, alkuY, loppuX, loppuY;
-
+    
     public Ovi(int x1, int y1, int x2, int y2) {
         this.alkuX = x1;
         this.alkuY = y1;

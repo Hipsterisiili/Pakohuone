@@ -13,7 +13,12 @@ public class Labyrintti {
     private HuoneidenEtsinta huoEts;
     private Ovi[] ovet;
     private Avain[] avaimet;
-    
+    /**
+   * Labyrintti on olio, joka sisältää tiedon kaikesta mitä sen sisällä on,
+   * kuten avaimista, ovista, seinistä, huoneista, sekä avainten ja ovien 
+   * välisistä yhteyksistä. Osan näistä tiedoista olio saa sen sisltämältä
+   * oliolta HuoneidenEtsinta huoEts.
+   */
     public Labyrintti(char[][] taulukko) {
         kuva = taulukko;
         huoEts = new HuoneidenEtsinta(taulukko);
