@@ -6,7 +6,7 @@
 
 <c>Tämänhetkisessä palautuksessa ohjelman main-luokassa sijaitsee koodi, joka luo testilabyrintin ja sen jälkeen suoraan tarkastelee sitä. Ohjelma luo olion Labyrintti, joka saa parametrikseen luodun labyrintin. Laskenta tapahtuu pääosin Labyrintti-luokan sisällä. <c>
 
-![Kuva 1](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Ohjelman_syote_viikko2.png)
+![Kuva 1](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Dokumentointikansio/Kuvat/Ohjelman_syote_viikko2.png)
 
 <c>Kuvassa näkyy tulostus, jonka nykyinen ohjelma antaa main-luokassa olevalle testilabyrintille. Ylemmässä ruudukossa on eritelty kukin ruutu huoneen mukaan (numeroitu 1-4) ja alemmassa ruudukossa on kuva koko labyrintista. Kaksi eri kuvaa labyrintista ovat kuvassa pisteen suhteen peilattuja, mutta ruudukot kuvaavat samaa labyrinttia.<c>
 
