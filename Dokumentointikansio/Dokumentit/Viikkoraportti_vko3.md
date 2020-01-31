@@ -8,6 +8,8 @@ Viikolla toteutin sovellukseen vaadittavat toiminnallisuudet kunkin huoneen sis�
 
 Olen hahmotellut jo ensi viikolla toteutettavaa toiminnallisuutta ja varmistanut että ohjelma nykyisessä tilassaan antaa puitteet totettaa sen ilman että jo tehtyyn koodiin tarvitsisi tehdä suuria muutoksia. Ensi viikolla suunnitelmanani on aloittaa verkon muodostaminen labyrintin ruuduista. Jokaisen ruudun sisältävä verkko ei ole tarkoituksenmukainen, sillä tällöin solmuja olisi kohtuuton määrä ja verkko ei olisi kovin tehokas. Sen vuoksi aikomukseni on toteuttaa verkko, jossa kaaria muodostetaan ainoastaan kriittisten kohteiden, kuten avainten ja ovien välille ja käytetään niiden etäisyyksien määrittämiseen jo luomaani työkalua "pakohuone.tyokalut.EtaisyydenEtsija".
 
+Aloitin jo seuraavan viikon toiminnallisuuden rakentamisen luokassa "pakohuone.tyokalut.ReittienEtsija". Verkko täytynee toteuttaa kaarilistaesityksenä siten, että kukin solmu on oma olionsa, joka sisältää listan solmuista, joihin siinä on yhteys
+
 ### Testaus ja muotoilu
 
 Kaikki edellislelä viikolla ilmenneet ongelmat ratkaistiin tällä viikolla. Loin uuden TOIMIVAN sovelluksen repositorioon käyttäen netistä löytämiäni ohjeita. Samojen ohjeiden avulla mahdollistin sovelluksen siisteyden seurannan checkstyle-tyokalun avulla, sekä testikattavuuden seurannan jacoco-tyokalun avulla. Näiden työkalujen avulla edistin merkittävästi ohjelman siisteyttä ja testikattavuutta. (Kattavuus on tällä hetkellä käytännössä lähes 100%, kun paljolti muuttuvia main-paketin luokkia ei lasketa mukaan Täydellisesti testattavia luokkia minun ei ole tarkoitus enää muokata juuri ollenkaan.) 
