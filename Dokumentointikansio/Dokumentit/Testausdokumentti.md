@@ -11,7 +11,5 @@ Projektin testikattavuuden saa selvittettyä komentorivillä projektin juurikans
 Tällä hetkellä projektin testikattavuus on kokonaisuudessaan 71%. Tämä luku kuulostaa todellista tilannetta huonommalta, sillä siihen lasketaan mukaan myös main-pakkauksen tiedostojen testikattavuus. Main-paketin luokkia ei ole tarkoituksenmukaista testata kovin syvällisesti, sillä sen sisäiset toiminnallisuudet muuttuvat todella paljon eivätkä ne ole ohjelman kasassa pysymisen kannalta tärkeimpiä 
 
 > pakohuone.Main: testikattavuus: 18%<c>
-
 > pakohuone.tyokalut: testikattavuus 92%<c>
-
 > pakohuone.sovelluslogiikka: testikattavuus 100%<c>
