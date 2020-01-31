@@ -20,5 +20,5 @@ Järjestin repositorion kansiorakenteen myös uudelleen, kuten viime viikon pala
 
 ### Viime viikon arvioinnista
 
-Viime viikon sanallisessa arviossa arvosteltiin sitä, että repositoriossani ei olisi ollut koodia lainkaan, vaikka koko senhetkinen sovellus sieltä oikeasti löytyikin. Olin epähuomiossa luonut repositorioon kaksi kansiota "pakohuone" sekä "Pakohuone" (iso ja pieni alkukirjain erona). Näistä toisessa oli koko koodi ja toisessa ei ollut mitään ja ilmeisesti tarkastaja oli tarkastellut ainoastaan jälkimmäistä. Johtuiko arvio 2/3 jostakin muusta, vai menetinkö pisteen siksi, että tarkastaje ei löytänyt koodiani?
+Viime viikon sanallisessa arviossa arvosteltiin sitä, että repositoriossani ei olisi ollut koodia lainkaan, vaikka koko senhetkinen sovellus sieltä oikeasti löytyikin. Olin epähuomiossa luonut repositorioon kaksi kansiota "pakohuone" sekä "Pakohuone" (iso ja pieni alkukirjain erona). Näistä toisessa oli koko koodi ja toisessa ei ollut mitään ja ilmeisesti tarkastaja oli tarkastellut ainoastaan jälkimmäistä. Johtuiko arvio 2/3 jostakin muusta, vai menetinkö pisteen siksi, että tarkastaja ei löytänyt koodiani?
 
