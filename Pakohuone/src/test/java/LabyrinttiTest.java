@@ -78,9 +78,9 @@ public class LabyrinttiTest {
         
     @Test
     public void HuoneetOikein() {
-        assertTrue(laby.getHuoneet()[0][0] == 0);
-        assertTrue(laby.getHuoneet()[1][1] == 1);
-        assertTrue(laby.getHuoneet()[4][9] == 2);
-        assertTrue(laby.getHuoneet()[10][10] == 0);
+        assertTrue(laby.getHuoneTaulukko()[0][0] == 0);
+        assertTrue(laby.getHuoneTaulukko()[1][1] == 1);
+        assertTrue(laby.getHuoneTaulukko()[4][9] == 2);
+        assertTrue(laby.getHuoneTaulukko()[10][10] == 0);
     }
 }

@@ -120,6 +120,11 @@ public class HuoneidenEtsinta {
      */
     private void teeAvainTaiOvi(int x, int y, char c) {
         int arvo = c;
+        
+        if(arvo == '*'){
+            //Tässä ruudussa on maali, johon ohjelman on suorituksen lopussa saavuttava
+            return;
+        }
         //ISOT KIRJAIMET ASCIISSA OVAT 65-90
         //Tallennetaan avaimet taulukkoon avaimetseuraavasti: 
         //avaimet[0] = Avain a, avaimet[3] = Avain d;
@@ -233,8 +238,14 @@ public class HuoneidenEtsinta {
     public Ovi[] getOvet() {
         return ovet;
     }
+    public Huone[] getHuoneet() {
+        return huoneet;
+    }
 
     public int getAvaintenMaara() {
+        return this.avaintenMaara;
+    }
+    public int getHuoneidenMaara() {
         return this.avaintenMaara;
     }
 }

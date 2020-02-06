@@ -12,6 +12,8 @@ public class Ovi {
         this.loppuX = x2;
         this.loppuY = y2;
     }
+    
+    
 
     public int getAlkuX() {
         return alkuX;

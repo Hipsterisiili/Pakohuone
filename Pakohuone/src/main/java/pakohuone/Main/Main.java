@@ -1,22 +1,24 @@
 package pakohuone.Main;
 //import pakohuone.sovelluslogiikka.Avain;
 //import pakohuone.sovelluslogiikka.Ovi;
+
+import pakohuone.tyokalut.Kirjainpino;
+
 //import pakohuone.sovelluslogiikka.Huone;
 //import pakohuone.tyokalut.EtaisyydenEtsija;
 //import pakohuone.tyokalut.HuoneidenEtsinta;
-
 public class Main {
+
     public static void main(String[] args) {
 
         //Tällä hetkellä main-oliossa luodaan labyrintti ,jolla ohjelmaa
         //testataan ja sen jälkeen tulostetaan testattu labyrintti 
         //kahdessa eri muodossa
-        
         //Luotavan labyrintin korkeus
-        int korkeus = 20;
+        int korkeus = 12;
         //Luotavan labyrintin leveys
-        int leveys = 15;
-        
+        int leveys = 13;
+
         char[][] labyrintti = new char[korkeus + 1][leveys + 1];
 
         for (int i = 0; i < korkeus; i++) {
@@ -41,14 +43,19 @@ public class Main {
         labyrintti[5][2] = 'A';
         labyrintti[3][6] = 'B';
         labyrintti[5][8] = 'C';
+        labyrintti[8][6] = 'D';
         labyrintti[2][2] = 'a';
         labyrintti[7][4] = 'b';
         labyrintti[2][8] = 'c';
+        labyrintti[3][4] = 'd';
+        
+        labyrintti[korkeus][leveys] = '#'; // ASCIIssa 35
 
         Labyrintti laby = new Labyrintti(labyrintti);
-        System.out.println("\nTULOSTETAAN HUONEET:\n");
-        laby.tulostaHuoneet();
+        //System.out.println("\nTULOSTETAAN HUONEET:\n");
+        //laby.tulostaHuoneet();
         System.out.println("\nTULOSTETAAN LABYRINTTI:\n");
         laby.tulostaLabyrintti();
+
     }
 }

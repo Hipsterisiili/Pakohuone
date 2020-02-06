@@ -1,18 +1,23 @@
 package pakohuone.Main;
 import pakohuone.sovelluslogiikka.Avain;
+import pakohuone.sovelluslogiikka.Huone;
 import pakohuone.sovelluslogiikka.Ovi;
 //import pakohuone.sovelluslogiikka.Huone;
 //import pakohuone.tyokalut.EtaisyydenEtsija;
 import pakohuone.tyokalut.HuoneidenEtsinta;
+import pakohuone.tyokalut.ReittienEtsija;
 
 public class Labyrintti {
     private char[][] kuva;
-    private int[][] huoneet;
+    private int[][] huoneTaulukko;
     private int leveys, korkeus;
     private int avaintenMaara;
+    private int huoneidenMaara; 
     private HuoneidenEtsinta huoEts;
+    private ReittienEtsija reiEts;
     private Ovi[] ovet;
     private Avain[] avaimet;
+    private Huone[] huoneet;
     /**
    * Labyrintti on olio, joka sisältää tiedon kaikesta mitä sen sisällä on,
    * kuten avaimista, ovista, seinistä, huoneista, sekä avainten ja ovien 
@@ -23,20 +28,24 @@ public class Labyrintti {
         kuva = taulukko;
         huoEts = new HuoneidenEtsinta(taulukko);
         huoEts.tulkitse();
-        huoneet = huoEts.getHuoneTaulukko();
+        huoneTaulukko = huoEts.getHuoneTaulukko();
         korkeus = taulukko.length - 1;
         leveys = taulukko[0].length - 1;
         ovet = huoEts.getOvet();
         avaimet = huoEts.getAvaimet();
+        huoneet = huoEts.getHuoneet();
         avaintenMaara = huoEts.getAvaintenMaara();
+        huoneidenMaara = huoEts.getHuoneidenMaara();
+        reiEts = new ReittienEtsija(this);
+        reiEts.etsi();
     }
 
     public char[][] getKuva() {
         return kuva;
     }
 
-    public int[][] getHuoneet() {
-        return huoneet;
+    public int[][] getHuoneTaulukko() {
+        return huoneTaulukko;
     }
      /**
    * Tulostaa labyrintin siten, että kussakin ruudussa on merkki, joka
@@ -44,6 +53,8 @@ public class Labyrintti {
    * pieni kirjain tarkoittaa avainta ja iso kirjain ovea
    */
     public void tulostaLabyrintti() {
+        kuva[1][1] = '+'; // ASCIIssa 43
+        kuva[korkeus - 1][leveys - 1] = '*'; // ASCIIssa 42
         System.out.print("x");
         for(int i = 1; i < leveys; i++) {
             System.out.print(" " + i);
@@ -59,6 +70,8 @@ public class Labyrintti {
                 System.out.println("  " + i);
             }
         }
+        kuva[1][1] = '.'; // ASCIIssa 43
+        kuva[korkeus - 1][leveys - 1] = '.'; // ASCIIssa 42
     }
     /**
    * Tulostaa labyrintin siten, että kussakin ruudussa on numero, joka
@@ -67,10 +80,10 @@ public class Labyrintti {
     public void tulostaHuoneet() {
         for (int i = 0; i < korkeus + 1; i++) {
             for (int j = 0; j < leveys + 1; j++) {
-                if (huoneet[i][j] == 0) {
+                if (huoneTaulukko[i][j] == 0) {
                     System.out.print("# ");
                 } else {
-                    System.out.print(huoneet[i][j] + " ");
+                    System.out.print(huoneTaulukko[i][j] + " ");
                 }
             }
             System.out.println("");
@@ -84,8 +97,14 @@ public class Labyrintti {
     public Avain[] getAvaimet() {
         return avaimet;
     }
+    public Huone[] getHuoneet() {
+        return huoneet;
+    }
     
     public int getAvaintenMaara() {
         return this.avaintenMaara;
+    }
+    public int getHuoneidenMaara() {
+        return this.huoneidenMaara;
     }
 }
