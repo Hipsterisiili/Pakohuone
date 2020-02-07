@@ -44,11 +44,11 @@ Jostakin syystä toistaiseksi algoritmi ei osaa vielä muodostaa sanaa ADBC, syy
 
 > Ydistahuoneet -------------- ALKU // aloitetaan metodi yhdistähuoneet ja aletaan muodostaa
 
-> Ydistahuoneet -------------- LOPPU // loetetaan metodi yhdistähuoneet
+> Ydistahuoneet -------------- LOPPU // lopetetaan metodi yhdistähuoneet
 
-> ONJAEI alku // EIJAEI alki ------------ metodien onjaei ja eijaei aloittaminen
+> ONJAEI alku // EIJAEI alkuu  (a,b) ------ metodien onjaei ja eijaei aloittaminen
 
-> ONJAEI loppu // EIJAEI loppu ------------ metodien onjaei ja eijaei lopettaminen
+> ONJAEI loppu // EIJAEI loppu (a,b) ------ metodien onjaei ja eijaei lopettaminen
 
 > numero/boolean -------------------------- avaimetTarjolla[2] (montako yhteyttä C:hen tähän asti on luotu) // onko avainta c vielä > lisätty kirjainpinoon
 
