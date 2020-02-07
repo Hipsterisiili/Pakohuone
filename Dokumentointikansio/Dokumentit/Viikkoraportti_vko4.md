@@ -1,4 +1,15 @@
-Viikon 4 aikana toteutin sovellukseen ehkä sen monimutkaisimman algoritmin, joka selvittää kaikki mahdolliset järjestykset, joissa avaimet voi ruudukosta hakea. 
+Viikon 4 aikana toteutin sovellukseen ehkä sen monimutkaisimman algoritmin, joka selvittää kaikki mahdolliset järjestykset, joissa avaimet voi ruudukosta hakea. Koko prosessin aloittaa metodi pakohuone.tyokalut.ReittienEtsinta.etsiReitteja() Luokan laskenta tapahtuu rekursiivisesti kolmen sisäkkäisen toisiaan kutsuvan metodin avulla luokassa pakohuone.tyokalut.ReittienEtsinta.  Nämä kolme metodia ovat hajaannu(), yhidstaHuoneet(int a, int b) sekä vaihtoehtoisesti joko OnJaEi(int a, int b) tai EiJaEi(int a, int b). 
+
+Lopulta prosessi tuottaa listan merkkijonoja, jotka kuvaavat mahdollisia tapoja poimia avaimia tavalla joka johtaa maaliin pääsemiseen, esimerkiksi ABCD sekä BD. Merkkijonon muodostamista varten toteutin läheisesti pinoa muodpostavan tietorakenteen pakohuone.tyokalut.KirjainPino. 
+
+### Miten rekursio tapahtuu?
+
+1. Luodaan pakohuone.tyokalut.ReittienEtsija
+2. Kutsutaan metodia ReittienEtsija.Etsi()
+3. Etsi() tekee avainListasta riittävän pituisen (pituuden on oltava avaintenMaara! pituinen, koska se on pahin mahdollinen tilanne, jossa kaikki kuviteltavissa olevien avainten järjestykset ovat mahdollisia
+4. Etsi() kutsuu metodia Etsireitteja()
+5. EtsiReitteja() merkitsee alkutilanteessa saatavilla olevat avaimet listaan int[] avaimetSaatavilla.
+6. 
 
 ### Nykytilaisen algoritmin tulostus (joka sisältää kaikki sillä hetkellä muodostetut sanat)
 
