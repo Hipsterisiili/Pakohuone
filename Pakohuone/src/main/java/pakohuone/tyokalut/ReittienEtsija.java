@@ -137,6 +137,7 @@ public class ReittienEtsija {
             return;
         }
         if (onkoHuoneSaavutettu[a] && onkoHuoneSaavutettu[b]) {
+            hajaannu();
             return;
         }
         if (onkoHuoneSaavutettu[a] && !onkoHuoneSaavutettu[b]) {
