@@ -21,5 +21,5 @@ Jostakin syystä toistaiseksi algoritmi ei osaa vielä muodostaa sanaa ADBC, syy
 
 ![Osa1](https://github.com/Hipsterisiili/Pakohuone/blob/master/Dokumentointikansio/Kuvat/vko4Syote1.jpg)
 
-![Osa1](https://github.com/Hipsterisiili/Pakohuone/blob/master/Dokumentointikansio/Kuvat/vko4Syote.jpg)
+![Osa2](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Dokumentointikansio/Kuvat/vko4syote.jpg)
 
