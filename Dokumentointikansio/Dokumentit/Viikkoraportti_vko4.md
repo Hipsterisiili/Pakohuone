@@ -13,11 +13,17 @@ Jostakin syystä toistaiseksi algoritmi ei osaa vielä muodostaa sanaa ADBC, syy
 
 #### Merkinnät: 
 > HAJAANNU aloitetaan metodi hajaannu ---- metodin hajaannu lopettamisesta ei tehdä erillistä tulostetta
+
 > Ydistahuoneet -------------- ALKU // aloitetaan metodi yhdistähuoneet ja aletaan muodostaa
+
 > Ydistahuoneet -------------- LOPPU // loetetaan metodi yhdistähuoneet
+
 > ONJAEI alku // EIJAEI alki ------------ metodien onjaei ja eijaei aloittaminen
+
 > ONJAEI loppu // EIJAEI loppu ------------ metodien onjaei ja eijaei lopettaminen
-> numero/boolean -------------------------- avaimetTarjolla[2] (montako yhteyttä C:hen tähän asti on luotu) // onko avainta c vielä lisätty kirjainpinoon
+
+> numero/boolean -------------------------- avaimetTarjolla[2] (montako yhteyttä C:hen tähän asti on luotu) // onko avainta c vielä > lisätty kirjainpinoon
+
 
 ![Osa1](https://github.com/Hipsterisiili/Pakohuone/blob/master/Dokumentointikansio/Kuvat/vko4Syote1.jpg)
 
