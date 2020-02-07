@@ -4,20 +4,7 @@ Viikon 4 aikana toteutin sovellukseen ehkä sen monimutkaisimman algoritmin, jok
 
 Labyrintti, jolla algoritmia testataan main-luokassa: 
 
-x 1 2 3 4 5 6 7 8 9 10 11 12
-@ @ @ @ @ @ @ @ @ @ @ @ @ @   y
-@ + . . . . @ . . . . . . @   1
-@ . a . . . @ . c . . . . @   2
-@ . . . d . B . . . . . . @   3
-@ . . . . . @ . . . . . . @   4
-@ @ A @ @ @ @ @ C @ @ @ @ @   5
-@ . . . . . @ . . . . . . @   6
-@ . . . b . @ . . . . . . @   7
-@ . . . . . D . . . . . . @   8
-@ . . . . . @ . . . . . . @   9
-@ . . . . . @ . . . . . . @   10
-@ . . . . . @ . . . . . * @   11
-@ @ @ @ @ @ @ @ @ @ @ @ @ @   12
+![Kuva 1](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Dokumentointikansio/Kuvat/Ohjelman_syote_viikko2.png)
 
 Muodostettavat 4 kirjaimen mittaiset sanat: ABCD, ABDC, ADBC, DABC
 
