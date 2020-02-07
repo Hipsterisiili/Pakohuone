@@ -101,8 +101,4 @@ YhdistaHuoneet ------------- LOPPU // sana: dab
 ONJAEI LOPPU (1,3)
 YhdistaHuoneet ------------- LOPPU // sana: da
 EIJAEI LOPPU (3,4)
-POISTETAAN AVAIN x: 7 y: 4
-Oven sijainti x: 3 y: 6
-POISTETAAN AVAIN x: 7 y: 4
-Oven sijainti x: 3 y: 6
 YhdistaHuoneet ------------- LOPPU // sana: d
