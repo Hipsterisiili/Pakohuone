@@ -37,7 +37,6 @@ public class Labyrintti {
         avaintenMaara = huoEts.getAvaintenMaara();
         huoneidenMaara = huoEts.getHuoneidenMaara();
         reiEts = new ReittienEtsija(this);
-        reiEts.etsi();
     }
 
     public char[][] getKuva() {
@@ -46,6 +45,16 @@ public class Labyrintti {
 
     public int[][] getHuoneTaulukko() {
         return huoneTaulukko;
+    }
+    
+    public String etsiReitit(){
+        reiEts.etsi();
+        String palautus = "";
+        String[] jarjestykset = reiEts.getAvainLista();
+        for (String sana : jarjestykset){
+            palautus = palautus + "\n" + sana;
+        }
+        return palautus;
     }
      /**
    * Tulostaa labyrintin siten, että kussakin ruudussa on merkki, joka

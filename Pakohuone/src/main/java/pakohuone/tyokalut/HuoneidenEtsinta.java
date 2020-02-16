@@ -22,9 +22,9 @@ public class HuoneidenEtsinta {
     /**
      * HuoneidenEtsinta muodostaa kuvan siitä mitä labyrintissa on eli millaisia
      * huoneita siinä on ja mitä avaimia ja ovia huoneesta löytyy. Käytännössä
-     * tämä olio pureskelee annetun parametrin hyödynnettävään muotoon.
-     * Lisäksi Huoneidenetsinta sisältää sen privaatteja palauttavat metodit
-     * (mallia .getXXXXX), jotta esim. Labyrintti, joka sisältää oman
+     * tämä olio pureskelee annetun parametrin hyödynnettävään muotoon. Lisäksi
+     * Huoneidenetsinta sisältää sen privaatteja palauttavat metodit (mallia
+     * .getXXXXX), jotta esim. Labyrintti, joka sisältää oman
      * HuoneidenEtsinta-olion voi selvittää esim siihen kuuluvien huoneiden
      * luonteen.
      */
@@ -62,9 +62,12 @@ public class HuoneidenEtsinta {
         taytaNollilla();
         for (int i = 1; i < korkeus - 1; i++) {
             for (int j = 1; j < leveys - 1; j++) {
-                if (labyrintti[i][j - 1] == seina
-                        && labyrintti[i - 1][j] == seina
-                        && labyrintti[i][j] == tyhja) {
+                int ylempi = labyrintti[i][j - 1];
+                int vasen = labyrintti[i - 1][j];
+                int tama = labyrintti[i][j];
+                if ((ylempi == 35 || (ylempi < 91 && ylempi > 64))
+                        && (vasen == 35 || (vasen < 91 && vasen > 64))
+                        && (tama == 46 || (tama < 123 && tama > 96))) {
                     taytaHuoneNumeroilla(i, j);
                 }
                 if (labyrintti[i][j] != seina && labyrintti[i][j] != tyhja) {
@@ -97,10 +100,14 @@ public class HuoneidenEtsinta {
      * @param alkuy huoneen pienin y-koordinaatti.
      */
     private void taytaHuoneNumeroilla(int alkux, int alkuy) {
+        System.out.println("TÄYTETÄÄN HUONE NUMEROLLA " + (huoneidenMaara + 1));
+        System.out.println("ALKAEN " + alkux + ", " + alkuy);
         int a = alkux;
         int b = alkuy;
         huoneidenMaara++;
-        while (labyrintti[alkux][b] != seina) {
+        while ((int) labyrintti[alkux][b] != 35
+                && !(((int) labyrintti[alkux][b] < 91)
+                && (int) labyrintti[alkux][b] > 64)) {
             while (labyrintti[a][alkuy] != seina) {
                 huoneTaulukko[a][b] = huoneidenMaara;
                 a++;
@@ -120,8 +127,8 @@ public class HuoneidenEtsinta {
      */
     private void teeAvainTaiOvi(int x, int y, char c) {
         int arvo = c;
-        
-        if(arvo == '*'){
+
+        if (arvo == '*') {
             //Tässä ruudussa on maali, johon ohjelman on suorituksen lopussa saavuttava
             return;
         }
@@ -238,6 +245,7 @@ public class HuoneidenEtsinta {
     public Ovi[] getOvet() {
         return ovet;
     }
+
     public Huone[] getHuoneet() {
         return huoneet;
     }
@@ -245,6 +253,7 @@ public class HuoneidenEtsinta {
     public int getAvaintenMaara() {
         return this.avaintenMaara;
     }
+
     public int getHuoneidenMaara() {
         return this.avaintenMaara;
     }

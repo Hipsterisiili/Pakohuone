@@ -7,7 +7,7 @@ public class Huone {
     private int ovienMaara = 0;
     
     public Huone(){
-        ovet = new Ovi[39];
+        ovet = new Ovi[30];
         avaimet = new Avain[30];
         for(int i = 0; i < 30 ; i++){
             ovet[i] = new Ovi(0,0,0,0);
