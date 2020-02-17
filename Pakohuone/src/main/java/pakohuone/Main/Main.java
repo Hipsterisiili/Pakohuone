@@ -2,7 +2,7 @@ package pakohuone.Main;
 //import pakohuone.sovelluslogiikka.Avain;
 //import pakohuone.sovelluslogiikka.Ovi;
 
-import pakohuone.tyokalut.Leveyshaku;
+import pakohuone.tyokalut.Syvyyshaku;
 
 //import pakohuone.sovelluslogiikka.Huone;
 //import pakohuone.tyokalut.EtaisyydenEtsija;
@@ -106,7 +106,7 @@ public class Main {
         System.out.println("\nTULOSTETAAN REITIT:\n");
         System.out.println(laby.etsiReitit());*/
         
-        Leveyshaku l = new Leveyshaku();
+        Syvyyshaku l = new Syvyyshaku();
         boolean[][] matriisi = new boolean[5][5];
         matriisi[1][1] = false;
         matriisi[1][2] = true;

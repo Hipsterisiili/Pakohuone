@@ -2,7 +2,7 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
-import pakohuone.tyokalut.Leveyshaku;
+import pakohuone.tyokalut.Syvyyshaku;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,14 +13,14 @@ import pakohuone.tyokalut.Leveyshaku;
  *
  * @author rasmus
  */
-public class LeveyshakuTest {
+public class SyvyyshakuTest {
 
-    Leveyshaku l;
+    Syvyyshaku l;
     boolean[][] matriisi = new boolean[5][5];
 
     @Before
     public void SetUp() {
-        l = new Leveyshaku();
+        l = new Syvyyshaku();
         matriisi[1][1] = false;
         matriisi[1][2] = true;
         matriisi[1][3] = false;

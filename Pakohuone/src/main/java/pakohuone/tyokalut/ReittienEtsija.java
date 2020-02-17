@@ -18,7 +18,7 @@ public class ReittienEtsija {
     private int mahdollisetReitit = 0;
     private int avaintenMaara;
     private Kirjainpino sana;
-    private Leveyshaku leveyshaku = new Leveyshaku();
+    private Syvyyshaku syvyyshaku = new Syvyyshaku();
 
     //onkoAvainTutkittu[n] = onko kirjain n jo merkkijonossa
     private boolean[] onkoAvainTutkittu;
@@ -149,8 +149,10 @@ public class ReittienEtsija {
      * avattu ovi.
      */
     private void YhdistaHuoneet(int a, int b) {
+        boolean saavutettuA = syvyyshaku.haeArvolla(huoneMatriisi, a);
+        boolean saavutettuB = syvyyshaku.haeArvolla(huoneMatriisi, b);
 
-        if (leveyshaku.hae(this.huoneMatriisi)) {
+        if (syvyyshaku.hae(this.huoneMatriisi)) {
             avainLista[mahdollisetReitit] = sana.toString();
             mahdollisetReitit++;
             System.out.println("\n#####\nLÖYTYI UUSI REITTI: " + sana.toString() + "\n#####\n");
@@ -268,7 +270,7 @@ public class ReittienEtsija {
     }
     
     private boolean onkoMaaliSaavutettavissa(){
-        return leveyshaku.hae(huoneMatriisi);
+        return syvyyshaku.hae(huoneMatriisi);
     }
 
     public String[] getAvainLista() {
