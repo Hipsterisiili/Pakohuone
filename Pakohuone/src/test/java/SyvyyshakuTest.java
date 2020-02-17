@@ -43,15 +43,32 @@ public class SyvyyshakuTest {
     }
 
     @Test
-    public void LeveyshaunPerustoimintaKunReittiLoytyy() {
+    public void SyvyshaunPerustoimintaKunReittiLoytyy() {
         assertTrue(l.hae(matriisi));
+    }
+    @Test
+    public void SyvyshakuMuihinHuoneisiinKunReittiLoytyy() {
+        assertTrue(l.haeArvolla(matriisi,1));
+        assertTrue(l.haeArvolla(matriisi,2));
+        assertTrue(l.haeArvolla(matriisi,3));
+        assertTrue(l.haeArvolla(matriisi,4));
     }
     
     @Test
-    public void LeveyshaunPerustoimintaKunReittiErilainen() {
+    public void SyvyshaunPerustoimintaKunReittiErilainen() {
         matriisi[2][4] = false;
         matriisi[4][2] = false;
         assertFalse(l.hae(matriisi));
+    }
+    @Test
+    public void SyvyshakuMuihinHuoneisiin() {
+        matriisi[2][4] = false;
+        matriisi[4][2] = false;
+        matriisi[3][4] = false;
+        matriisi[4][3] = false;
+        assertTrue(l.haeArvolla(matriisi,2));
+        assertTrue(l.haeArvolla(matriisi,3));
+        assertFalse(l.haeArvolla(matriisi,4));
     }
 
     @Test
@@ -70,18 +87,18 @@ public class SyvyyshakuTest {
         mat[1][2] = true;
         mat[2][1] = true;
         mat[2][2] = false;
-        assertTrue(l.hae(matriisi));
+        assertTrue(l.hae(mat));
         mat[1][2] = false;
         mat[2][2] = false;
-        assertFalse(l.hae(matriisi));
+        assertFalse(l.hae(mat));
     }
     
     @Test
     public void PieninLabyrintti() {
         boolean[][] mat = new boolean[2][2];
         mat[1][1] = true;
-        assertTrue(l.hae(matriisi));
+        assertTrue(l.hae(mat));
         mat[1][1] = false;
-        assertFalse(l.hae(matriisi));
+        assertTrue(l.hae(mat));
     }
 }

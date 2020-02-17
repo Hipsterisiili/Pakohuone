@@ -20,7 +20,7 @@ public class Huone {
      * @param a Lisättävä avain
      */
     public void lisaaAvain(Avain a) {
-        if (avaintenMaara >= 99) {
+        if (avaintenMaara >= 30) {
             return;
         }
         avaimet[avaintenMaara] = a;
@@ -47,7 +47,7 @@ public class Huone {
      * @param o Lisättävä avain
      */
     public void lisaaOvi(Ovi o) {
-        if (ovienMaara >= 99) {
+        if (ovienMaara >= 30) {
             return;
         }
         //System.out.println("LAITETAAN UUSI OVI KOHTAAN " + ovienMaara);

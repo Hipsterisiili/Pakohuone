@@ -21,8 +21,18 @@ public class HuoneTest {
 
     @Test
     public void HuoneenLuonti() {
-        assertTrue(h.getOvet()[0] == null);
-        assertTrue(h.getAvaimet()[0] == null);
+        assertTrue(h.getOvet()[0].getAlkuX() == 0);
+        assertTrue(h.getOvet()[0].getAlkuY() == 0);
+        assertTrue(h.getOvet()[0].getLoppuX() == 0);
+        assertTrue(h.getOvet()[0].getLoppuY() == 0);
+        assertTrue(h.getOvet()[0].getLoppuY() == 0);
+        assertTrue(h.getAvaimet()[0].getSijaintiX() == 0);
+        assertTrue(h.getAvaimet()[0].getSijaintiY() == 0);
+        assertTrue(h.getAvaimet()[0].getKirjain() == '@');
+        assertTrue(h.getAvaimet()[0].getOvi().getAlkuX() == 0);
+        assertTrue(h.getAvaimet()[0].getOvi().getAlkuY() == 0);
+        assertTrue(h.getAvaimet()[0].getOvi().getLoppuX() == 0);
+        assertTrue(h.getAvaimet()[0].getOvi().getLoppuX() == 0);
     }
 
     @Test
@@ -50,13 +60,13 @@ public class HuoneTest {
 
     @Test
     public void EiVoiLisataLiikaaAvaimiaTaiOvia() {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 32; i++) {
             h.lisaaAvain(a);
             h.lisaaOvi(o);
         }
         h.lisaaAvain(aa);
         h.lisaaOvi(oo);
-        assertTrue(h.getOvet()[99] != oo);
-        assertTrue(h.getAvaimet()[99] != aa);
+        assertTrue(h.getOvet()[29] != oo);
+        assertTrue(h.getAvaimet()[29] != aa);
     }
 }

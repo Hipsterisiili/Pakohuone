@@ -128,6 +128,12 @@ public class Main {
         matriisi[4][3] = true;
         matriisi[4][4] = false;
         
-        System.out.println(l.hae(matriisi));
+        matriisi[2][4] = false;
+        matriisi[4][2] = false;
+        matriisi[3][4] = false;
+        matriisi[4][3] = false;
+        System.out.println(l.haeArvolla(matriisi,2));
+        System.out.println(l.haeArvolla(matriisi,3));
+        System.out.println(l.haeArvolla(matriisi,4));
     }
 }
