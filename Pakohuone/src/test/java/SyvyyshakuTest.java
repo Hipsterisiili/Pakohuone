@@ -16,30 +16,30 @@ import pakohuone.tyokalut.Syvyyshaku;
 public class SyvyyshakuTest {
 
     Syvyyshaku l;
-    boolean[][] matriisi = new boolean[5][5];
+    int[][] matriisi = new int[5][5];
 
     @Before
     public void SetUp() {
         l = new Syvyyshaku();
-        matriisi[1][1] = false;
-        matriisi[1][2] = true;
-        matriisi[1][3] = false;
-        matriisi[1][4] = false;
+        matriisi[1][1] = 0;
+        matriisi[1][2] = 1;
+        matriisi[1][3] = 0;
+        matriisi[1][4] = 0;
 
-        matriisi[2][1] = true;
-        matriisi[2][2] = false;
-        matriisi[2][3] = true;
-        matriisi[2][4] = true;
+        matriisi[2][1] = 1;
+        matriisi[2][2] = 0;
+        matriisi[2][3] = 1;
+        matriisi[2][4] = 1;
 
-        matriisi[3][1] = false;
-        matriisi[3][2] = true;
-        matriisi[3][3] = false;
-        matriisi[3][4] = true;
+        matriisi[3][1] = 0;
+        matriisi[3][2] = 1;
+        matriisi[3][3] = 0;
+        matriisi[3][4] = 1;
 
-        matriisi[4][1] = false;
-        matriisi[4][2] = true;
-        matriisi[4][3] = true;
-        matriisi[4][4] = false;
+        matriisi[4][1] = 0;
+        matriisi[4][2] = 1;
+        matriisi[4][3] = 1;
+        matriisi[4][4] = 0;
     }
 
     @Test
@@ -56,16 +56,16 @@ public class SyvyyshakuTest {
     
     @Test
     public void SyvyshaunPerustoimintaKunReittiErilainen() {
-        matriisi[2][4] = false;
-        matriisi[4][2] = false;
-        assertFalse(l.hae(matriisi));
+        matriisi[2][4] = 0;
+        matriisi[4][2] = 0;
+        assertTrue(l.hae(matriisi));
     }
     @Test
     public void SyvyshakuMuihinHuoneisiin() {
-        matriisi[2][4] = false;
-        matriisi[4][2] = false;
-        matriisi[3][4] = false;
-        matriisi[4][3] = false;
+        matriisi[2][4] = 0;
+        matriisi[4][2] = 0;
+        matriisi[3][4] = 0;
+        matriisi[4][3] = 0;
         assertTrue(l.haeArvolla(matriisi,2));
         assertTrue(l.haeArvolla(matriisi,3));
         assertFalse(l.haeArvolla(matriisi,4));
@@ -73,32 +73,32 @@ public class SyvyyshakuTest {
 
     @Test
     public void EiMahdollistaReittia() {
-        matriisi[2][4] = false;
-        matriisi[4][2] = false;
-        matriisi[3][4] = false;
-        matriisi[4][3] = false;
+        matriisi[2][4] = 0;
+        matriisi[4][2] = 0;
+        matriisi[3][4] = 0;
+        matriisi[4][3] = 0;
         assertFalse(l.hae(matriisi));
     }
     
     @Test
     public void pieniLabyrintti() {
-        boolean[][] mat = new boolean[3][3];
-        mat[1][1] = false;
-        mat[1][2] = true;
-        mat[2][1] = true;
-        mat[2][2] = false;
+        int[][] mat = new int[3][3];
+        mat[1][1] = 0;
+        mat[1][2] = 1;
+        mat[2][1] = 1;
+        mat[2][2] = 0;
         assertTrue(l.hae(mat));
-        mat[1][2] = false;
-        mat[2][2] = false;
+        mat[1][2] = 0;
+        mat[2][2] = 0;
         assertFalse(l.hae(mat));
     }
     
     @Test
     public void PieninLabyrintti() {
-        boolean[][] mat = new boolean[2][2];
-        mat[1][1] = true;
+        int[][] mat = new int[2][2];
+        mat[1][1] = 1;
         assertTrue(l.hae(mat));
-        mat[1][1] = false;
+        mat[1][1] = 0;
         assertTrue(l.hae(mat));
     }
 }

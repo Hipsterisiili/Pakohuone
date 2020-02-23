@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Syvyyshaku {
 
     boolean onkoTieLoytynyt;
-    boolean[][] taul;
+    int[][] taul;
     boolean[] vierailtu;
 
     /**
@@ -14,6 +14,7 @@ public class Syvyyshaku {
      * reittiä olemassa. Lyhintä reittiä ei tällä metodilla selvitetä
      */
     public Syvyyshaku() {
+        
     }
 
     /**
@@ -22,7 +23,7 @@ public class Syvyyshaku {
      * @param huoneMatriisi matriisi, josta reittejä selvitetään
      * @return onko mahdollista löytää reitti annetussa labyrintissa maaliin
      */
-    public boolean hae(boolean[][] huoneMatriisi) {
+    public boolean hae(int[][] huoneMatriisi) {
         this.taul = huoneMatriisi;
         this.vierailtu = new boolean[huoneMatriisi[0].length];
         this.onkoTieLoytynyt = false;
@@ -45,7 +46,7 @@ public class Syvyyshaku {
             return;
         }
         for(int i = 0 ; i < taul[0].length ; i++){
-            if(taul[luku][i] == true && vierailtu[i] == false){
+            if(taul[luku][i] > 0 && vierailtu[i] == false){
                 vierailtu[i] = true;
                 rekursio(i);
                 vierailtu[i] = false;
@@ -58,7 +59,7 @@ public class Syvyyshaku {
      * @param luku Huoneen, jota tällä hetkellä tarkastellaan numero
      * @param i Etsittävän huoneen numero
      */
-    public boolean haeArvolla(boolean[][] huoneMatriisi, int i) {
+    public boolean haeArvolla(int[][] huoneMatriisi, int i) {
         this.taul = huoneMatriisi;
         this.vierailtu = new boolean[huoneMatriisi[0].length];
         this.onkoTieLoytynyt = false;
@@ -82,7 +83,7 @@ public class Syvyyshaku {
             return;
         }
         for(int i = 0 ; i < taul[0].length - 1 ; i++){
-            if(taul[luku][i] == true && vierailtu[i] == false){
+            if(taul[luku][i] > 0 && vierailtu[i] == false){
                 vierailtu[i] = true;
                 rekursio(i);
                 vierailtu[i] = false;
