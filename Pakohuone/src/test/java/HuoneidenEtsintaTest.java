@@ -8,7 +8,7 @@ import pakohuone.sovelluslogiikka.Avain;
 import pakohuone.sovelluslogiikka.Ovi;
 import pakohuone.sovelluslogiikka.Huone;
 import pakohuone.tyokalut.EtaisyydenEtsija;
-import pakohuone.tyokalut.HuoneidenEtsinta;
+import pakohuone.algoritmit.HuoneidenEtsinta;
 
 public class HuoneidenEtsintaTest {
 

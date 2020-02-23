@@ -58,6 +58,8 @@ public class Main {
         laby.tulostaLabyrintti();
         System.out.println("\nTULOSTETAAN REITIT");
         System.out.println(laby.etsiReitit());
+        System.out.println("\nTULOSTETAAN NOPEIN REITTI");
+        System.out.println(laby.etsiParasReitti());
         
         
         /*

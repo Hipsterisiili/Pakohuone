@@ -1,4 +1,4 @@
-package pakohuone.tyokalut;
+package pakohuone.algoritmit;
 
 import pakohuone.sovelluslogiikka.Avain;
 import pakohuone.sovelluslogiikka.Huone;

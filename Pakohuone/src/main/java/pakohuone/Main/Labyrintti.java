@@ -4,8 +4,9 @@ import pakohuone.sovelluslogiikka.Huone;
 import pakohuone.sovelluslogiikka.Ovi;
 //import pakohuone.sovelluslogiikka.Huone;
 //import pakohuone.tyokalut.EtaisyydenEtsija;
-import pakohuone.tyokalut.HuoneidenEtsinta;
-import pakohuone.tyokalut.ReittienEtsija;
+import pakohuone.algoritmit.HuoneidenEtsinta;
+import pakohuone.algoritmit.NopeimmanReitinEtsija;
+import pakohuone.algoritmit.ReittienEtsija;
 
 public class Labyrintti {
     private char[][] kuva;
@@ -13,11 +14,14 @@ public class Labyrintti {
     private int leveys, korkeus;
     private int avaintenMaara;
     private int huoneidenMaara; 
+    private boolean onkoReittejaEtsitty;
     private HuoneidenEtsinta huoEts;
     private ReittienEtsija reiEts;
+    private NopeimmanReitinEtsija nre;
     private Ovi[] ovet;
     private Avain[] avaimet;
     private Huone[] huoneet;
+    private String[] jarjestykset;
     /**
    * Labyrintti on olio, joka sisältää tiedon kaikesta mitä sen sisällä on,
    * kuten avaimista, ovista, seinistä, huoneista, sekä avainten ja ovien 
@@ -34,6 +38,9 @@ public class Labyrintti {
         ovet = huoEts.getOvet();
         avaimet = huoEts.getAvaimet();
         huoneet = huoEts.getHuoneet();
+        jarjestykset = new String[1];
+        jarjestykset[0] = "temp";
+        onkoReittejaEtsitty = false;
         avaintenMaara = huoEts.getAvaintenMaara();
         huoneidenMaara = huoEts.getHuoneidenMaara();
         reiEts = new ReittienEtsija(this);
@@ -50,11 +57,23 @@ public class Labyrintti {
     public String etsiReitit(){
         reiEts.etsi();
         String palautus = "";
-        String[] jarjestykset = reiEts.getAvainLista();
+        jarjestykset = reiEts.getAvainLista();
         for (String sana : jarjestykset){
             palautus = palautus + "\n" + sana;
         }
+        onkoReittejaEtsitty = true;
         return palautus;
+    }
+    
+    public String etsiParasReitti(){
+        System.out.println(jarjestykset[0]);
+        if(jarjestykset[0].equals("temp")){
+            return "Ei löydettyjä reittejä, etsi kaikki reitit ensin";
+        }
+        nre = new NopeimmanReitinEtsija(jarjestykset, this);
+        String nopeinReitti = nre.laskeNopeinReitti();
+        System.out.println("Nopein reitti = nopeinReitti");
+        return nopeinReitti;
     }
      /**
    * Tulostaa labyrintin siten, että kussakin ruudussa on merkki, joka

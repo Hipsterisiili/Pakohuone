@@ -1,5 +1,7 @@
-package pakohuone.tyokalut;
+package pakohuone.algoritmit;
 
+import pakohuone.tyokalut.Syvyyshaku;
+import pakohuone.tyokalut.Kirjainpino;
 import java.util.Arrays;
 import pakohuone.Main.Labyrintti;
 import pakohuone.sovelluslogiikka.Avain;
@@ -127,9 +129,7 @@ public class ReittienEtsija {
                 sana.pop();
 
                 onkoOviAuki[kirjaimenArvo] = false;
-                //if (true) {
                 onkoAvainTutkittu[kirjaimenArvo] = false;
-                //}
             }
         }
     }
@@ -149,20 +149,21 @@ public class ReittienEtsija {
     private void YhdistaHuoneet(int a, int b) {
         boolean saavutettuA = syvyyshaku.haeArvolla(huoneMatriisi, a);
         boolean saavutettuB = syvyyshaku.haeArvolla(huoneMatriisi, b);
+        System.out.println("SAAVUTETTUA = " + saavutettuA + " ///// SAAVUTETTUB = " + saavutettuB);
 
-        if (onkoHuoneSaavutettu[a] && onkoHuoneSaavutettu[b]) {
+        if (saavutettuA && saavutettuB) {
             System.out.println(a + " oli saavutettu, " + b + " oli saavutettu");
             huoneidenLinkitys(a, b);
             hajaannu();
-        } else if (onkoHuoneSaavutettu[a] && !onkoHuoneSaavutettu[b]) {
+        } else if (saavutettuA && !saavutettuB) {
             System.out.println(a + " oli saavutettu, " + b + " ei ollut saavutettu");
             huoneidenLinkitys(a, b);
             OnJaEi(a, b);
-        } else if (!onkoHuoneSaavutettu[a] && onkoHuoneSaavutettu[b]) {
+        } else if (!saavutettuA && saavutettuB) {
             System.out.println(b + " oli saavutettu, " + a + " ei ollut saavutettu");
             huoneidenLinkitys(a, b);
             OnJaEi(b, a);
-        } else if (!onkoHuoneSaavutettu[a] && !onkoHuoneSaavutettu[b]) {
+        } else if (!saavutettuA && !saavutettuB) {
             System.out.println(a + " ei ollut saavutettu, " + b + " ei ollut saavutettu");
             huoneidenLinkitys(a, b);
             EiJaEi(a, b);
@@ -199,6 +200,7 @@ public class ReittienEtsija {
 
     private void EiJaEi(int a, int b) {
         System.out.println("EIJAEI ALKU (" + a + "," + b + ")");
+        /*
         int aSaiYlimaaraisiaAvaimia = 0;
         int bSaiYlimaaraisiaAvaimia = 0;
         int aSaiYlimaaraisiaOvia = 0;
@@ -224,13 +226,14 @@ public class ReittienEtsija {
             aSaiYlimaaraisiaOvia++;
             //System.out.println("A SAI OVEN " + huoneLista[b].getOvet()[i].toString());
         }
+        */
 
         onkoMaaliSaavutettavissa();
         hajaannu();
 
         //Palautetaan tilanne sellaiseksi kuin se oli tätä metodia kutsuttaessa
         System.out.println("EIJAEI LOPPU (" + a + "," + b + ")");
-        for (int i = 0; i < bSaiYlimaaraisiaAvaimia; i++) {
+        /*for (int i = 0; i < bSaiYlimaaraisiaAvaimia; i++) {
             huoneLista[b].poistaAvain();
         }
         for (int i = 0; i < aSaiYlimaaraisiaAvaimia; i++) {
@@ -241,7 +244,7 @@ public class ReittienEtsija {
         }
         for (int i = 0; i < aSaiYlimaaraisiaOvia; i++) {
             huoneLista[a].poistaAvain();
-        }
+        }*/
     }
 
     private void huoneidenLinkitys(int a, int b) {
