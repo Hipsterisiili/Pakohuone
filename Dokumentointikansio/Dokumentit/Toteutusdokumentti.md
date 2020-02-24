@@ -1,6 +1,6 @@
-### Toteutusdomukentti
+## Toteutusdokumentti
 
-#### Pakkausrakenne
+### Pakkausrakenne
 
 ##### Pakohuone.Main
 Sisältää kaikki ohjelman ajamiseen liittyvät luokat, joita on tarkoitus muokata ohjelman käyttötarkoituksen mukaan
