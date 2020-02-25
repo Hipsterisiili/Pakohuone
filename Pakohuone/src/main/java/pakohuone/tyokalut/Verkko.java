@@ -1,23 +1,22 @@
 package pakohuone.tyokalut;
 
 import java.util.Arrays;
-import pakohuone.Main.Labyrintti;
+import pakohuone.sovelluslogiikka.Labyrintti;
 import pakohuone.sovelluslogiikka.Avain;
 import pakohuone.sovelluslogiikka.Huone;
 import pakohuone.sovelluslogiikka.Ovi;
+
 /**
-     * Verkko on tietorakenne, joka lyläpitää tietoa siitä mihin avaimiin ja
-     * oviin mistäkin avaimesta ja ovesta on mahdollista päästä ja kuinka 
-     * pitkä tämä reitti on. Ainoastaan yhden huoneen sisäiset matkat on
-     * tallennettu verkkoon.
-     * int[][] verkko sisältää tiedon siitä kuinka pitkä matka kustakin 
-     * kohteesta kuhunkin kohteesene on. Arvo 0 tarkoittaa että tällaista kaarta
-     * ei ole olemassa yhden huoneen sisällä. 
-     * boolean[][] taas kertoo kussakin vaiheessa mitkä yhteydet ovat kullakin
-     * hetkellä käytössä. Arvo true tarkoittaa että kaarta pitkin voi kulkea, toisin
-     * sanoen huone, jossa kaari sijaitsee on saavutettavissa labyrintin 
-     * alkupisteestä
-     */
+ * Verkko on tietorakenne, joka lyläpitää tietoa siitä mihin avaimiin ja oviin
+ * mistäkin avaimesta ja ovesta on mahdollista päästä ja kuinka pitkä tämä
+ * reitti on. Ainoastaan yhden huoneen sisäiset matkat on tallennettu verkkoon.
+ * int[][] verkko sisältää tiedon siitä kuinka pitkä matka kustakin kohteesta
+ * kuhunkin kohteesene on. Arvo 0 tarkoittaa että tällaista kaarta ei ole
+ * olemassa yhden huoneen sisällä. boolean[][] taas kertoo kussakin vaiheessa
+ * mitkä yhteydet ovat kullakin hetkellä käytössä. Arvo true tarkoittaa että
+ * kaarta pitkin voi kulkea, toisin sanoen huone, jossa kaari sijaitsee on
+ * saavutettavissa labyrintin alkupisteestä
+ */
 public class Verkko {
 
     private Labyrintti laby;
@@ -31,8 +30,10 @@ public class Verkko {
     private int[][] verkko;
     //onkoYhteysKaytossa kertoo mitä yhteyksiä on käytössä.
     //Tämä riippuu siitä mitä huoneita on saavutettu.
-    private boolean[][] onkoYhteysKaytossa;
+    //onkoYhteysKaytossa[n] kertoo käytännössä onko kohde n vielä saavutettu
+    private boolean[] onkoYhteysKaytossa;
     private EtaisyydenEtsija etaEts = new EtaisyydenEtsija();
+    private Dijkstra d;
 
     /**
      * Verkon konstruktori
@@ -44,13 +45,19 @@ public class Verkko {
         avaintenMaara = laby.getAvaintenMaara();
         huoneidenMaara = laby.getHuoneidenMaara();
         verkko = new int[avaintenMaara + avaintenMaara + 2][avaintenMaara + avaintenMaara + 2];
-        onkoYhteysKaytossa = new boolean[avaintenMaara + avaintenMaara + 2][avaintenMaara + avaintenMaara + 2];
+        onkoYhteysKaytossa = new boolean[avaintenMaara + avaintenMaara + 2];
         for (int i = 0; i < avaintenMaara + 2; i++) {
             Arrays.fill(verkko[i], 0);
-            Arrays.fill(onkoYhteysKaytossa[i], false);
         }
+        Arrays.fill(onkoYhteysKaytossa, false);
+        onkoYhteysKaytossa[0] = true;
+        onkoYhteysKaytossa[1] = true;
         tulostaVerkko();
         luoYhteydetHuoneidenSisalla();
+        luoYhteydetLahtoon();
+        luoYhteydetMaaliin();
+
+        d = new Dijkstra(verkko);
         tulostaVerkko();
     }
 
@@ -58,9 +65,9 @@ public class Verkko {
      * Metodi käynnistää kaikkien labyrintin mukaisten yhteyksien muodostamisen
      * verkossa. for-loopissa käydään läpi kaikki huoneet, joiden sisäisiä
      * avaimia ja ovia yhdistellään käyden läpi kaikki mahdolliset yhdistelmät
-     * avaimia ja ovia, mitä huoneen sisällä voi muodostaa.
-     * Tämän jälkeen kutsutaan sopivaa metodia yhdistämiseen, riippuen siitä
-     * mitä kohteita yhdistetään.
+     * avaimia ja ovia, mitä huoneen sisällä voi muodostaa. Tämän jälkeen
+     * kutsutaan sopivaa metodia yhdistämiseen, riippuen siitä mitä kohteita
+     * yhdistetään.
      */
     private void luoYhteydetHuoneidenSisalla() {
         Avain a;
@@ -127,9 +134,7 @@ public class Verkko {
         //Jos avaimen kirjain = a, se sijaitsee verkossa sarakkeessa 1 jne
         int aNumero = ((int) a.getKirjain() - 96);
         //Jos oven kirjain = A, se sijaitsee verkossa sarakkeessa avaintenMaara + 1 jne
-        System.out.println("kirjain: " + laby.getKuva()[ox][oy]);
         int oNumero = (laby.getKuva()[ox][oy] - 64 + avaintenMaara);
-        System.out.println("ox ja oy: " + ox + "," + oy);
         yhdistaKohteet(ax, ay, aNumero, ox, oy, oNumero);
     }
 
@@ -152,6 +157,54 @@ public class Verkko {
         yhdistaKohteet(ox, oy, oNumero, px, py, pNumero);
     }
 
+    private void luoYhteydetLahtoon() {
+        Huone h = laby.getHuoneet()[1];
+        for (Avain a : h.getAvaimet()) {
+            if(a.getKirjain() == '@'){
+                continue;
+            }
+            int ax = a.getSijaintiX();
+            int ay = a.getSijaintiY();
+            int aNumero = ((int) a.getKirjain() - 96);
+            System.out.println("Lähtö, avain: "+ax+", "+ay+", "+aNumero);
+            yhdistaKohteet(ax, ay, aNumero, 1, 1, 0);
+        }
+        for (Ovi o : h.getOvet()) {
+            if(o.getAlkuX() == 0 && o.getAlkuY() == 0){
+                continue;
+            }
+            int ox = (o.getAlkuX() + o.getLoppuX()) / 2;
+            int oy = (o.getAlkuY() + o.getLoppuY()) / 2;
+            int oNumero = (laby.getKuva()[ox][oy] - 64 + avaintenMaara);
+            System.out.println("Lähtö, ovi: "+ox+", "+oy+", "+oNumero);
+            yhdistaKohteet(ox, oy, oNumero, 1, 1, 0);
+        }
+    }
+
+    private void luoYhteydetMaaliin() {
+        Huone h = laby.getHuoneet()[laby.getHuoneidenMaara()];
+        for (Avain a : h.getAvaimet()) {
+            if(a.getKirjain() == '@'){
+                continue;
+            }
+            int ax = a.getSijaintiX();
+            int ay = a.getSijaintiY();
+            int aNumero = ((int) a.getKirjain() - 96);
+            System.out.println("Maali, avain: "+ax+", "+ay+", "+aNumero);
+            yhdistaKohteet(ax, ay, aNumero, laby.getKorkeus() - 1, laby.getLeveys() - 1, verkko[0].length -1);
+        }
+        for (Ovi o : h.getOvet()) {
+            if(o.getAlkuX() == 0 && o.getAlkuY() == 0){
+                continue;
+            }
+            int ox = (o.getAlkuX() + o.getLoppuX()) / 2;
+            int oy = (o.getAlkuY() + o.getLoppuY()) / 2;
+            int oNumero = (laby.getKuva()[ox][oy] - 64 + avaintenMaara);
+            System.out.println("Maali, ovi: "+ox+", "+oy+", "+oNumero);
+            yhdistaKohteet(ox, oy, oNumero, laby.getKorkeus() - 1, laby.getLeveys() - 1, verkko[0].length -1);
+        }
+    }
+
     /**
      * Metodi yhdistää kaksi koordinaattia verkossa ja merkitsee niiden välisen
      * etäisyyden.
@@ -166,8 +219,6 @@ public class Verkko {
     private void yhdistaKohteet(int ax, int ay, int an, int bx, int by, int bn) {
         int etaisyys = etaEts.etsiEtaisyys(ax, ay, bx, by);
         System.out.println("Yhdistetaan " + ax + "," + ay + "," + bx + "," + by);
-        System.out.println("Laskettu etäisyys = " + etaisyys);
-        System.out.println("koordinaatit verkossa: " + an + "," + bn);
         verkko[an][bn] = etaisyys;
         verkko[bn][an] = etaisyys;
     }
@@ -187,4 +238,19 @@ public class Verkko {
         }
     }
 
+    public int etsiReitti(int alku, int loppu) {
+        return d.hae(alku, loppu, onkoYhteysKaytossa);
+    }
+
+    public void avaaYhteyksia(int i) {
+        onkoYhteysKaytossa[i] = true;
+    }
+
+    public void suljeYhteys(int i) {
+        onkoYhteysKaytossa[i] = false;
+    }
+    
+    public int getLeveys(){
+        return verkko[0].length;
+    }
 }

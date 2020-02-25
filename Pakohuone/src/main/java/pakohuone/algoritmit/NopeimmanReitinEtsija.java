@@ -1,35 +1,117 @@
 package pakohuone.algoritmit;
 
-import pakohuone.Main.Labyrintti;
+import java.util.Arrays;
+import pakohuone.sovelluslogiikka.Labyrintti;
 import pakohuone.tyokalut.Verkko;
 
+/**
+ * Olio tarkastelee löydettyjä maaliin johtavia reittejä labyrintissä ja
+ * selvittää mikä niistä on lyhin.
+ */
 public class NopeimmanReitinEtsija {
+
     private String[] kaikkiReitit;
     private Labyrintti laby;
-    private String nopeinReitti = "Nopeinta reittiä ei ole vielä selvitetty"; 
-    private int nopeimmanReitinPituus = Integer.MAX_VALUE;
-    
-    public NopeimmanReitinEtsija(String[] lista, Labyrintti l){
+    Verkko v;
+    //private int[][] huoneMatriisi;
+    private String nopeinReitti = "Nopeinta reittiä ei ole vielä selvitetty";
+    private int nopeimmanReitinPituus;
+
+    /**
+     * NopeimmanReitinEtsijan konstruktori
+     *
+     * @param lista = kaikki maaliin johtavat tavat poimia avaimia
+     * merkkijonomuodossa
+     * @param l = labyrintti, jota tutkitaan
+     */
+    public NopeimmanReitinEtsija(String[] lista, Labyrintti l) {
         this.kaikkiReitit = lista;
         this.laby = l;
-        Verkko v = new Verkko(laby);
+        v = new Verkko(laby);
+        //this.huoneMatriisi = new int[laby.getHuoneidenMaara() + 1][laby.getHuoneidenMaara() + 1];
     }
-    
-    public String laskeNopeinReitti(){
-        for(String reitti : kaikkiReitit){
-            if(tutkiOnkoNopein(reitti) < nopeimmanReitinPituus){
+
+    /**
+     * Metodi käy for-loopissa läpi löytyneitä reittejä ja käynnistää jokaisen
+     * kohdalla haun, joka tarkastelee kuinka pitkä tämä reitti on.
+     */
+    public String laskeNopeinReitti() {
+
+        nopeimmanReitinPituus = Integer.MAX_VALUE;
+
+        for (String reitti : kaikkiReitit) {
+
+            if (tutkiOnkoNopein(reitti) < nopeimmanReitinPituus) {
                 nopeinReitti = reitti;
             }
         }
         return nopeinReitti;
     }
-    
-    private int tutkiOnkoNopein(String reitti){
+
+    /**
+     * Metodi tutkii parametrina annettavaa reittiä ja jos se on uusi lyhin
+     * reitti, palautetaan sen pituus. Mikäli huomataan että reitin kulkeminen
+     * vaatii enemmän askelia kuin lyhin reitti tähän asti, keskeytetään reitin
+     * kulkeminen ja palautetaan vain luku, joka on nykyistä lyhintä reittiä
+     * pitempi
+     *
+     * @param reitti = tutkittavan reitin avainlista merkkijonomuodossa esim.
+     * abcd
+     * @return tamanPituus = kuinka pitkä annettu reitti on kulkea. Jos reitti
+     * on pitempi kuin lyhin jo löytynyt reitti, palautetaan vain tähän asti
+     * kuljetun reitin pituus, jotta "laskeNopeinReitti" osaa unohtaa reitin.
+     */
+    private int tutkiOnkoNopein(String reitti) {
+        if (reitti == null) {
+            return Integer.MAX_VALUE;
+        }
+        for (int i = 0; i < v.getLeveys(); i++) {
+            v.suljeYhteys(i);
+        }
+        v.avaaYhteyksia(0);
+        
+        System.out.println("tutkiOnkoNopein käy /// sana: " + reitti);
+        // tamanPituus = matkan pituus tällä hetkellä
         int tamanPituus = 0;
-        
-        
-        
-        
+        // matkanAlku = mistä kirjaimesta alkavaa matkaa tutkitaan
+        // (1 = a, 2 = b jne)
+        int matkanAlku;
+        // matkanLopunIndeksi = mihin kirjaimeen päättyvää matkaa tutkitaan 
+        // (0 = sanan ensimmäinen kirjain, 1 = sanan toinen kirjain)
+        int matkanLopunIndeksi = 0;
+        // matkanLoppu = mistä kirjaimesta alkavaa matkaa tutkitaan
+        // (1 = a, 2 = b jne)
+        int matkanLoppu;
+
+        // KUN AVATAAN UUSI OVI, AVATAAN SEURAAVAT REITIT:
+        // 1) KAIKKI reitit jotka alkavat uuden huoneen avaimista
+        // 2) KAIKKI reitit jotka alkavat juuri avatusta ovesta
+        tamanPituus = v.etsiReitti(0, (int) reitti.charAt(0) - 96);
+
+        v.avaaYhteyksia((int) reitti.charAt(matkanLopunIndeksi) - 96);
+        v.avaaYhteyksia((int) reitti.charAt(matkanLopunIndeksi) - 96 + laby.getAvaintenMaara());
+
+        while (tamanPituus < nopeimmanReitinPituus) {
+            System.out.println("tutkionkonopein while");
+
+            matkanAlku = (int) reitti.charAt(matkanLopunIndeksi) - 96;
+            matkanLopunIndeksi++;
+            System.out.println("MLI = " + matkanLopunIndeksi + " sananpituus = " + reitti.length());
+            if (matkanLopunIndeksi >= reitti.length()) {
+                tamanPituus += v.etsiReitti(matkanAlku, (1 + laby.getAvaintenMaara() + laby.getAvaintenMaara()));
+                break;
+            }
+            matkanLoppu = (int) reitti.charAt(matkanLopunIndeksi) - 96;
+
+            //Etsi lyhin etäisyys nykysijainnista seuraavaan kirjaimeen
+            System.out.println("");
+            tamanPituus += v.etsiReitti(matkanAlku, matkanLoppu);
+            v.avaaYhteyksia(matkanLoppu);
+            v.avaaYhteyksia(matkanLoppu + laby.getAvaintenMaara());
+
+        }
+
+        System.out.println("REITTIÄ KÄYTY LÄPI, PITUUS: " + tamanPituus + "\n");
         return tamanPituus;
     }
 }

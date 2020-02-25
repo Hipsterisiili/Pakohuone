@@ -1,10 +1,10 @@
-package pakohuone.Main;
+package pakohuone.sovelluslogiikka;
 import pakohuone.sovelluslogiikka.Avain;
 import pakohuone.sovelluslogiikka.Huone;
 import pakohuone.sovelluslogiikka.Ovi;
 //import pakohuone.sovelluslogiikka.Huone;
 //import pakohuone.tyokalut.EtaisyydenEtsija;
-import pakohuone.algoritmit.HuoneidenEtsinta;
+import pakohuone.algoritmit.HuoneidenEtsija;
 import pakohuone.algoritmit.NopeimmanReitinEtsija;
 import pakohuone.algoritmit.ReittienEtsija;
 
@@ -15,7 +15,7 @@ public class Labyrintti {
     private int avaintenMaara;
     private int huoneidenMaara; 
     private boolean onkoReittejaEtsitty;
-    private HuoneidenEtsinta huoEts;
+    private HuoneidenEtsija huoEts;
     private ReittienEtsija reiEts;
     private NopeimmanReitinEtsija nre;
     private Ovi[] ovet;
@@ -26,11 +26,11 @@ public class Labyrintti {
    * Labyrintti on olio, joka sisältää tiedon kaikesta mitä sen sisällä on,
    * kuten avaimista, ovista, seinistä, huoneista, sekä avainten ja ovien 
    * välisistä yhteyksistä. Osan näistä tiedoista olio saa sen sisltämältä
-   * oliolta HuoneidenEtsinta huoEts.
+ oliolta HuoneidenEtsija huoEts.
    */
     public Labyrintti(char[][] taulukko) {
         kuva = taulukko;
-        huoEts = new HuoneidenEtsinta(taulukko);
+        huoEts = new HuoneidenEtsija(taulukko);
         huoEts.tulkitse();
         huoneTaulukko = huoEts.getHuoneTaulukko();
         korkeus = taulukko.length - 1;
@@ -135,4 +135,13 @@ public class Labyrintti {
     public int getHuoneidenMaara() {
         return this.huoneidenMaara;
     }
+
+    public int getLeveys() {
+        return leveys;
+    }
+
+    public int getKorkeus() {
+        return korkeus;
+    }
+    
 }

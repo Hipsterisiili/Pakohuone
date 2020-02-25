@@ -3,7 +3,7 @@ package pakohuone.algoritmit;
 import pakohuone.tyokalut.Syvyyshaku;
 import pakohuone.tyokalut.Kirjainpino;
 import java.util.Arrays;
-import pakohuone.Main.Labyrintti;
+import pakohuone.sovelluslogiikka.Labyrintti;
 import pakohuone.sovelluslogiikka.Avain;
 import pakohuone.sovelluslogiikka.Huone;
 import pakohuone.sovelluslogiikka.Ovi;

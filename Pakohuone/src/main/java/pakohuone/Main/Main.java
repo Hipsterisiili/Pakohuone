@@ -2,6 +2,7 @@ package pakohuone.Main;
 //import pakohuone.sovelluslogiikka.Avain;
 //import pakohuone.sovelluslogiikka.Ovi;
 
+import pakohuone.sovelluslogiikka.Labyrintti;
 import pakohuone.tyokalut.Syvyyshaku;
 
 //import pakohuone.sovelluslogiikka.Huone;
@@ -108,33 +109,5 @@ public class Main {
         System.out.println("\nTULOSTETAAN REITIT:\n");
         System.out.println(laby.etsiReitit());*/
         
-        Syvyyshaku l = new Syvyyshaku();
-        int[][] matriisi = new int[5][5];
-        matriisi[1][1] = 0;
-        matriisi[1][2] = 1;
-        matriisi[1][3] = 0;
-        matriisi[1][4] = 0;
-        
-        matriisi[2][1] = 1;
-        matriisi[2][2] = 0;
-        matriisi[2][3] = 1;
-        matriisi[2][4] = 1;
-        
-        matriisi[3][1] = 0;
-        matriisi[3][2] = 1;
-        matriisi[3][3] = 0;
-        matriisi[3][4] = 1;
-        
-        matriisi[4][1] = 0;
-        matriisi[4][2] = 1;
-        matriisi[4][3] = 1;
-        matriisi[4][4] = 0;
-        
-        System.out.println(l.hae(matriisi));
-        
-        System.out.println(l.haeArvolla(matriisi,1));
-        System.out.println(l.haeArvolla(matriisi,2));
-        System.out.println(l.haeArvolla(matriisi,3));
-        System.out.println(l.haeArvolla(matriisi,4));
     }
 }

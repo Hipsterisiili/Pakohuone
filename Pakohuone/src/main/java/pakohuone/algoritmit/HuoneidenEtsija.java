@@ -4,7 +4,7 @@ import pakohuone.sovelluslogiikka.Avain;
 import pakohuone.sovelluslogiikka.Huone;
 import pakohuone.sovelluslogiikka.Ovi;
 
-public class HuoneidenEtsinta {
+public class HuoneidenEtsija {
 
     private char[][] labyrintti;
     private int[][] huoneTaulukko;
@@ -28,7 +28,7 @@ public class HuoneidenEtsinta {
      * HuoneidenEtsinta-olion voi selvittää esim siihen kuuluvien huoneiden
      * luonteen.
      */
-    public HuoneidenEtsinta(char[][] laby) {
+    public HuoneidenEtsija(char[][] laby) {
         this.labyrintti = laby;
         this.korkeus = laby.length;
         this.leveys = laby[0].length;

@@ -2,13 +2,13 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import pakohuone.Main.Labyrintti;
+import pakohuone.sovelluslogiikka.Labyrintti;
 import pakohuone.Main.Main;
 import pakohuone.sovelluslogiikka.Avain;
 import pakohuone.sovelluslogiikka.Ovi;
 import pakohuone.sovelluslogiikka.Huone;
 import pakohuone.tyokalut.EtaisyydenEtsija;
-import pakohuone.algoritmit.HuoneidenEtsinta;
+import pakohuone.algoritmit.HuoneidenEtsija;
 
 public class LabyrinttiTest {
     char[][] labyrintti;
