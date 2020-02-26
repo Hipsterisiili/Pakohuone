@@ -7,17 +7,17 @@ public class Dijkstra {
     private int alku;
     private int loppu;
     private boolean[] onkoYhteysKaytossa;
-    private int[] lyhinMatka;
+    private long[] lyhinMatka;
     private int[][] verkko;
     private boolean[] kasitelty;
 
     public Dijkstra(int[][] matriisi) {
         this.verkko = matriisi;
-        this.lyhinMatka = new int[matriisi[0].length];
+        this.lyhinMatka = new long[matriisi[0].length];
         this.kasitelty = new boolean[matriisi[0].length];
     }
 
-    public int hae(int a, int b, boolean[] taul) {
+    public long hae(int a, int b, boolean[] taul) {
         this.alku = a;
         this.loppu = b;
         this.onkoYhteysKaytossa = taul;
@@ -29,33 +29,54 @@ public class Dijkstra {
         return rekursio(a, b);
     }
 
-    private int rekursio(int a, int b) {
-        System.out.println("Dijkstra käy /// a = " + a + " /// b = " + b);
+    private long rekursio(int a, int b) {
+        System.out.println("\nDijkstra käy /// a = " + a + " /// b = " + b);
 
-        int nyky;
-        int uusi;
-        int missaOllaanNyt = 0;
+        for (int i = 0; i < verkko[0].length; i++) {
+            System.out.println("Tutkitaan " + i + ": " + lyhinMatka[i] + " &&& " + (lyhinMatka[a] + verkko[a][i]));
+            if (verkko[a][i] > 0) {
+                lyhinMatka[i] = verkko[a][i];
+                if (i == 2) {
+                    System.out.println("b muuttui");
+                }
+            }
+        }
+        kasitelty[a] = true;
+
+        long nyky;
+        long uusi;
         int lahimpana = mihinOnPieninMatka();
         while (lahimpana != -1) {
-            System.out.println("dijkstra while");
-            for (int i = 0; i < verkko[0].length; i++) {
-                if (kasitelty[i]) {
-                    continue;
-                }
-                kasitelty[i] = true;
 
-                if (verkko[lahimpana][i] != 0) {
-                    System.out.println("Verrataan vanha matka I:hin " + lyhinMatka[i]
-                            + " sekä uusi " + (lyhinMatka[i] + verkko[lahimpana][i]));
+            if (lahimpana == b) {
+                System.out.println("Keskeytetään while, matka " + b + ":hen on " + lyhinMatka[b]);
+                break;
+            }
+
+            System.out.println("dijkstra while");
+            if (kasitelty[lahimpana]) {
+                continue;
+            }
+            kasitelty[lahimpana] = true;
+
+            for (int i = 0; i < verkko[0].length; i++) {
+                if (verkko[i][lahimpana] != 0) {
+                    System.out.println("VERRATAAN " + i + ": " + lyhinMatka[i] + " VRT " + (lyhinMatka[lahimpana] + verkko[i][lahimpana]));
                     nyky = lyhinMatka[i];
-                    uusi = lyhinMatka[i] + verkko[lahimpana][i];
+                    uusi = lyhinMatka[lahimpana] + verkko[i][lahimpana];
                     if (uusi < nyky) {
+                        System.out.println("muutos");
                         lyhinMatka[i] = uusi;
+                        if (i == 2) {
+                            System.out.println("b muuttui");
+                        }
                     }
                 }
             }
-            missaOllaanNyt = lahimpana;
             lahimpana = mihinOnPieninMatka();
+        }
+        for (int i = 0; i < lyhinMatka.length; i++) {
+            System.out.println("i = " + i + " /// " + lyhinMatka[i] + " /// " + onkoYhteysKaytossa[i] + " /// " + kasitelty[i]);
         }
 
         return lyhinMatka[b];
@@ -63,19 +84,22 @@ public class Dijkstra {
 
     private int mihinOnPieninMatka() {
         int palautus = -1;
-        int pieninMatka = Integer.MAX_VALUE;
+        long pieninMatka = Long.MAX_VALUE;
 
         for (int i = 0; i < lyhinMatka.length; i++) {
-            System.out.println("i = " + i + " /// " + lyhinMatka[i] + " /// " + onkoYhteysKaytossa[i] + " /// " + kasitelty[i]);
+            //System.out.println("i = " + i + " /// " + lyhinMatka[i] + " /// " + onkoYhteysKaytossa[i] + " /// " + kasitelty[i]);
             if (lyhinMatka[i] < pieninMatka
                     && /*onkoYhteysKaytossa[i]*/ true
                     && !kasitelty[i]) {
-                
+
                 pieninMatka = lyhinMatka[i];
                 palautus = i;
             }
         }
         System.out.println("pienin matka oli " + palautus + ":n");
+        if (palautus > -1) {
+            System.out.println("Matkan pituus oli: " + lyhinMatka[palautus]);
+        }
         return palautus;
     }
 

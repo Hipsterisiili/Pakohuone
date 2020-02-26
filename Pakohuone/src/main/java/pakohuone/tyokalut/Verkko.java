@@ -238,12 +238,13 @@ public class Verkko {
         }
     }
 
-    public int etsiReitti(int alku, int loppu) {
+    public long etsiReitti(int alku, int loppu) {
         return d.hae(alku, loppu, onkoYhteysKaytossa);
     }
 
     public void avaaYhteyksia(int i) {
         onkoYhteysKaytossa[i] = true;
+        System.out.println("AVATTIIN YHTEYS ALKAEN " + i );
     }
 
     public void suljeYhteys(int i) {

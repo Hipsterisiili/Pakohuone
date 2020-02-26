@@ -15,7 +15,7 @@ public class NopeimmanReitinEtsija {
     Verkko v;
     //private int[][] huoneMatriisi;
     private String nopeinReitti = "Nopeinta reittiä ei ole vielä selvitetty";
-    private int nopeimmanReitinPituus;
+    private long nopeimmanReitinPituus;
 
     /**
      * NopeimmanReitinEtsijan konstruktori
@@ -37,7 +37,7 @@ public class NopeimmanReitinEtsija {
      */
     public String laskeNopeinReitti() {
 
-        nopeimmanReitinPituus = Integer.MAX_VALUE;
+        nopeimmanReitinPituus = Long.MAX_VALUE;
 
         for (String reitti : kaikkiReitit) {
 
@@ -61,18 +61,18 @@ public class NopeimmanReitinEtsija {
      * on pitempi kuin lyhin jo löytynyt reitti, palautetaan vain tähän asti
      * kuljetun reitin pituus, jotta "laskeNopeinReitti" osaa unohtaa reitin.
      */
-    private int tutkiOnkoNopein(String reitti) {
+    private long tutkiOnkoNopein(String reitti) {
         if (reitti == null) {
-            return Integer.MAX_VALUE;
+            return Long.MAX_VALUE;
         }
         for (int i = 0; i < v.getLeveys(); i++) {
             v.suljeYhteys(i);
         }
         v.avaaYhteyksia(0);
         
-        System.out.println("tutkiOnkoNopein käy /// sana: " + reitti);
+        System.out.println("\ntutkiOnkoNopein käy /// sana: " + reitti +  "\n");
         // tamanPituus = matkan pituus tällä hetkellä
-        int tamanPituus = 0;
+        long tamanPituus = 0;
         // matkanAlku = mistä kirjaimesta alkavaa matkaa tutkitaan
         // (1 = a, 2 = b jne)
         int matkanAlku;
@@ -96,7 +96,7 @@ public class NopeimmanReitinEtsija {
 
             matkanAlku = (int) reitti.charAt(matkanLopunIndeksi) - 96;
             matkanLopunIndeksi++;
-            System.out.println("MLI = " + matkanLopunIndeksi + " sananpituus = " + reitti.length());
+            //System.out.println("MLI = " + matkanLopunIndeksi + " sananpituus = " + reitti.length());
             if (matkanLopunIndeksi >= reitti.length()) {
                 tamanPituus += v.etsiReitti(matkanAlku, (1 + laby.getAvaintenMaara() + laby.getAvaintenMaara()));
                 break;
