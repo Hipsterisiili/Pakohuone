@@ -84,6 +84,7 @@ public class Main {
         System.out.println("\nTULOSTETAAN NOPEIN REITTI");
         System.out.println(laby.etsiParasReitti());
 
+        /*
         laby = labyrintinLuoja.luoLabyrintti2();
         //System.out.println("\nTULOSTETAAN HUONEET:\n");
         //laby.tulostaHuoneet();
@@ -93,6 +94,6 @@ public class Main {
         System.out.println(laby.etsiReitit());
 
         System.out.println(laby.etsiParasReitti());
-
+         */
     }
 }

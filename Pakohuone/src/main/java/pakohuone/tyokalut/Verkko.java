@@ -52,7 +52,6 @@ public class Verkko {
         Arrays.fill(onkoYhteysKaytossa, false);
         onkoYhteysKaytossa[0] = true;
         onkoYhteysKaytossa[1] = true;
-        tulostaVerkko();
         luoYhteydetHuoneidenSisalla();
         luoYhteydetLahtoon();
         luoYhteydetMaaliin();
@@ -244,12 +243,12 @@ public class Verkko {
 
     public void avaaYhteyksia(int i) {
         onkoYhteysKaytossa[i] = true;
-        System.out.println("AVATTIIN YHTEYS ALKAEN " + i );
+        //System.out.println("AVATTIIN YHTEYS ALKAEN " + i );
     }
 
     public void suljeYhteys(int i) {
         onkoYhteysKaytossa[i] = false;
-        System.out.println("SULJETTIIN YHTEYS ALKAEN " + i );
+        //System.out.println("SULJETTIIN YHTEYS ALKAEN " + i );
     }
     
     public int getLeveys(){

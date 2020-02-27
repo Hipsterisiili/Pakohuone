@@ -84,7 +84,7 @@ public class Dijkstra {
         for (int i = 0; i < lyhinMatka.length; i++) {
             //System.out.println("i = " + i + " /// " + lyhinMatka[i] + " /// " + onkoYhteysKaytossa[i] + " /// " + kasitelty[i]);
             if (lyhinMatka[i] < pieninMatka
-                    && /*onkoYhteysKaytossa[i]*/ true
+                    && onkoYhteysKaytossa[i]
                     && !kasitelty[i]) {
 
                 pieninMatka = lyhinMatka[i];
