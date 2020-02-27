@@ -100,8 +100,8 @@ public class HuoneidenEtsija {
      * @param alkuy huoneen pienin y-koordinaatti.
      */
     private void taytaHuoneNumeroilla(int alkux, int alkuy) {
-        System.out.println("TÄYTETÄÄN HUONE NUMEROLLA " + (huoneidenMaara + 1));
-        System.out.println("ALKAEN " + alkux + ", " + alkuy);
+        //System.out.println("TÄYTETÄÄN HUONE NUMEROLLA " + (huoneidenMaara + 1));
+        //System.out.println("ALKAEN " + alkux + ", " + alkuy);
         int a = alkux;
         int b = alkuy;
         huoneidenMaara++;
@@ -164,9 +164,9 @@ public class HuoneidenEtsija {
     private void yhdistaAvaimetJaOvet() {
         for (int i = 0; i < 26; i++) {
             if (avaimet[i].getKirjain() != '@') {
-                System.out.println("YHDISTYS");
-                System.out.println("avain: " + avaimet[i].getSijaintiX()
-                        + "," + avaimet[i].getSijaintiY());
+                //System.out.println("YHDISTYS");
+                //System.out.println("avain: " + avaimet[i].getSijaintiX()
+                //        + "," + avaimet[i].getSijaintiY());
                 avaimet[i].setOvi(ovet[i]);
             }
         }

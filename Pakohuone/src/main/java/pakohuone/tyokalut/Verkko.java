@@ -77,7 +77,7 @@ public class Verkko {
         int juoksija = -1;
         for (Huone h : laby.getHuoneet()) {
             juoksija++;
-            System.out.println("\nHuone nro " + juoksija + "\n");
+            //System.out.println("\nHuone nro " + juoksija + "\n");
             for (int i = 0; i < h.getAvaintenMaara(); i++) {
                 a = h.getAvaimet()[i];
                 for (int j = 0; j < h.getAvaintenMaara(); j++) {
@@ -107,7 +107,7 @@ public class Verkko {
      * @param b toinen yhdistettävä avain
      */
     private void yhdistaAvainJaAvain(Avain a, Avain b) {
-        System.out.println("AVAINJAAVAIN");
+        //System.out.println("AVAINJAAVAIN");
         int ax = a.getSijaintiX();
         int ay = a.getSijaintiY();
         int bx = b.getSijaintiX();
@@ -126,7 +126,7 @@ public class Verkko {
      * @param o yhdistettävä ovi
      */
     private void yhdistaAvainJaOvi(Avain a, Ovi o) {
-        System.out.println("AVAINJAOVI");
+        //System.out.println("AVAINJAOVI");
         int ax = a.getSijaintiX();
         int ay = a.getSijaintiY();
         int ox = (o.getAlkuX() + o.getLoppuX()) / 2;
@@ -146,7 +146,7 @@ public class Verkko {
      * @param p toinen yhdistettävä ovi
      */
     private void yhdistaOviJaOvi(Ovi o, Ovi p) {
-        System.out.println("OVIJAOVI");
+        //System.out.println("OVIJAOVI");
         int ox = (o.getAlkuX() + o.getLoppuX()) / 2;
         int oy = (o.getAlkuY() + o.getLoppuY()) / 2;
         int px = (p.getAlkuX() + p.getLoppuX()) / 2;
@@ -166,7 +166,7 @@ public class Verkko {
             int ax = a.getSijaintiX();
             int ay = a.getSijaintiY();
             int aNumero = ((int) a.getKirjain() - 96);
-            System.out.println("Lähtö, avain: "+ax+", "+ay+", "+aNumero);
+            //System.out.println("Lähtö, avain: "+ax+", "+ay+", "+aNumero);
             yhdistaKohteet(ax, ay, aNumero, 1, 1, 0);
         }
         for (Ovi o : h.getOvet()) {
@@ -176,7 +176,7 @@ public class Verkko {
             int ox = (o.getAlkuX() + o.getLoppuX()) / 2;
             int oy = (o.getAlkuY() + o.getLoppuY()) / 2;
             int oNumero = (laby.getKuva()[ox][oy] - 64 + avaintenMaara);
-            System.out.println("Lähtö, ovi: "+ox+", "+oy+", "+oNumero);
+            //System.out.println("Lähtö, ovi: "+ox+", "+oy+", "+oNumero);
             yhdistaKohteet(ox, oy, oNumero, 1, 1, 0);
         }
     }
@@ -190,7 +190,7 @@ public class Verkko {
             int ax = a.getSijaintiX();
             int ay = a.getSijaintiY();
             int aNumero = ((int) a.getKirjain() - 96);
-            System.out.println("Maali, avain: "+ax+", "+ay+", "+aNumero);
+            //System.out.println("Maali, avain: "+ax+", "+ay+", "+aNumero);
             yhdistaKohteet(ax, ay, aNumero, laby.getKorkeus() - 1, laby.getLeveys() - 1, verkko[0].length -1);
         }
         for (Ovi o : h.getOvet()) {
@@ -200,7 +200,7 @@ public class Verkko {
             int ox = (o.getAlkuX() + o.getLoppuX()) / 2;
             int oy = (o.getAlkuY() + o.getLoppuY()) / 2;
             int oNumero = (laby.getKuva()[ox][oy] - 64 + avaintenMaara);
-            System.out.println("Maali, ovi: "+ox+", "+oy+", "+oNumero);
+            //System.out.println("Maali, ovi: "+ox+", "+oy+", "+oNumero);
             yhdistaKohteet(ox, oy, oNumero, laby.getKorkeus() - 1, laby.getLeveys() - 1, verkko[0].length -1);
         }
     }
@@ -218,7 +218,7 @@ public class Verkko {
      */
     private void yhdistaKohteet(int ax, int ay, int an, int bx, int by, int bn) {
         int etaisyys = etaEts.etsiEtaisyys(ax, ay, bx, by);
-        System.out.println("Yhdistetaan " + ax + "," + ay + "," + bx + "," + by);
+        //System.out.println("Yhdistetaan " + ax + "," + ay + "," + bx + "," + by);
         verkko[an][bn] = etaisyys;
         verkko[bn][an] = etaisyys;
     }
@@ -229,7 +229,7 @@ public class Verkko {
      * nykytilassaan.
      */
     public void tulostaVerkko() {
-        System.out.println("avainten määrä = " + avaintenMaara);
+        System.out.println("Tulostetaan verkko:");
         for (int i = 0; i < avaintenMaara + avaintenMaara + 2; i++) {
             for (int j = 0; j < avaintenMaara + avaintenMaara + 2; j++) {
                 System.out.print(verkko[i][j] + " ");
@@ -244,7 +244,7 @@ public class Verkko {
 
     public void avaaYhteyksia(int i) {
         onkoYhteysKaytossa[i] = true;
-        System.out.println("AVATTIIN YHTEYS ALKAEN " + i );
+        //System.out.println("AVATTIIN YHTEYS ALKAEN " + i );
     }
 
     public void suljeYhteys(int i) {

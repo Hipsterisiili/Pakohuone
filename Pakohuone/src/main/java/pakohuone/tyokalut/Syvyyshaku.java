@@ -85,7 +85,7 @@ public class Syvyyshaku {
         for(int i = 0 ; i < taul[0].length - 1 ; i++){
             if(taul[luku][i] > 0 && vierailtu[i] == false){
                 vierailtu[i] = true;
-                rekursio(i);
+                rekursioArvolla(i,arvo);
                 vierailtu[i] = false;
             }
         }

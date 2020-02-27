@@ -43,6 +43,7 @@ public class Labyrintti {
         onkoReittejaEtsitty = false;
         avaintenMaara = huoEts.getAvaintenMaara();
         huoneidenMaara = huoEts.getHuoneidenMaara();
+        huoneidenMaara = huoneTaulukko[korkeus-1][leveys-1];
         reiEts = new ReittienEtsija(this);
     }
 
@@ -56,9 +57,10 @@ public class Labyrintti {
     
     public String etsiReitit(){
         reiEts.etsi();
-        String palautus = "";
+        String palautus = "Löydetyt reitit:";
         jarjestykset = reiEts.getAvainLista();
         for (String sana : jarjestykset){
+            System.out.println("löydetty järjestys " + sana);
             palautus = palautus + "\n" + sana;
         }
         onkoReittejaEtsitty = true;
@@ -67,12 +69,15 @@ public class Labyrintti {
     
     public String etsiParasReitti(){
         System.out.println(jarjestykset[0]);
+        if(jarjestykset.length == 0){
+            return "Ei löydettyjä reittejä";
+        }
         if(jarjestykset[0].equals("temp")){
             return "Ei löydettyjä reittejä, etsi kaikki reitit ensin";
         }
         nre = new NopeimmanReitinEtsija(jarjestykset, this);
         String nopeinReitti = nre.laskeNopeinReitti();
-        System.out.println("Nopein reitti = nopeinReitti");
+        System.out.println("Nopein reitti = " + nopeinReitti);
         return nopeinReitti;
     }
      /**

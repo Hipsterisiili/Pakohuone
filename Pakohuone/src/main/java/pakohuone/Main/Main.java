@@ -87,27 +87,38 @@ public class Main {
             labyrintti[i][0] = '#';
             labyrintti[i][leveys] = '#';
             labyrintti[i][12] = '#';
+            labyrintti[i][5] = '#';
         }
         //Iso kirjain A = ovi ja pieni kirjain a = avain. avain avaa aina
         //sen kirjainta vastaaman ison kirjaimen omaavan oven
         labyrintti[10][2] = 'A';
-        labyrintti[13][12] = 'B';
+        labyrintti[5][12] = 'B';
         labyrintti[11][12] = 'C';
         labyrintti[10][15] = 'D';
-        labyrintti[2][2] = 'b';
+        labyrintti[7][5] = 'E';
+        labyrintti[14][5] = 'F';
+        labyrintti[10][9] = 'G';
+        
+        labyrintti[2][2] = 'a';
         labyrintti[13][4] = 'd';
-        labyrintti[2][16] = 'c';
-        labyrintti[7][7] = 'a';
+        labyrintti[2][7] = 'c';
+        labyrintti[7][7] = 'b';
+        labyrintti[8][4] = 'e';
+        labyrintti[5][9] = 'f';
+        labyrintti[13][1] = 'g';
         
         labyrintti[korkeus][leveys] = '#'; // ASCIIssa 35
 
         laby = new Labyrintti(labyrintti);
-        System.out.println("\nTULOSTETAAN HUONEET:\n");
-        laby.tulostaHuoneet();
+        //System.out.println("\nTULOSTETAAN HUONEET:\n");
+        //laby.tulostaHuoneet();
         System.out.println("\nTULOSTETAAN LABYRINTTI:\n");
         laby.tulostaLabyrintti();
         System.out.println("\nTULOSTETAAN REITIT:\n");
-        System.out.println(laby.etsiReitit());*/
+        System.out.println(laby.etsiReitit());
         
+        System.out.println(laby.etsiParasReitti());
+        
+        */
     }
 }
