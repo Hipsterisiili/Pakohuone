@@ -30,6 +30,7 @@ Sisältää pienet algoritmit joita muut oliot saattavat tarvita usein.
         Kirjainpino.java
         Syvyyshaku.java
         Verkko.java
+        Dijkstra.java
 
 ### Ohjelman toiminta:
 
