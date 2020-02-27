@@ -65,6 +65,7 @@ public class NopeimmanReitinEtsija {
      * kuljetun reitin pituus, jotta "laskeNopeinReitti" osaa unohtaa reitin.
      */
     private long tutkiOnkoNopein(String reitti) {
+        System.out.println("Tutkitaan reitti " + reitti);
         if (reitti == null) {
             return Long.MAX_VALUE;
         }
@@ -90,6 +91,7 @@ public class NopeimmanReitinEtsija {
         // 1) KAIKKI reitit jotka alkavat uuden huoneen avaimista
         // 2) KAIKKI reitit jotka alkavat juuri avatusta ovesta
         tamanPituus = v.etsiReitti(0, (int) reitti.charAt(0) - 96);
+        System.out.println(tamanPituus);
 
         v.avaaYhteyksia((int) reitti.charAt(matkanLopunIndeksi) - 96);
         v.avaaYhteyksia((int) reitti.charAt(matkanLopunIndeksi) - 96 + laby.getAvaintenMaara());
@@ -101,19 +103,21 @@ public class NopeimmanReitinEtsija {
             matkanLopunIndeksi++;
             if (matkanLopunIndeksi >= reitti.length()) {
                 tamanPituus += v.etsiReitti(matkanAlku, (1 + laby.getAvaintenMaara() + laby.getAvaintenMaara()));
+                System.out.println("+ " + v.etsiReitti(matkanAlku, (1 + laby.getAvaintenMaara() + laby.getAvaintenMaara())));
                 break;
             }
             matkanLoppu = (int) reitti.charAt(matkanLopunIndeksi) - 96;
 
             //Etsi lyhin etäisyys nykysijainnista seuraavaan kirjaimeen
             //System.out.println("");
+            System.out.println("+ " +v.etsiReitti(matkanAlku, matkanLoppu));
             tamanPituus += v.etsiReitti(matkanAlku, matkanLoppu);
             v.avaaYhteyksia(matkanLoppu);
             v.avaaYhteyksia(matkanLoppu + laby.getAvaintenMaara());
 
         }
 
-        System.out.println("REITTIÄ " + reitti + " KÄYTY LÄPI, PITUUS: " + tamanPituus + "\n");
+        System.out.println("REITTI " + reitti + " KÄYTY LÄPI, PITUUS: " + tamanPituus + "\n");
         return tamanPituus;
     }
 }

@@ -109,9 +109,9 @@ public class ReittienEtsija {
         Avain avainX;
 
         for (int i = 0; i < l.getAvaintenMaara(); i++) {
-            System.out.println("haj kirj: " + i + " OAT: " + onkoAvainTutkittu[i] + " AT: " +avaimetTarjolla[i] );
+            //System.out.println("haj kirj: " + i + " OAT: " + onkoAvainTutkittu[i] + " AT: " +avaimetTarjolla[i] );
             if (avaimetTarjolla[i] > 0 && !onkoAvainTutkittu[i]) {
-                System.out.println("TUTKIMATON AVAIN");
+                //System.out.println("TUTKIMATON AVAIN");
                 Avain a = l.getAvaimet()[i];
                 if (a.getKirjain() == '@') {
                     return;
@@ -159,20 +159,20 @@ public class ReittienEtsija {
         //System.out.println("SAAVUTETTUA = " + saavutettuA + " ///// SAAVUTETTUB = " + saavutettuB);
 
         if (saavutettuA && saavutettuB) {
-            System.out.println(a + " oli saavutettu, " + b + " oli saavutettu");
+            //System.out.println(a + " oli saavutettu, " + b + " oli saavutettu");
             huoneidenLinkitys(a, b);
             onkoMaaliSaavutettavissa();
             hajaannu();
         } else if (saavutettuA && !saavutettuB) {
-            System.out.println(a + " oli saavutettu, " + b + " ei ollut saavutettu");
+            //System.out.println(a + " oli saavutettu, " + b + " ei ollut saavutettu");
             huoneidenLinkitys(a, b);
             OnJaEi(a, b);
         } else if (!saavutettuA && saavutettuB) {
-            System.out.println(b + " oli saavutettu, " + a + " ei ollut saavutettu");
+            //System.out.println(b + " oli saavutettu, " + a + " ei ollut saavutettu");
             huoneidenLinkitys(a, b);
             OnJaEi(b, a);
         } else if (!saavutettuA && !saavutettuB) {
-            System.out.println(a + " ei ollut saavutettu, " + b + " ei ollut saavutettu");
+            //System.out.println(a + " ei ollut saavutettu, " + b + " ei ollut saavutettu");
             huoneidenLinkitys(a, b);
             EiJaEi(a, b);
         }
@@ -190,14 +190,14 @@ public class ReittienEtsija {
      * @param b Huoneeseen a "yhdistettävän huoneen numero"
      */
     private void OnJaEi(int a, int b) {
-        System.out.println("ONJAEI ALKU (" + a + "," + b + ")");
+        //System.out.println("ONJAEI ALKU (" + a + "," + b + ")");
         for (int i = 0; i < huoneLista[b].getAvaintenMaara(); i++) {
             avaimetTarjolla[(int) huoneLista[b].getAvaimet()[i].getKirjain() - 97]++;
         }
         onkoMaaliSaavutettavissa();
         hajaannu();
         //Poista saavutetuista avaimista äsken lisätyt avaimet
-        System.out.println("ONJAEI LOPPU (" + a + "," + b + ")");
+        //System.out.println("ONJAEI LOPPU (" + a + "," + b + ")");
         for (int i = 0; i < huoneLista[b].getAvaintenMaara(); i++) {
             avaimetTarjolla[(int) huoneLista[b].getAvaimet()[i].getKirjain() - 97]--;
         }
@@ -222,7 +222,7 @@ public class ReittienEtsija {
      * @param b = toisen yhdistettävistä huoneista numero
      */
     private void huoneidenLinkitys(int a, int b) {
-        System.out.println("Yhdistetään " + a + " ja " + b);
+        //System.out.println("Yhdistetään " + a + " ja " + b);
         huoneMatriisi[a][b]++;
         huoneMatriisi[b][a]++;
     }
@@ -235,7 +235,7 @@ public class ReittienEtsija {
      * @param b = toisen irrotettavista huoneista numero
      */
     private void huoneidenIrrotus(int a, int b) {
-        System.out.println("Irrotetaan " + a  + " ja  " + b);
+        //System.out.println("Irrotetaan " + a  + " ja  " + b);
         huoneMatriisi[a][b]--;
         huoneMatriisi[b][a]--;
     }

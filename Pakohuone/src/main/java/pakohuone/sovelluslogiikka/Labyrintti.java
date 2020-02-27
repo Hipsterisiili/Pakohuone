@@ -60,7 +60,7 @@ public class Labyrintti {
         String palautus = "Löydetyt reitit:";
         jarjestykset = reiEts.getAvainLista();
         for (String sana : jarjestykset){
-            System.out.println("löydetty järjestys " + sana);
+            //System.out.println("löydetty järjestys " + sana);
             palautus = palautus + "\n" + sana;
         }
         onkoReittejaEtsitty = true;
