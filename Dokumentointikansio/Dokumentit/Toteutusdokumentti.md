@@ -206,6 +206,8 @@ Reittien etsimiseen kuluu aikaa: 0.988639369 sekuntia
 Reittien vertailuun kuluu aikaa: STACK OVERFLOW
 
 
+RAJOITTEET OHJELMAN SUORITUKSESSA EIVÄT OLE SUORAAN AVAINTEN MÄÄRÄN SEURAUSTA, SILLÄ USEIN SUURIN OSA KAIKISTA AVAINPERMUTAATIOISTA EI OLE MAHDOLLISIA. LABYRINTTI 4 ON RAKENNETTU JUURI SILLÄ AJATUKSELLA ETTÄ LÖYDÄN RAJAN MISSÄ AVASINPERMUTAATIOIDEN MÄÄRÄ ON LIIAN SUURI
+
 ### Parannusajatukset
 
 Vaikka koodi on melko käytännöllistä, kaikkia tietorakenteita ei ole toteutettu optimaalisimmalla tavalla. Mielessäni on kaksi esimerkkiä tästä:
