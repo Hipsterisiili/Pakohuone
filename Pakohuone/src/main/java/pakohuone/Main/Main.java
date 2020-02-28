@@ -76,53 +76,39 @@ public class Main {
         HUOM: Labyrintin huoneiden tulostus on merkitty kommenteiksi, koska se 
         tuottaa melko turhia tulostuksia ohjelman normaalissa käytössä
          */
-
- /*
-        Labyrintti laby = labyrintinLuoja.LuoLabyrintti1();
+        Labyrintti laby;
+        
+        laby = labyrintinLuoja.LuoLabyrintti1();
         //System.out.println("\nTULOSTETAAN HUONEET:\n");
         //laby.tulostaHuoneet();
         System.out.println("\nTULOSTETAAN LABYRINTTI:\n");
         laby.tulostaLabyrintti();
-        System.out.println("\nTULOSTETAAN REITIT");
+        System.out.println("\nETSITÄÄN REITIT");
         System.out.println(laby.etsiReitit());
         System.out.println("\nETSITÄÄN PARAS REITTI");
         System.out.println(laby.etsiParasReitti());
+         
 
-        
         laby = labyrintinLuoja.LuoLabyrintti2();
         //System.out.println("\nTULOSTETAAN HUONEET:\n");
         //laby.tulostaHuoneet();
-        System.out.println("\nTULOSTETAAN LABYRINTTI:\n");
+        //System.out.println("\nTULOSTETAAN LABYRINTTI:\n");
+        //System.out.println(laby.tulostaLabyrintti());
+        System.out.println("\nETSITÄÄN REITIT:\n");
+        System.out.println(laby.etsiReitit());
+        //System.out.println("\nTULOSTETAAN REITIT:\n");
+        //System.out.println(laby.etsiJaTulostaReitit());
+        System.out.println("\nETSITÄÄN PARAS REITTI");
+        System.out.println(laby.etsiParasReitti());
+        
+        
+        laby = labyrintinLuoja.LuoLabyrintti3();
+
         laby.tulostaLabyrintti();
         System.out.println("\nTULOSTETAAN REITIT:\n");
         System.out.println(laby.etsiReitit());
         System.out.println("\nETSITÄÄN PARAS REITTI");
         System.out.println(laby.etsiParasReitti());
          
-        laby = labyrintinLuoja.LuoLabyrintti3();
-        
-        laby.tulostaLabyrintti();
-        System.out.println("\nTULOSTETAAN REITIT:\n");
-        System.out.println(laby.etsiReitit());
-        System.out.println("\nETSITÄÄN PARAS REITTI");
-        System.out.println(laby.etsiParasReitti());
-
-         */
-        Huone h = new Huone();
-        Avain a = new Avain(1, 2, 'a');
-        Avain aa = new Avain(3, 4, 'b');
-        Ovi o = new Ovi(1, 2, 3, 4);
-        Ovi oo = new Ovi(5, 6, 7, 8);
-        h.lisaaAvain(a);
-        h.lisaaAvain(aa);
-
-        System.out.println(h.getAvaintenMaara());
-        System.out.println(h.getAvaimet()[0].getKirjain());
-        System.out.println(h.getAvaimet()[1].getKirjain());
-        System.out.println(aa.getKirjain());
-        h.poistaAvain();
-        System.out.println(h.getAvaintenMaara());
-        System.out.println(h.getAvaimet()[2].getKirjain() == '@'); 
-        System.out.println(aa.getKirjain() == 'b');
     }
 }

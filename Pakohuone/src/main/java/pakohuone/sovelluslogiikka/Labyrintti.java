@@ -1,4 +1,5 @@
 package pakohuone.sovelluslogiikka;
+
 import pakohuone.sovelluslogiikka.Avain;
 import pakohuone.sovelluslogiikka.Huone;
 import pakohuone.sovelluslogiikka.Ovi;
@@ -9,11 +10,12 @@ import pakohuone.algoritmit.NopeimmanReitinEtsija;
 import pakohuone.algoritmit.ReittienEtsija;
 
 public class Labyrintti {
+
     private char[][] kuva;
     private int[][] huoneTaulukko;
     private int leveys, korkeus;
     private int avaintenMaara;
-    private int huoneidenMaara; 
+    private int huoneidenMaara;
     private boolean onkoReittejaEtsitty;
     private HuoneidenEtsija huoEts;
     private ReittienEtsija reiEts;
@@ -22,12 +24,13 @@ public class Labyrintti {
     private Avain[] avaimet;
     private Huone[] huoneet;
     private String[] jarjestykset;
+
     /**
-   * Labyrintti on olio, joka sisältää tiedon kaikesta mitä sen sisällä on,
-   * kuten avaimista, ovista, seinistä, huoneista, sekä avainten ja ovien 
-   * välisistä yhteyksistä. Osan näistä tiedoista olio saa sen sisltämältä
- oliolta HuoneidenEtsija huoEts.
-   */
+     * Labyrintti on olio, joka sisältää tiedon kaikesta mitä sen sisällä on,
+     * kuten avaimista, ovista, seinistä, huoneista, sekä avainten ja ovien
+     * välisistä yhteyksistä. Osan näistä tiedoista olio saa sen sisltämältä
+     * oliolta HuoneidenEtsija huoEts.
+     */
     public Labyrintti(char[][] taulukko) {
         kuva = taulukko;
         huoEts = new HuoneidenEtsija(taulukko);
@@ -43,7 +46,7 @@ public class Labyrintti {
         onkoReittejaEtsitty = false;
         avaintenMaara = huoEts.getAvaintenMaara();
         huoneidenMaara = huoEts.getHuoneidenMaara();
-        huoneidenMaara = huoneTaulukko[korkeus-1][leveys-1];
+        huoneidenMaara = huoneTaulukko[korkeus - 1][leveys - 1];
         reiEts = new ReittienEtsija(this);
     }
 
@@ -54,25 +57,40 @@ public class Labyrintti {
     public int[][] getHuoneTaulukko() {
         return huoneTaulukko;
     }
-    
-    public String etsiReitit(){
+
+    public int etsiReitit() {
+        reiEts.etsi();
+        jarjestykset = reiEts.getAvainLista();
+        int juoksija = 0;
+
+        onkoReittejaEtsitty = true;
+        System.out.println("Reittien määrä laskettu");
+        return jarjestykset.length;
+    }
+
+    public String etsiJaTulostaReitit() {
         reiEts.etsi();
         String palautus = "Löydetyt reitit:";
         jarjestykset = reiEts.getAvainLista();
-        for (String sana : jarjestykset){
+        int juoksija = 0;
+        for (String sana : jarjestykset) {
             //System.out.println("löydetty järjestys " + sana);
-            palautus = palautus + "\n" + sana;
+            palautus += " / " + sana;
+            juoksija++;
+            if (juoksija % 10 == 0) {
+                palautus += "\n";
+            }
         }
         onkoReittejaEtsitty = true;
         return palautus;
     }
-    
-    public String etsiParasReitti(){
+
+    public String etsiParasReitti() {
         System.out.println(jarjestykset[0]);
-        if(jarjestykset.length == 0){
+        if (jarjestykset.length == 0) {
             return "Ei löydettyjä reittejä";
         }
-        if(jarjestykset[0].equals("temp")){
+        if (jarjestykset[0].equals("temp")) {
             return "Ei löydettyjä reittejä, etsi kaikki reitit ensin";
         }
         nre = new NopeimmanReitinEtsija(jarjestykset, this);
@@ -80,38 +98,40 @@ public class Labyrintti {
         System.out.println("Nopein reitti = " + nopeinReitti);
         return nopeinReitti;
     }
-     /**
-   * Tulostaa labyrintin siten, että kussakin ruudussa on merkki, joka
-   * kertoo mitä ruudussa on. Piste tarkoittaa tyhjää tilaa, # seinää,
-   * pieni kirjain tarkoittaa avainta ja iso kirjain ovea
-   */
+
+    /**
+     * Tulostaa labyrintin siten, että kussakin ruudussa on merkki, joka kertoo
+     * mitä ruudussa on. Piste tarkoittaa tyhjää tilaa, # seinää, pieni kirjain
+     * tarkoittaa avainta ja iso kirjain ovea
+     */
     public String tulostaLabyrintti() {
         String palautus = "";
         kuva[1][1] = '+'; // ASCIIssa 43
         kuva[korkeus - 1][leveys - 1] = '*'; // ASCIIssa 42
         palautus = palautus + "x";
-        for(int i = 1; i < leveys; i++) {
+        for (int i = 1; i < leveys; i++) {
             palautus = palautus + " " + i;
         }
         palautus = palautus + "\n";
         for (int i = 0; i < korkeus + 1; i++) {
-            for (int j = 0; j < leveys+1; j++) {
+            for (int j = 0; j < leveys + 1; j++) {
                 palautus = palautus + kuva[i][j] + " ";
             }
-            if(i == 0) {
+            if (i == 0) {
                 palautus = palautus + " y\n";
             } else {
-                palautus = palautus + "  " + i + "\n"; 
+                palautus = palautus + "  " + i + "\n";
             }
         }
         kuva[1][1] = '.';
         kuva[korkeus - 1][leveys - 1] = '.';
         return palautus;
     }
+
     /**
-   * Tulostaa labyrintin siten, että kussakin ruudussa on numero, joka
-   * kertoo mihin huoneeseen kyseinen ruutu kuuluu.
-   */
+     * Tulostaa labyrintin siten, että kussakin ruudussa on numero, joka kertoo
+     * mihin huoneeseen kyseinen ruutu kuuluu.
+     */
     public String tulostaHuoneet() {
         String palautus = "";
         for (int i = 0; i < korkeus + 1; i++) {
@@ -134,13 +154,15 @@ public class Labyrintti {
     public Avain[] getAvaimet() {
         return avaimet;
     }
+
     public Huone[] getHuoneet() {
         return huoneet;
     }
-    
+
     public int getAvaintenMaara() {
         return this.avaintenMaara;
     }
+
     public int getHuoneidenMaara() {
         return this.huoneidenMaara;
     }
@@ -152,5 +174,5 @@ public class Labyrintti {
     public int getKorkeus() {
         return korkeus;
     }
-    
+
 }
