@@ -12,8 +12,10 @@ Tällä hetkellä projektin testikattavuus on kokonaisuudessaan 66%. Tämä luku
 
     pakohuone.Main: testikattavuus: 92%
 
-    pakohuone.algoritmit: testikattavuus: 90%
+    pakohuone.algoritmit: testikattavuus: 99%
 
-    pakohuone.tyokalut: testikattavuus 22%
+    pakohuone.tyokalut: testikattavuus 96%
 
-    pakohuone.sovelluslogiikka: testikattavuus 90%
+    pakohuone.sovelluslogiikka: testikattavuus 99%
+
+Tyokalut-paketin testaus on näyttävästä testiattavuusraportista huolimatta mielestäni vielä erittäin vaiheessa, sillä suurten luokkien "verkkO" ja "dijkstra" testaamiseen ei ole toteutettu pieniä ykisttäistestejä vaan niiden testaus taoahtuu testatessa isompia algoritmeja, jotka käyttävät niitä. 
