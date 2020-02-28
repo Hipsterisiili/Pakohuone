@@ -27,3 +27,5 @@ Seuraava labyrintti (joka on suunniteltu erittäin kuormittavaksi osoittautui li
     # . . . . K . . . . . . O . . #   13
     # . . . . L . . . . . . # . * #   14
     # # # # # # # # # # # # # # # #   15 
+    
+Olen myös testannut viikolla ohjelman suorituskykyä kolmella testilabyrintilla, tästä tarkemmin toteutusdokumentissa.
