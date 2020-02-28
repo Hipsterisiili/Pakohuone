@@ -116,8 +116,11 @@ Luokka LabyrintinLuoja sisältää metodit neljän erilaisen valmiiksi määrite
             # # # # # # # # # # # # # #   12
             
 Labyrintin luomiseen kuluu aikaa: 0.004124888 sekuntia
+
 Reittien etsimiseen kuluu aikaa: 0.000332165 sekuntia
+
 Reittien vertailuun kuluu aikaa: 0.002564198
+
 
 #### Labyrintti 2: 
 (huom. 7 avain/ovi -paria, 6 huonetta, labyrintin koko 14\*19)
@@ -141,8 +144,11 @@ Reittien vertailuun kuluu aikaa: 0.002564198
     # # # # # # # # # # # # # # # # # # # # #   15 
             
 Labyrintin luomiseen kuluu aikaa: 0.000208749E sekuntia
+
 Reittien etsimiseen kuluu aikaa: 0.005819768 sekuntia
+
 Reittien vertailuun kuluu aikaa: 0.014021167 sekuntia
+
 
 #### Labyrintti 3: 
 (huom. 12 avain/ovi -paria, 9 huonetta, labyrintin koko 14\*14)
@@ -166,8 +172,11 @@ Reittien vertailuun kuluu aikaa: 0.014021167 sekuntia
               # # # # # # # # # # # # # # # #   15
             
 Labyrintin luomiseen kuluu aikaa: 0.000242574 sekuntia
+
 Reittien etsimiseen kuluu aikaa: 0.768935346 sekuntia
+
 Reittien vertailuun kuluu aikaa: 0.001724548 sekuntia
+
 
 #### Labyrintti 4: 
 (huom. 10 avain/ovi -paria, 9 huonetta, labyrintin koko 14\*14)
@@ -191,8 +200,11 @@ Reittien vertailuun kuluu aikaa: 0.001724548 sekuntia
     # # # # # # # # # # # # # # # #   15   
             
 Labyrintin luomiseen kuluu aikaa: 0.000098996 sekuntia
+
 Reittien etsimiseen kuluu aikaa: 0.988639369 sekuntia
+
 Reittien vertailuun kuluu aikaa: STACK OVERFLOW
+
 
 ### Parannusajatukset
 
