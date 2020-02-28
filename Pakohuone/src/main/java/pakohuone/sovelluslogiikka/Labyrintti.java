@@ -85,42 +85,46 @@ public class Labyrintti {
    * kertoo mitä ruudussa on. Piste tarkoittaa tyhjää tilaa, # seinää,
    * pieni kirjain tarkoittaa avainta ja iso kirjain ovea
    */
-    public void tulostaLabyrintti() {
+    public String tulostaLabyrintti() {
+        String palautus = "";
         kuva[1][1] = '+'; // ASCIIssa 43
         kuva[korkeus - 1][leveys - 1] = '*'; // ASCIIssa 42
-        System.out.print("x");
+        palautus = palautus + "x";
         for(int i = 1; i < leveys; i++) {
-            System.out.print(" " + i);
+            palautus = palautus + " " + i;
         }
-        System.out.println("");
+        palautus = palautus + "\n";
         for (int i = 0; i < korkeus + 1; i++) {
             for (int j = 0; j < leveys+1; j++) {
-                System.out.print(kuva[i][j] + " ");
+                palautus = palautus + kuva[i][j] + " ";
             }
             if(i == 0) {
-                System.out.println("  y");
+                palautus = palautus + " y\n";
             } else {
-                System.out.println("  " + i);
+                palautus = palautus + "  " + i + "\n"; 
             }
         }
-        kuva[1][1] = '.'; // ASCIIssa 43
-        kuva[korkeus - 1][leveys - 1] = '.'; // ASCIIssa 42
+        kuva[1][1] = '.';
+        kuva[korkeus - 1][leveys - 1] = '.';
+        return palautus;
     }
     /**
    * Tulostaa labyrintin siten, että kussakin ruudussa on numero, joka
    * kertoo mihin huoneeseen kyseinen ruutu kuuluu.
    */
-    public void tulostaHuoneet() {
+    public String tulostaHuoneet() {
+        String palautus = "";
         for (int i = 0; i < korkeus + 1; i++) {
             for (int j = 0; j < leveys + 1; j++) {
                 if (huoneTaulukko[i][j] == 0) {
-                    System.out.print("# ");
+                    palautus = palautus + "# ";
                 } else {
-                    System.out.print(huoneTaulukko[i][j] + " ");
+                    palautus = palautus + huoneTaulukko[i][j] + " ";
                 }
             }
-            System.out.println("");
+            palautus = palautus + "\n";
         }
+        return palautus;
     }
 
     public Ovi[] getOvet() {

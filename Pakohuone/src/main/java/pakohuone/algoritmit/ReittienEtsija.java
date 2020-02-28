@@ -129,7 +129,7 @@ public class ReittienEtsija {
                 huoneLoppu = huonetaulukko[oviX.getLoppuX()][oviX.getLoppuY()];
 
                 sana.add(a.getKirjain());
-                System.out.println("YhdistaHuoneet ------------- ALKU // sana: " + sana.toString());
+                //System.out.println("YhdistaHuoneet ------------- ALKU // sana: " + sana.toString());
                 YhdistaHuoneet(huoneAlku, huoneLoppu);
 
                 //System.out.println("YhdistaHuoneet ------------- LOPPU // sana: " + sana.toString());
@@ -249,17 +249,17 @@ public class ReittienEtsija {
      * olevien huoneiden määrä)
      */
     private boolean onkoMaaliSaavutettavissa() {
-        for(int i = 1 ; i <= huonetaulukko[korkeus-1][leveys-1] ; i++){
+        /*for(int i = 1 ; i <= huonetaulukko[korkeus-1][leveys-1] ; i++){
             for(int j = 1 ; j <= huonetaulukko[korkeus-1][leveys-1] ; j++){
                 System.out.print(huoneMatriisi[i][j] + " ");
             }
             System.out.println("");
-        }
-        System.out.println(syvyyshaku.hae(this.huoneMatriisi));
+        }*/
+        //System.out.println(syvyyshaku.hae(this.huoneMatriisi));
         if (syvyyshaku.hae(this.huoneMatriisi)) {
             avainLista[mahdollisetReitit] = sana.toString();
             mahdollisetReitit++;
-            System.out.println("\n#####\nLÖYTYI UUSI REITTI: " + sana.toString() + "\n#####\n");
+            //System.out.println("\n#####\nLÖYTYI UUSI REITTI: " + sana.toString() + "\n#####\n");
             return true;
         }
         return false;

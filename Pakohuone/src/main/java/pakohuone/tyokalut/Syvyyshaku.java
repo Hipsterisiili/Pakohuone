@@ -82,7 +82,7 @@ public class Syvyyshaku {
         if(onkoTieLoytynyt){
             return;
         }
-        for(int i = 0 ; i < taul[0].length - 1 ; i++){
+        for(int i = 0 ; i < taul[0].length ; i++){
             if(taul[luku][i] > 0 && vierailtu[i] == false){
                 vierailtu[i] = true;
                 rekursioArvolla(i,arvo);

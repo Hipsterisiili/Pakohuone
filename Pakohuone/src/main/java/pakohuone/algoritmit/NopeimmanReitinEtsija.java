@@ -91,33 +91,38 @@ public class NopeimmanReitinEtsija {
         // 1) KAIKKI reitit jotka alkavat uuden huoneen avaimista
         // 2) KAIKKI reitit jotka alkavat juuri avatusta ovesta
         tamanPituus = v.etsiReitti(0, (int) reitti.charAt(0) - 96);
-        System.out.println(tamanPituus);
+        //System.out.println(tamanPituus);
 
         v.avaaYhteyksia((int) reitti.charAt(matkanLopunIndeksi) - 96);
         v.avaaYhteyksia((int) reitti.charAt(matkanLopunIndeksi) - 96 + laby.getAvaintenMaara());
 
-        while (true || tamanPituus < nopeimmanReitinPituus) {
+        while (tamanPituus < nopeimmanReitinPituus) {
             //System.out.println("tutkionkonopein while");
 
             matkanAlku = (int) reitti.charAt(matkanLopunIndeksi) - 96;
             matkanLopunIndeksi++;
             if (matkanLopunIndeksi >= reitti.length()) {
                 tamanPituus += v.etsiReitti(matkanAlku, (1 + laby.getAvaintenMaara() + laby.getAvaintenMaara()));
-                System.out.println("+ " + v.etsiReitti(matkanAlku, (1 + laby.getAvaintenMaara() + laby.getAvaintenMaara())));
+                //System.out.println("+ " + v.etsiReitti(matkanAlku, (1 + laby.getAvaintenMaara() + laby.getAvaintenMaara())));
                 break;
             }
             matkanLoppu = (int) reitti.charAt(matkanLopunIndeksi) - 96;
 
             //Etsi lyhin etäisyys nykysijainnista seuraavaan kirjaimeen
             //System.out.println("");
-            System.out.println("+ " +v.etsiReitti(matkanAlku, matkanLoppu));
+            //System.out.println("+ " +v.etsiReitti(matkanAlku, matkanLoppu));
             tamanPituus += v.etsiReitti(matkanAlku, matkanLoppu);
             v.avaaYhteyksia(matkanLoppu);
             v.avaaYhteyksia(matkanLoppu + laby.getAvaintenMaara());
 
         }
 
-        System.out.println("REITTI " + reitti + " KÄYTY LÄPI, PITUUS: " + tamanPituus + "\n");
+        System.out.print("REITTI " + reitti + " KÄSITELTY! ");
+        if(tamanPituus < nopeimmanReitinPituus){
+            System.out.println(" Uusi nopein reitti, pituus: " + tamanPituus +"\n");
+        } else {
+            System.out.println(" Reitti oli pitempi kuin " + nopeimmanReitinPituus + "\n");
+        }
         return tamanPituus;
     }
 }

@@ -37,7 +37,7 @@ public class Huone {
         if (avaintenMaara <= 0) {
             return;
         }
-        System.out.println("POISTETAAN AVAIN " + avaimet[avaintenMaara - 1].toString());
+        //System.out.println("POISTETAAN AVAIN " + avaimet[avaintenMaara - 1].toString());
         avaintenMaara--;
         avaimet[avaintenMaara] = new Avain(0,0,'@');
     }
@@ -65,7 +65,7 @@ public class Huone {
         if (ovienMaara <= 0) {
             return;
         }
-        System.out.println("POISTETAAN OVI " + (ovet[ovienMaara - 1].toString()));
+        //System.out.println("POISTETAAN OVI " + (ovet[ovienMaara - 1].toString()));
         ovienMaara--;
         ovet[ovienMaara] = new Ovi(0,0,0,0);
     }
