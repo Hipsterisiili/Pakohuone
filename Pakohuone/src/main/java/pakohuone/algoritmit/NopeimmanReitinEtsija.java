@@ -65,7 +65,7 @@ public class NopeimmanReitinEtsija {
      * kuljetun reitin pituus, jotta "laskeNopeinReitti" osaa unohtaa reitin.
      */
     private long tutkiOnkoNopein(String reitti) {
-        System.out.println("Tutkitaan reitti " + reitti);
+        //System.out.println("Tutkitaan reitti " + reitti);
         if (reitti == null) {
             return Long.MAX_VALUE;
         }
@@ -73,7 +73,7 @@ public class NopeimmanReitinEtsija {
             v.suljeYhteys(i);
         }
         v.avaaYhteyksia(0);
-        
+
         //System.out.println("\ntutkiOnkoNopein käy /// sana: " + reitti +  "\n");
         // tamanPituus = matkan pituus tällä hetkellä
         long tamanPituus = 0;
@@ -117,12 +117,13 @@ public class NopeimmanReitinEtsija {
 
         }
 
-        System.out.print("REITTI " + reitti + " KÄSITELTY! ");
+        /*System.out.print("REITTI " + reitti + " KÄSITELTY! ");
         if(tamanPituus < nopeimmanReitinPituus){
             System.out.println(" Uusi nopein reitti, pituus: " + tamanPituus +"\n");
         } else {
             System.out.println(" Reitti oli pitempi kuin " + nopeimmanReitinPituus + "\n");
         }
+         */
         return tamanPituus;
     }
 }

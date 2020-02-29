@@ -64,7 +64,8 @@ public class ReittienEtsija {
     /**
      * Luokka etsii annetusta labyrintistä kaikki mahdolliset järjestykset,
      * joissa avaimia voi poimia, siten että päädytään maaliin.
-     * @ret avainLista = taulukko merkkijonoja, jotka kuvaavat mahdollisia 
+     *
+     * @ret avainLista = taulukko merkkijonoja, jotka kuvaavat mahdollisia
      * ratkaisuja labyrintissa
      */
     public String[] etsi() {
@@ -73,7 +74,7 @@ public class ReittienEtsija {
         //muodossa abcdefg. Taulukossa on oltava tilaa n! missä n = avainten 
         //määrä, sillä pahimmillaan palautettavia avainlistoja voi olla 
         //juuri niin monta
-        this.avainLista = new String[kertoma(l.getAvaintenMaara())];
+        this.avainLista = new String[montakoAvainJartestystaVoiSyntya(l.getAvaintenMaara())];
 
         etsiReitteja();
         return avainLista;
@@ -101,7 +102,7 @@ public class ReittienEtsija {
      * jokaisela vielä huoneessa h olevalle noutamattomalle avaimelle
      */
     private void hajaannu() {
-        //System.out.println("\nHAJAANNU\n");
+        //System.out.println("\nHAJAANNU /// sana: " + sana + "\n");
         int huoneAlku;
         int huoneLoppu;
         int kirjaimenArvo;
@@ -119,9 +120,6 @@ public class ReittienEtsija {
 
                 kirjaimenArvo = (int) a.getKirjain() - 97;
 
-                /*if (avaimetTarjolla[kirjaimenArvo] > 0) {
-                    muuttuukoOnkoAvainTutkittuLopussa = false;
-                }*/
                 onkoAvainTutkittu[kirjaimenArvo] = true;
                 onkoOviAuki[kirjaimenArvo] = true;
                 oviX = l.getOvet()[kirjaimenArvo];
@@ -206,10 +204,10 @@ public class ReittienEtsija {
 
     private void EiJaEi(int a, int b) {
         //System.out.println("EIJAEI ALKU (" + a + "," + b + ")");
-        
+
         onkoMaaliSaavutettavissa();
         hajaannu();
-        
+
         //System.out.println("EIJAEI LOPPU (" + a + "," + b + ")");
     }
 
@@ -226,7 +224,8 @@ public class ReittienEtsija {
         huoneMatriisi[a][b]++;
         huoneMatriisi[b][a]++;
     }
-/**
+
+    /**
      * Metodi "erottaa" kaksi huonetta kutistamalla huoneMatriisi[a][b] arvoa.
      * HUOM: huoneMatriisi[a][b] kertoo montako avointa ovea huoneiden a ja b
      * välillä on
@@ -242,14 +241,15 @@ public class ReittienEtsija {
 
     /**
      * Metodi selvittää onko tällä hetkellä muodostettu kirjainpino sellainen,
-     * jonka avulla labyrintti on mahdollista ratkaista. 
+     * jonka avulla labyrintti on mahdollista ratkaista.
      *
      * @return onko nykyisillä huoneiden yhdistämisillä mahdollista saavuttaa
-     * huone, jossa maali sijaitsee (huone, jonka numero on sama kuin labyrintissä
-     * olevien huoneiden määrä)
+     * huone, jossa maali sijaitsee (huone, jonka numero on sama kuin
+     * labyrintissä olevien huoneiden määrä)
      */
     private boolean onkoMaaliSaavutettavissa() {
-        /*for(int i = 1 ; i <= huonetaulukko[korkeus-1][leveys-1] ; i++){
+        /*Tässä koodi huonematriisin tulostamiseen
+        for(int i = 1 ; i <= huonetaulukko[korkeus-1][leveys-1] ; i++){
             for(int j = 1 ; j <= huonetaulukko[korkeus-1][leveys-1] ; j++){
                 System.out.print(huoneMatriisi[i][j] + " ");
             }
@@ -268,6 +268,7 @@ public class ReittienEtsija {
     public String[] getAvainLista() {
 
         String[] palautus = new String[mahdollisetReitit + 1];
+        palautus[0] = null;
         for (int i = 0; i <= mahdollisetReitit; i++) {
             palautus[i] = avainLista[i];
         }
@@ -275,16 +276,28 @@ public class ReittienEtsija {
     }
 
     /**
-     * Luokka palauttaa parametrina annetun luvun kertoman luku!
+     * Luokka palauttaa parametrina annetun luvun kertoman. Palautusarvoa
+     * käytetään taulukon avainlista koon määrittelemiseen. (kun avaimia on n,
+     * pahimmassa mahdollisessa tapauksessa mahdollisia rtkaisuja on n+1!)
      *
-     * @param luku Luku, jonka kertoma palautetaan
-     * @return parametrin luku kertoma
+     * @param luku = Avainten määrä
+     * @return kuinka monta mahdollista avainjärjestystä n avaimesta voi seurata
      */
-    private int kertoma(int luku) {
-        for (int i = luku - 1; i > 0; i--) {
-            luku = luku * i;
+    private int montakoAvainJartestystaVoiSyntya(int luku) {
+        int palautus = 0;
+        int juoksija;
+        for (int a = 1; a <= luku; a++) {
+            juoksija = luku;
+            for (int i = luku; i >= a; i--) {
+                juoksija = juoksija * i;
+            }
+            if (palautus + juoksija < 0) {
+                return Integer.MAX_VALUE;
+            }
+            palautus += juoksija;
+            //System.out.println("palautus: " + palautus);
         }
-        return luku;
+        return palautus;
     }
 
 }

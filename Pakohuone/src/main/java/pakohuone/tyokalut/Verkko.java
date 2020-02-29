@@ -57,7 +57,7 @@ public class Verkko {
         luoYhteydetMaaliin();
 
         d = new Dijkstra(verkko);
-        tulostaVerkko();
+        //tulostaVerkko();
     }
 
     /**

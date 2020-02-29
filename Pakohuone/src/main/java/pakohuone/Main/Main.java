@@ -77,38 +77,107 @@ public class Main {
         tuottaa melko turhia tulostuksia ohjelman normaalissa käytössä
          */
         Labyrintti laby;
-        
+        long alku;
+        long loppu;
+
+        //LABYRINTTI 1
+        /*
+        alku = System.nanoTime();
         laby = labyrintinLuoja.LuoLabyrintti1();
+        loppu = System.nanoTime();
+        System.out.println("AIKAA LABYRINTIN 1 LUOMISEEN MENI: "+ (((double)(loppu - alku))/ 1000000000));
+        
         //System.out.println("\nTULOSTETAAN HUONEET:\n");
         //laby.tulostaHuoneet();
-        System.out.println("\nTULOSTETAAN LABYRINTTI:\n");
-        laby.tulostaLabyrintti();
+        
+        //System.out.println("\nTULOSTETAAN LABYRINTTI:\n");
+        //laby.tulostaLabyrintti();
+        
+        
         System.out.println("\nETSITÄÄN REITIT");
+        alku = System.nanoTime();
         System.out.println(laby.etsiReitit());
+        loppu = System.nanoTime();
+        System.out.println("AIKAA LABYRINTIN 1 REITTEIHIN MENI: "+ (((double)(loppu - alku))/ 1000000000));
+        
+        
         System.out.println("\nETSITÄÄN PARAS REITTI");
+        alku = System.nanoTime();
         System.out.println(laby.etsiParasReitti());
-         
+        loppu = System.nanoTime();
+        System.out.println("AIKAA LABYRINTIN 1 PARHAAN REITIN ETSINTÄÄN MENI: "+ (((double)(loppu - alku))/ 1000000000));
+        
+        
+        //LABYRINTTI 2 
 
+        
+        alku = System.nanoTime();
         laby = labyrintinLuoja.LuoLabyrintti2();
+        loppu = System.nanoTime();
+        System.out.println("AIKAA LABYRINTIN 2 LUOMISEEN MENI: "+ (((double)(loppu - alku))/ 1000000000));
+        
         //System.out.println("\nTULOSTETAAN HUONEET:\n");
         //laby.tulostaHuoneet();
         //System.out.println("\nTULOSTETAAN LABYRINTTI:\n");
         //System.out.println(laby.tulostaLabyrintti());
+        
         System.out.println("\nETSITÄÄN REITIT:\n");
+        alku = System.nanoTime();
         System.out.println(laby.etsiReitit());
+        loppu = System.nanoTime();
+        System.out.println("AIKAA LABYRINTIN 2 REITTEIHIN MENI: "+ (((double)(loppu - alku))/ 1000000000));
+        
         //System.out.println("\nTULOSTETAAN REITIT:\n");
         //System.out.println(laby.etsiJaTulostaReitit());
         System.out.println("\nETSITÄÄN PARAS REITTI");
+        alku = System.nanoTime();
         System.out.println(laby.etsiParasReitti());
+        loppu = System.nanoTime();
+        System.out.println("AIKAA LABYRINTIN 2 PARHAAN REITIN ETSINTÄÄN MENI: "+ (((double)(loppu - alku))/ 1000000000));
         
-        
+         */
+        // LABYRINTTI 3
+        alku = System.nanoTime();
         laby = labyrintinLuoja.LuoLabyrintti3();
+        loppu = System.nanoTime();
+        System.out.println("AIKAA LABYRINTIN 3 LUOMISEEN MENI: " + (((double) (loppu - alku)) / 1000000000));
 
-        laby.tulostaLabyrintti();
-        System.out.println("\nTULOSTETAAN REITIT:\n");
+        System.out.println("\nTULOSTETAAN LABYRINTTI 3\n");
+        System.out.println(laby.tulostaLabyrintti());
+
+        System.out.println("\nETSITÄÄN REITIT:\n");
+        alku = System.nanoTime();
         System.out.println(laby.etsiReitit());
+        loppu = System.nanoTime();
+        System.out.println("AIKAA LABYRINTIN 3 REITTEIHIN MENI: " + (((double) (loppu - alku)) / 1000000000));
+
         System.out.println("\nETSITÄÄN PARAS REITTI");
+        alku = System.nanoTime();
         System.out.println(laby.etsiParasReitti());
-         
+        loppu = System.nanoTime();
+        System.out.println("AIKAA LABYRINTIN 3 PARHAAN REITIN ETSINTÄÄN MENI: " + (((double) (loppu - alku)) / 1000000000));
+
+        //LABYRINTTI 4
+        /*
+        alku = System.nanoTime();
+        laby = labyrintinLuoja.LuoLabyrintti4();
+        loppu = System.nanoTime();
+        System.out.println("AIKAA LABYRINTIN 4 LUOMISEEN MENI: " + (((double) (loppu - alku)) / 1000000000));
+
+        System.out.println("\nTULOSTETAAN LABYRINTTI 4\n");
+        System.out.println(laby.tulostaLabyrintti());
+
+        System.out.println("\nTULOSTETAAN REITIT:\n");
+        alku = System.nanoTime();
+        System.out.println(laby.etsiReitit());
+        loppu = System.nanoTime();
+        System.out.println("AIKAA LABYRINTIN 4 REITTEIHIN MENI: " + (((double) (loppu - alku)) / 1000000000));
+
+        System.out.println("\nETSITÄÄN PARAS REITTI");
+        alku = System.nanoTime();
+        System.out.println(laby.etsiParasReitti());
+        loppu = System.nanoTime();
+        System.out.println("AIKAA LABYRINTIN 4 PARHAAN REITIN ETSINTÄÄN MENI: " + (((double) (loppu - alku)) / 1000000000));
+         */
     }
 }

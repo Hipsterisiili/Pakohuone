@@ -123,9 +123,66 @@ public class ReittienEtsijaTest {
         assertTrue(laby2.etsiJaTulostaReitit().equals(reittilista));
     }
     
+    @Test
     public void ReittienEtsintaIlmanTulostusta(){
         assertEquals(laby1.etsiReitit(), 11);
         assertEquals(laby2.etsiReitit(), 1031);
-        assertEquals(laby3.etsiReitit(), 195);
+        assertEquals(laby3.etsiReitit(), 47);
+    }
+    
+    @Test
+    public void KunEiMahdollisiaReitteja(){
+        int korkeus = 15;
+        //Luotavan labyrintin leveys
+        int leveys = 15;
+        char[][] labyrintti = new char[korkeus + 1][leveys + 1];
+
+        for (int i = 0; i < korkeus; i++) {
+            for (int j = 0; j < leveys; j++) {
+                labyrintti[i][j] = '.';
+            }
+        }
+        //Luodaan seiniä labyrinttiin, # = seinä Labyrintin reunat ovat aina seiniä
+        for (int i = 0; i < leveys; i++) {
+            labyrintti[0][i] = '#';
+            labyrintti[korkeus][i] = '#';
+            labyrintti[10][i] = '#';
+            labyrintti[6][i] = '#';
+        }
+
+        for (int i = 0; i < korkeus; i++) {
+            labyrintti[i][0] = '#';
+            labyrintti[i][leveys] = '#';
+            labyrintti[i][12] = '#';
+            labyrintti[i][5] = '#';
+        }
+        //Iso kirjain A = ovi ja pieni kirjain a = avain. avain avaa aina
+        //sen kirjainta vastaaman ison kirjaimen omaavan oven
+        labyrintti[1][2] = 'a';
+        labyrintti[2][2] = 'b';
+        labyrintti[3][2] = 'c';
+        labyrintti[4][2] = 'd';
+        labyrintti[5][2] = 'e';
+        labyrintti[1][13] = 'f';
+        labyrintti[2][13] = 'g';
+        labyrintti[3][13] = 'h';
+        labyrintti[4][13] = 'i';
+        labyrintti[5][13] = 'j';
+
+        labyrintti[6][1] = 'A';
+        labyrintti[6][2] = 'B';
+        labyrintti[6][3] = 'C';
+        labyrintti[6][4] = 'D';
+        labyrintti[10][1] = 'E';
+        labyrintti[10][2] = 'F';
+        labyrintti[10][3] = 'G';
+        labyrintti[10][4] = 'H';
+        labyrintti[11][5] = 'I';
+        labyrintti[12][12] = 'J';
+
+        labyrintti[korkeus][leveys] = '#'; // ASCIIssa 35
+
+        Labyrintti l = new Labyrintti(labyrintti);
+        assertTrue(l.etsiReitit() == 0);
     }
 }

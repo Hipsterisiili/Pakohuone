@@ -62,9 +62,11 @@ public class Labyrintti {
         reiEts.etsi();
         jarjestykset = reiEts.getAvainLista();
         int juoksija = 0;
-
+        if(jarjestykset[0]==null){
+            System.out.println("Ei reittejä");
+            return 0;
+        }
         onkoReittejaEtsitty = true;
-        System.out.println("Reittien määrä laskettu");
         return jarjestykset.length;
     }
 
@@ -73,6 +75,10 @@ public class Labyrintti {
         String palautus = "Löydetyt reitit:";
         jarjestykset = reiEts.getAvainLista();
         int juoksija = 0;
+        if(jarjestykset[0]==null){
+            System.out.println("Ei reittejä");
+            return "Ei reittejä";
+        }
         for (String sana : jarjestykset) {
             //System.out.println("löydetty järjestys " + sana);
             palautus += " / " + sana;
@@ -86,12 +92,11 @@ public class Labyrintti {
     }
 
     public String etsiParasReitti() {
-        System.out.println(jarjestykset[0]);
-        if (jarjestykset.length == 0) {
-            return "Ei löydettyjä reittejä";
+        if (!onkoReittejaEtsitty) {
+            return "Reittejä ei ole vielä etsitty";
         }
-        if (jarjestykset[0].equals("temp")) {
-            return "Ei löydettyjä reittejä, etsi kaikki reitit ensin";
+        if (jarjestykset[0] == (null)) {
+            return "Labyrintistä ei löydy reittejä";
         }
         nre = new NopeimmanReitinEtsija(jarjestykset, this);
         String nopeinReitti = nre.laskeNopeinReitti();
