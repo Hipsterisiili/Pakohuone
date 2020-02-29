@@ -95,8 +95,118 @@ eri labyrintilla:
 
 ### Aikavaativuus
 
-Aikavaativuuden määrittely on mielekästä vasta kun koko ohjelman kaikki algoritminen laskenta on toteutettu valmiiksi. Ohjelma tekee paljon työtä, joten aikavaativuuden tulee olla melko löyhä. Nykyisessä tilassaan koodi on niin täynnä debuggauskoodia sekä muuta ylimääräistä laskentaa, että aikavaativuudet hipovat pilviä
+Luokka LabyrintinLuoja sisältää metodit neljän erilaisen valmiiksi määritellyn labyrintin luomiseen. Näistä neljäs on tarkoituksella tehty niin työlääksi, että javan heap space ei riitä sen työsytämiseen. Alla ensin kuva kustakin testilabyrintista ja tämän jälkeen täsmennys niiden aikavaativuuksista.
 
+#### Labyrintti 1: 
+(huom. 4 avain/ovi -paria, 4 huonetta, labyrintin koko 11\*11)
+
+            x 1 2 3 4 5 6 7 8 9 10 11 12
+            # # # # # # # # # # # # # #   y
+            # + . . . . # . . . . . . #   1
+            # . a . . . # . c . . . . #   2
+            # . . . d . B . . . . . . #   3
+            # . . . . . # . . . . . . #   4
+            # # A # # # # # C # # # # #   5
+            # . . . . . # . . . . . . #   6
+            # . . . b . # . . . . . . #   7
+            # . . . . . D . . . . . . #   8
+            # . . . . . # . . . . . . #   9
+            # . . . . . # . . . . . . #   10
+            # . . . . . # . . . . . * #   11
+            # # # # # # # # # # # # # #   12
+            
+Labyrintin luomiseen kuluu aikaa: 0.004124888 sekuntia
+
+Reittien etsimiseen kuluu aikaa: 0.000332165 sekuntia
+
+Reittien vertailuun kuluu aikaa: 0.002564198
+
+
+#### Labyrintti 2: 
+(huom. 7 avain/ovi -paria, 6 huonetta, labyrintin koko 14\*19)
+
+    x 1 2 3 4 5 6 7 8 9 1011121314151617181920
+    # # # # # # # # # # # # # # # # # # # # #   y
+    # + . . . # . . . . . . # . . . . . . . #   1
+    # . a . . # . c . . . . # . . . . . . . #   2
+    # . . . . # . . . . . . # . . . . . . . #   3
+    # . . . . # . . . . . . # . . . . . . . #   4
+    # . . . . # . . . d . . B . . . . . . . #   5
+    # . . . . # . . . . . . # . . . . . . . #   6
+    # . . . . E . b . . . . # . . . . . . . #   7
+    # . . . e # . . . . . . # . . . . . . . #   8
+    # . . . . # . . . . . . # . . . . . . . #   9
+    # # A # # # # # # G # # # # # F # # # # #   10
+    # . . . . # . . . . . . C . . . . . . . #   11
+    # . . . . # . . . . . . # . . . . . . . #   12
+    # g . . f # . . . . . . # . . . . . . . #   13
+    # . . . . D . . . . . . # . . . . . . * #   14
+    # # # # # # # # # # # # # # # # # # # # #   15 
+            
+Labyrintin luomiseen kuluu aikaa: 0.000208749E sekuntia
+
+Reittien etsimiseen kuluu aikaa: 0.005819768 sekuntia
+
+Reittien vertailuun kuluu aikaa: 0.014021167 sekuntia
+
+
+#### Labyrintti 3: 
+(huom. 12 avain/ovi -paria, 9 huonetta, labyrintin koko 14\*14)
+
+              x 1 2 3 4 5 6 7 8 91011121314 15
+              # # # # # # # # # # # # # # # #   y
+              # + . . . # . i . . . . H . . #   1
+              # . c . . # . j . . . . # . . #   2
+              # . . . . C . k e . . . # . . #   3
+              # d . . . # . l . . . . # . . #   4
+              # . . . a # . . . . . . # . . #   5
+              # # # A # # # # # # F # # # K #   6
+              # . . . . D . b . . . . # . . #   7
+              # . . . . # . . . . . . # . . #   8
+              # . . . . # . . . . . . I . . #   9
+              # # B # # # # G # # # # # L # #   10
+              # . . . . # . . . . . . # . . #   11
+              # . . . . # . . . . . . J . . #   12
+              # g . . f E . . . h . . # . . #   13
+              # . . . . # . . . . . . # . * #   14
+              # # # # # # # # # # # # # # # #   15
+            
+Labyrintin luomiseen kuluu aikaa: 0.000242574 sekuntia
+
+Reittien etsimiseen kuluu aikaa: 0.768935346 sekuntia
+
+Reittien vertailuun kuluu aikaa: 0.001724548 sekuntia
+
+
+#### Labyrintti 4: 
+(huom. 10 avain/ovi -paria, 9 huonetta, labyrintin koko 14\*14)
+
+    x 1 2 3 4 5 6 7 8 9 101112131415
+    # # # # # # # # # # # # # # # #   y
+    # + a f . # . . . . . . # . . #   1
+    # . b g . # . . . . . . # . . #   2
+    # . c h m # . . . . . . # . . #   3
+    # . d i . # . . . . . . # . . #   4
+    # . e . . # . . . . . . # . . #   5
+    # A B C D # # # # # # # # # # #   6
+    # . . . . # . . . . . . # . . #   7
+    # . . . . # . . . . . . # . . #   8
+    # . . . . # . . . . . . # . . #   9
+    # E F G H # # # # # # # # # # #   10
+    # . . . . I . . . . . . M . . #   11
+    # . . . . # . . . . . . # . . #   12
+    # . . . . # . . . . . . # . . #   13
+    # . . . . # . . . . . . # . * #   14
+    # # # # # # # # # # # # # # # #   15   
+            
+Labyrintin luomiseen kuluu aikaa: 0.000098996 sekuntia
+
+Reittien etsimiseen kuluu aikaa: 0.988639369 sekuntia
+
+Reittien vertailuun kuluu aikaa: STACK OVERFLOW
+
+
+RAJOITTEET OHJELMAN SUORITUKSESSA EIVÄT OLE SUORAAN AVAINTEN MÄÄRÄN SEURAUSTA, SILLÄ USEIN SUURIN OSA KAIKISTA AVAINPERMUTAATIOISTA EI OLE MAHDOLLISIA. LABYRINTTI 4 ON RAKENNETTU JUURI SILLÄ AJATUKSELLA ETTÄ LÖYDÄN RAJAN MISSÄ AVASINPERMUTAATIOIDEN MÄÄRÄ ON LIIAN SUURI
 
 ### Parannusajatukset
 
