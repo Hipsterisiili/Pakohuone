@@ -110,9 +110,7 @@ public class ReittienEtsija {
         Avain avainX;
 
         for (int i = 0; i < l.getAvaintenMaara(); i++) {
-            //System.out.println("haj kirj: " + i + " OAT: " + onkoAvainTutkittu[i] + " AT: " +avaimetTarjolla[i] );
             if (avaimetTarjolla[i] > 0 && !onkoAvainTutkittu[i]) {
-                //System.out.println("TUTKIMATON AVAIN");
                 Avain a = l.getAvaimet()[i];
                 if (a.getKirjain() == '@') {
                     return;
@@ -154,7 +152,6 @@ public class ReittienEtsija {
     private void YhdistaHuoneet(int a, int b) {
         boolean saavutettuA = syvyyshaku.haeArvolla(huoneMatriisi, a);
         boolean saavutettuB = syvyyshaku.haeArvolla(huoneMatriisi, b);
-        //System.out.println("SAAVUTETTUA = " + saavutettuA + " ///// SAAVUTETTUB = " + saavutettuB);
 
         if (saavutettuA && saavutettuB) {
             //System.out.println(a + " oli saavutettu, " + b + " oli saavutettu");
@@ -248,28 +245,29 @@ public class ReittienEtsija {
      * labyrintissä olevien huoneiden määrä)
      */
     private boolean onkoMaaliSaavutettavissa() {
-        /*Tässä koodi huonematriisin tulostamiseen
-        for(int i = 1 ; i <= huonetaulukko[korkeus-1][leveys-1] ; i++){
-            for(int j = 1 ; j <= huonetaulukko[korkeus-1][leveys-1] ; j++){
-                System.out.print(huoneMatriisi[i][j] + " ");
-            }
-            System.out.println("");
-        }*/
+        //tulostaHuonematriisi();
         //System.out.println(syvyyshaku.hae(this.huoneMatriisi));
         if (syvyyshaku.hae(this.huoneMatriisi)) {
             avainLista[mahdollisetReitit] = sana.toString();
             mahdollisetReitit++;
+            //System.out.println("TUTKIMATON AVAIN");
             //System.out.println("\n#####\nLÖYTYI UUSI REITTI: " + sana.toString() + "\n#####\n");
             return true;
         }
         return false;
     }
 
+    /**
+     * Luokka palauttaa jo aiemmin määritellyn listan mahdollisia ratkaisuja
+     * labyrinttiin merkkijonoina. jos mahdollisia reittejä ei ole, palautetaan 
+     * taulukko, jossa on yksi arvo, null
+     * @return lista ratkaisuja labyrinttiin merkkijonomuodoissa
+     */
     public String[] getAvainLista() {
+        String[] palautus = new String[Math.max(1, mahdollisetReitit)];
 
-        String[] palautus = new String[mahdollisetReitit + 1];
         palautus[0] = null;
-        for (int i = 0; i <= mahdollisetReitit; i++) {
+        for (int i = 0; i < mahdollisetReitit; i++) {
             palautus[i] = avainLista[i];
         }
         return palautus;
@@ -297,7 +295,17 @@ public class ReittienEtsija {
             palautus += juoksija;
             //System.out.println("palautus: " + palautus);
         }
-        return palautus;
+        //Vertailu siltä varalta, että palautus + 1 >= Integer.MAX_VALUE
+        return Math.max(palautus, palautus + 1);
+    }
+
+    private void tulostaHuonematriisi() {
+        for (int i = 1; i <= huonetaulukko[korkeus - 1][leveys - 1]; i++) {
+            for (int j = 1; j <= huonetaulukko[korkeus - 1][leveys - 1]; j++) {
+                System.out.print(huoneMatriisi[i][j] + " ");
+            }
+            System.out.println("");
+        }
     }
 
 }

@@ -15,7 +15,6 @@ public class NopeimmanReitinEtsijaTest {
 
     @Test
     public void NopeinteReittiaEiVoiSelvittaaJosReittejaEiOleLoydetty() {
-
         assertEquals(laby1.etsiParasReitti(),
                 "Reittejä ei ole vielä etsitty");
     }
@@ -24,7 +23,6 @@ public class NopeimmanReitinEtsijaTest {
     public void MikaOnNopeinReittiLaby1() {
 
         laby1.etsiReitit();
-
         assertEquals(laby1.etsiParasReitti(),
                 "\"ad\" \n"
                 + "pituus = 25");
@@ -34,7 +32,6 @@ public class NopeimmanReitinEtsijaTest {
     public void MikaOnNopeinReittiLaby2() {
 
         laby2.etsiReitit();
-
         assertEquals(laby2.etsiParasReitti(),
                 "\"afeb\" \n"
                 + "pituus = 51");
@@ -44,7 +41,6 @@ public class NopeimmanReitinEtsijaTest {
     public void MikaOnNopeinReittiLaby3() {
 
         laby3.etsiReitit();
-
         assertEquals(laby3.etsiParasReitti(),
                 "\"abcfdegi\" \n"
                 + "pituus = 102");
@@ -52,9 +48,9 @@ public class NopeimmanReitinEtsijaTest {
 
     @Test
     public void ReittienEtsintaIlmanTulostusta() {
-        assertEquals(laby1.etsiReitit(), 11);
-        assertEquals(laby2.etsiReitit(), 1031);
-        assertEquals(laby3.etsiReitit(), 47);
+        assertEquals(laby1.etsiReitit(), 10);
+        assertEquals(laby2.etsiReitit(), 1030);
+        assertEquals(laby3.etsiReitit(), 46);
     }
 
     @Test

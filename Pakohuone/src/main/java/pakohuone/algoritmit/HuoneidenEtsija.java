@@ -108,7 +108,9 @@ public class HuoneidenEtsija {
         while ((int) labyrintti[alkux][b] != 35
                 && !(((int) labyrintti[alkux][b] < 91)
                 && (int) labyrintti[alkux][b] > 64)) {
-            while (labyrintti[a][alkuy] != seina) {
+            while (labyrintti[a][alkuy] != seina
+                    && !(((int) labyrintti[a][alkuy] < 91)
+                    && (int) labyrintti[a][alkuy] > 64)) {
                 huoneTaulukko[a][b] = huoneidenMaara;
                 a++;
             }
@@ -146,7 +148,7 @@ public class HuoneidenEtsija {
             arvo -= 65;
             //TARKASTELLAAN KUMPAAN SUUNTAAN OVI AUKEAA
             //System.out.print("TEHDÄÄN OVI " + x + "," + y + ", " + c);
-            if (labyrintti[x - 1][y] == tyhja) {
+            if (labyrintti[x - 1][y] == tyhja || labyrintti[x - 1][y] > 96) {
                 //System.out.println(" x-suunnassa");
                 ovet[arvo] = new Ovi(x - 1, y, x + 1, y);
             } else {

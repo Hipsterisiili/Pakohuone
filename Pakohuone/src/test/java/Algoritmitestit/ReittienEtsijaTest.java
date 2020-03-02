@@ -118,22 +118,20 @@ public class ReittienEtsijaTest {
                 + " / edbac / edbacf / edbacfg / edbacg / edbacgf / edbaf / edbafc / edbafcg / edbafg / edbafgc\n"
                 + " / edbagc / edbagcf / edbagf / edbagfc / edbca / edbcaf / edbcafg / edbcag / edbcagf / edca\n"
                 + " / edcab / edcabf / edcabfg / edcabg / edcabgf / edcaf / edcafb / edcafbg / edcafg / edcafgb\n"
-                + " / edcag / edcagb / edcagbf / edcagf / edcagfb / edcba / edcbaf / edcbafg / edcbag / edcbagf\n"
-                + " / null";
+                + " / edcag / edcagb / edcagbf / edcagf / edcagfb / edcba / edcbaf / edcbafg / edcbag / edcbagf\n";
         assertTrue(laby2.etsiJaTulostaReitit().equals(reittilista));
     }
     
     @Test
     public void ReittienEtsintaIlmanTulostusta(){
-        assertEquals(laby1.etsiReitit(), 11);
-        assertEquals(laby2.etsiReitit(), 1031);
-        assertEquals(laby3.etsiReitit(), 47);
+        assertEquals(laby1.etsiReitit(), 10);
+        assertEquals(laby2.etsiReitit(), 1030);
+        assertEquals(laby3.etsiReitit(), 46);
     }
     
     @Test
     public void KunEiMahdollisiaReitteja(){
         int korkeus = 15;
-        //Luotavan labyrintin leveys
         int leveys = 15;
         char[][] labyrintti = new char[korkeus + 1][leveys + 1];
 
