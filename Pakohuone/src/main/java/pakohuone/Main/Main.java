@@ -7,6 +7,7 @@ import pakohuone.sovelluslogiikka.Huone;
 import pakohuone.sovelluslogiikka.Labyrintti;
 import pakohuone.sovelluslogiikka.Ovi;
 import pakohuone.tyokalut.Syvyyshaku;
+import pakohuone.ui.Kayttoliittyma;
 
 //import pakohuone.sovelluslogiikka.Huone;
 //import pakohuone.tyokalut.EtaisyydenEtsija;
@@ -14,6 +15,8 @@ import pakohuone.tyokalut.Syvyyshaku;
 public class Main {
 
     public static void main(String[] args) {
+        
+        
 
         LabyrintinLuoja labyrintinLuoja = new LabyrintinLuoja();
         /*
@@ -76,10 +79,16 @@ public class Main {
         HUOM: Labyrintin huoneiden tulostus on merkitty kommenteiksi, koska se 
         tuottaa melko turhia tulostuksia ohjelman normaalissa käytössä
          */
+        
+        Kayttoliittyma kayttoliittyma = new Kayttoliittyma();
+        kayttoliittyma.aja();
+        
         Labyrintti laby;
         long alku;
         long loppu;
-
+        
+        
+        /*
         //LABYRINTTI 1 (0.0064 sekuntia)
         alku = System.nanoTime();
         laby = labyrintinLuoja.LuoLabyrintti1();
@@ -173,7 +182,7 @@ public class Main {
         System.out.println("AIKAA LABYRINTIN 4 PARHAAN REITIN ETSINTÄÄN MENI: " + (((double) (loppu - alku)) / 1000000000));
          */
         // TEST TEST
-        
+        /*
         alku = System.nanoTime();
         laby = labyrintinLuoja.LuoTest();
         loppu = System.nanoTime();
@@ -194,6 +203,6 @@ public class Main {
         System.out.println(laby.etsiParasReitti());
         loppu = System.nanoTime();
         System.out.println("AIKAA LABYRINTIN XXX PARHAAN REITIN ETSINTÄÄN MENI: " + (((double) (loppu - alku)) / 1000000000));
-
+         */
     }
 }
