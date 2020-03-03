@@ -148,8 +148,8 @@ public class LabyrintinRakennus {
     }
 
     private void rakennaVaakaseina(int luku) {
-        for (int i = 1; i < korkeus; i++) {
-            taul[i][luku] = '#';
+        for (int i = 1; i < leveys; i++) {
+            taul[luku][i] = '#';
             seinaRuutujenMaara++;
         }
         System.out.println("seinäruutuja on " + seinaRuutujenMaara);
@@ -157,7 +157,7 @@ public class LabyrintinRakennus {
 
     private void rakennaPystyseina(int luku) {
         for (int i = 1; i < korkeus; i++) {
-            taul[luku][i] = '#';
+            taul[i][luku] = '#';
             seinaRuutujenMaara++;
         }
         System.out.println("seinäruutuja on " + seinaRuutujenMaara);
@@ -183,7 +183,7 @@ public class LabyrintinRakennus {
             return false;
         }
         for (int i = 1; i < leveys; i++) {
-            if (taul[luku][i] != '.') {
+            if (taul[luku][i] != '.' && taul[luku][i] != '#') {
                 System.out.println("Seinää ei voi rakentaa avaimen tai oven päälle");
                 return false;
             }
@@ -212,7 +212,7 @@ public class LabyrintinRakennus {
         luoOvi();
         if (!keskeytaAvaimenJaOvenLuonti) {
             taul[avainY][avainX] = avainKirjain;
-            taul[oviX][oviY] = oviKirjain;
+            taul[oviY][oviX] = oviKirjain;
         }
         avaintenMaara++;
 
