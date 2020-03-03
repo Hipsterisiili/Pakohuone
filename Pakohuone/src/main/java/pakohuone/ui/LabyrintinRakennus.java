@@ -149,16 +149,21 @@ public class LabyrintinRakennus {
 
     private void rakennaVaakaseina(int luku) {
         for (int i = 1; i < leveys; i++) {
+            if (taul[luku][i] != '#'){
+                seinaRuutujenMaara++;
+            }
             taul[luku][i] = '#';
-            seinaRuutujenMaara++;
+
         }
         System.out.println("seinäruutuja on " + seinaRuutujenMaara);
     }
 
     private void rakennaPystyseina(int luku) {
         for (int i = 1; i < korkeus; i++) {
+            if (taul[i][luku] != '#'){
+                seinaRuutujenMaara++;
+            }
             taul[i][luku] = '#';
-            seinaRuutujenMaara++;
         }
         System.out.println("seinäruutuja on " + seinaRuutujenMaara);
     }
@@ -169,7 +174,7 @@ public class LabyrintinRakennus {
             return false;
         }
         for (int i = 1; i < korkeus; i++) {
-            if (taul[i][luku] != '.' && taul[i][luku] != '#'){
+            if (taul[i][luku] != '.' && taul[i][luku] != '#') {
                 System.out.println("Seinää ei voi rakentaa avaimen tai oven päälle");
                 return false;
             }
@@ -233,7 +238,7 @@ public class LabyrintinRakennus {
                 komento = lukija.nextLine();
                 if (onkoNumero(komento)) {
                     y = Integer.parseInt(komento);
-                    if (y < korkeus - 1 && y > 0) {
+                    if (y < korkeus && y > 0) {
                         break;
                     } else if (y == 99) {
                         keskeytaAvaimenJaOvenLuonti = true;
@@ -246,7 +251,7 @@ public class LabyrintinRakennus {
                 komento = lukija.nextLine();
                 if (onkoNumero(komento)) {
                     x = Integer.parseInt(komento);
-                    if (x < korkeus - 1 && x > 0) {
+                    if (x < leveys - 1 && x > 0) {
                         break;
                     } else if (x == 99) {
                         keskeytaAvaimenJaOvenLuonti = true;
@@ -276,7 +281,7 @@ public class LabyrintinRakennus {
                 komento = lukija.nextLine();
                 if (onkoNumero(komento)) {
                     y = Integer.parseInt(komento);
-                    if (y < korkeus - 1 && y > 0) {
+                    if (y < korkeus && y > 0) {
                         break;
                     } else if (y == 99) {
                         keskeytaAvaimenJaOvenLuonti = true;
@@ -291,7 +296,7 @@ public class LabyrintinRakennus {
                 komento = lukija.nextLine();
                 if (onkoNumero(komento)) {
                     x = Integer.parseInt(komento);
-                    if (x < korkeus - 1 && x > 0) {
+                    if (x < leveys && x > 0) {
                         break;
                     } else if (x == 99) {
                         keskeytaAvaimenJaOvenLuonti = true;
