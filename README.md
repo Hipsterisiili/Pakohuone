@@ -12,4 +12,7 @@ Pakohuone on sovellus, joka etsii tehokkaasti lyhyimpiä reittejä labyrintistä
 
 [Testausdokumentti](https://github.com/Hipsterisiili/Pakohuone/blob/master/Dokumentointikansio/Dokumentit/Testausdokumentti.md).
 
+[Työaikakirjanpito](https://github.com/Hipsterisiili/Pakohuone/blob/master/Dokumentointikansio/Dokumentit/Tyoaikakirjanpito.md).
+
+
 
