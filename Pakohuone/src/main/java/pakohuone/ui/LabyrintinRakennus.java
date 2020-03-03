@@ -281,7 +281,9 @@ public class LabyrintinRakennus {
                     }
                 }
             }
-            if (taul[y][x] == '.') {
+            if (taul[y][x] == '.' && 
+                    !((y == 1) && (x == 1)) && 
+                    !((y == korkeus) && x == leveys)) {
                 break;
             }
         }
@@ -373,7 +375,7 @@ public class LabyrintinRakennus {
             }
             if (i != 0) {
                 System.out.println(" " + i);
-            } else {
+            } else if ( i != korkeus) {
                 System.out.println(" y");
             }
         }
