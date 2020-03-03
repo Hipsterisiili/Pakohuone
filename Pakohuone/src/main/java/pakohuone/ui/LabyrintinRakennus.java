@@ -29,17 +29,23 @@ public class LabyrintinRakennus {
         seinaRuutujenMaara = 0;
 
         while (true) {
-            System.out.println("Luo seinä(1)\n"
+            System.out.print("Luo seinä(1)\n"
                     + "Luo avain-ovi-pari (2)\n"
-                    + "Valmista labyrintti (3)");
+                    + "Valmista labyrintti (3)\n > ");
             komento = lukija.nextLine();
             if (onkoNumero(komento)) {
-                if (komento.equals("1")) {
-                    luoSeina();
-                } else if (komento.equals("2")) {
-                    luoAvainJaOvi();
-                } else if (komento.equals("3")) {
-                    return new Labyrintti(taul);
+                switch (komento) {
+                    case "1":
+                        luoSeina();
+                        break;
+                    case "2":
+                        luoAvainJaOvi();
+                        break;
+                    case "3":
+                        return new Labyrintti(taul);
+                    default:
+                        vaaranlainenKomento("1, 2, 3");
+                        break;
                 }
                 tulosta();
             }
@@ -48,23 +54,27 @@ public class LabyrintinRakennus {
 
     private void korkeusJaLeveys() {
         String komento;
-        System.out.println("Mikä on halutun labyrintin korkeus? (min 2, max 50)");
+        System.out.print("Mikä on halutun labyrintin korkeus? (min 2, max 50)\n > ");
         while (true) {
             komento = lukija.nextLine();
             if (onkoNumero(komento)) {
                 if (Integer.parseInt(komento) >= 2 && Integer.parseInt(komento) <= 50) {
                     korkeus = Integer.parseInt(komento) + 1;
                     break;
+                } else {
+                    vaaranlainenKomento("2, 3, 4, ..., 49, 50");
                 }
             }
         }
-        System.out.println("Mikä on halutun labyrintin leveys (min 2, max 50)");
+        System.out.print("Mikä on halutun labyrintin leveys (min 2, max 50)\n > ");
         while (true) {
             komento = lukija.nextLine();
             if (onkoNumero(komento)) {
                 if (Integer.parseInt(komento) >= 2 && Integer.parseInt(komento) <= 50) {
                     leveys = Integer.parseInt(komento) + 1;
                     break;
+                } else {
+                    vaaranlainenKomento("2, 3, 4, ..., 49, 50");
                 }
             }
         }
@@ -90,20 +100,26 @@ public class LabyrintinRakennus {
     }
 
     private void luoSeina() {
-        System.out.println("Seinän rakentamisen voi keskeyttää komennolla (99)");
-        System.out.println("Haluatko rakentaa pysty- (1) vai vaakaseinän (2)?");
+        System.out.print("Seinän rakentamisen voi keskeyttää komennolla (99)\n");
+        System.out.print("Haluatko rakentaa pysty- (1) vai vaakaseinän (2)?\n > ");
         String komento;
         int luku;
         while (true) {
             komento = lukija.nextLine();
             if (onkoNumero(komento)) {
                 luku = Integer.parseInt(komento);
-                if (luku == 1) {
-                    luoPystyseina();
-                    return;
-                } else if (luku == 2) {
-                    luoVaakaseina();
-                    return;
+                switch (luku) {
+                    case 1:
+                        luoPystyseina();
+                        return;
+                    case 2:
+                        luoVaakaseina();
+                        return;
+                    case 99:
+                        return;
+                    default:
+                        vaaranlainenKomento("1, 2, 99");
+                        break;
                 }
             }
         }
@@ -112,6 +128,7 @@ public class LabyrintinRakennus {
     private void luoPystyseina() {
         String komento;
         int luku;
+        System.out.print("Anna pystyseinän sijainti x-akselilla\n > ");
         while (true) {
             komento = lukija.nextLine();
             if (onkoNumero(komento)) {
@@ -123,6 +140,8 @@ public class LabyrintinRakennus {
                     return;
                 } else if (luku == 99) {
                     return;
+                } else {
+                    vaaranlainenKomento("2 - " + (leveys - 1) + ", 99");
                 }
             }
         }
@@ -131,6 +150,7 @@ public class LabyrintinRakennus {
     private void luoVaakaseina() {
         String komento;
         int luku;
+        System.out.print("Anna vaakaseinän sijainti y-akselilla\n > ");
         while (true) {
             komento = lukija.nextLine();
             if (onkoNumero(komento)) {
@@ -142,6 +162,8 @@ public class LabyrintinRakennus {
                     return;
                 } else if (luku == 99) {
                     return;
+                } else {
+                    vaaranlainenKomento("2 - " + (korkeus - 1) + ", 99");
                 }
             }
         }
@@ -149,33 +171,30 @@ public class LabyrintinRakennus {
 
     private void rakennaVaakaseina(int luku) {
         for (int i = 1; i < leveys; i++) {
-            if (taul[luku][i] != '#'){
+            if (taul[luku][i] != '#') {
                 seinaRuutujenMaara++;
             }
             taul[luku][i] = '#';
-
         }
-        System.out.println("seinäruutuja on " + seinaRuutujenMaara);
     }
 
     private void rakennaPystyseina(int luku) {
         for (int i = 1; i < korkeus; i++) {
-            if (taul[i][luku] != '#'){
+            if (taul[i][luku] != '#') {
                 seinaRuutujenMaara++;
             }
             taul[i][luku] = '#';
         }
-        System.out.println("seinäruutuja on " + seinaRuutujenMaara);
     }
 
     private boolean voikoPystySeinanRakentaa(int luku) {
         if (taul[1][luku - 1] == '#' || taul[1][luku + 1] == '#') {
-            System.out.println("Seinän viereen ei voi rakentaa toista seinää");
+            System.out.print("Seinän viereen ei voi rakentaa toista seinää\n > ");
             return false;
         }
         for (int i = 1; i < korkeus; i++) {
             if (taul[i][luku] != '.' && taul[i][luku] != '#') {
-                System.out.println("Seinää ei voi rakentaa avaimen tai oven päälle");
+                System.out.print("Seinää ei voi rakentaa avaimen tai oven päälle\n > ");
                 return false;
             }
         }
@@ -184,12 +203,12 @@ public class LabyrintinRakennus {
 
     private boolean voikoVaakaSeinanRakentaa(int luku) {
         if (taul[luku - 1][1] == '#' || taul[luku + 1][1] == '#') {
-            System.out.println("Seinän viereen ei voi rakentaa toista seinää");
+            System.out.print("Seinän viereen ei voi rakentaa toista seinää\n > ");
             return false;
         }
         for (int i = 1; i < leveys; i++) {
             if (taul[luku][i] != '.' && taul[luku][i] != '#') {
-                System.out.println("Seinää ei voi rakentaa avaimen tai oven päälle");
+                System.out.print("Seinää ei voi rakentaa avaimen tai oven päälle\n > ");
                 return false;
             }
         }
@@ -201,8 +220,8 @@ public class LabyrintinRakennus {
             System.out.println("Labyrintissä ei ole seinää, johon oven voisi sijoittaa");
             return;
         }
-        if (avaintenMaara >= 20) {
-            System.out.println("Avaimia on jo liikaa. (max 20)");
+        if (avaintenMaara >= 25) {
+            System.out.println("Avaimia on jo liikaa. (max 25)");
             return;
         }
         keskeytaAvaimenJaOvenLuonti = false;
@@ -229,7 +248,7 @@ public class LabyrintinRakennus {
         String komento;
         int y;
         int x;
-        System.out.println("Anna avaimen" + kirjain + "sijainti korkeussuunnassa");
+        System.out.print("Anna avaimen [" + kirjain + "] sijainti korkeussuunnassa\n > ");
         while (true) {
             while (true) {
                 if (keskeytaAvaimenJaOvenLuonti) {
@@ -242,11 +261,13 @@ public class LabyrintinRakennus {
                         break;
                     } else if (y == 99) {
                         keskeytaAvaimenJaOvenLuonti = true;
+                    } else {
+                        vaaranlainenKomento("2 - " + (korkeus - 1) + ", 99");
                     }
                 }
             }
 
-            System.out.println("Anna avaimen" + kirjain + "sijainti leveyssuunnassa");
+            System.out.print("Anna avaimen [" + kirjain + "] sijainti leveyssuunnassa\n > ");
             while (true) {
                 komento = lukija.nextLine();
                 if (onkoNumero(komento)) {
@@ -255,6 +276,8 @@ public class LabyrintinRakennus {
                         break;
                     } else if (x == 99) {
                         keskeytaAvaimenJaOvenLuonti = true;
+                    } else {
+                        vaaranlainenKomento("2 - " + (leveys - 1) + ", 99");
                     }
                 }
             }
@@ -272,7 +295,7 @@ public class LabyrintinRakennus {
         String komento;
         int y;
         int x;
-        System.out.println("Anna oven" + kirjain + "sijainti korkeussuunnassa");
+        System.out.print("Anna oven [" + kirjain + "] sijainti korkeussuunnassa\n > ");
         while (true) {
             while (true) {
                 if (keskeytaAvaimenJaOvenLuonti) {
@@ -285,10 +308,12 @@ public class LabyrintinRakennus {
                         break;
                     } else if (y == 99) {
                         keskeytaAvaimenJaOvenLuonti = true;
+                    } else {
+                        vaaranlainenKomento("2 - " + (korkeus - 1) + ", 99");
                     }
                 }
             }
-            System.out.println("Anna oven" + kirjain + "sijainti leveyssuunnassa");
+            System.out.print("Anna oven [" + kirjain + "] sijainti leveyssuunnassa\n > ");
             while (true) {
                 if (keskeytaAvaimenJaOvenLuonti) {
                     return;
@@ -300,6 +325,8 @@ public class LabyrintinRakennus {
                         break;
                     } else if (x == 99) {
                         keskeytaAvaimenJaOvenLuonti = true;
+                    } else {
+                        vaaranlainenKomento("2 - " + (leveys - 1) + ", 99");
                     }
                 }
             }
@@ -314,15 +341,15 @@ public class LabyrintinRakennus {
 
     private boolean voikoTahanTehdaOven(int y, int x) {
         if (taul[y][x] != '#') {
-            System.out.println("Ovi täytyy rakentaa seinään");
+            System.out.print("Ovi täytyy rakentaa seinään\n > ");
             return false;
         }
         if (y < 0 || y > korkeus || x < 0 || x > leveys) {
-            System.out.println("Ovi ei saa olla labyrintin reunalla");
+            System.out.print("Ovi ei saa olla labyrintin reunalla\n > ");
             return false;
         }
         if (taul[y - 1][x] == '#' && taul[y][x - 1] == '#') {
-            System.out.println("Ovi ei saa olla kaden seinän risteyksessä");
+            System.out.print("Ovi ei saa olla kaden seinän risteyksessä\n > ");
             return false;
         }
         return true;
@@ -330,12 +357,30 @@ public class LabyrintinRakennus {
 
     private void tulosta() {
         System.out.println("Labyrintti näyttää nyt tältä:");
+        System.out.print("x ");
+        for (int i = 1; i < leveys; i++) {
+            if (i < 10) {
+                System.out.print(i + " ");
+            } else {
+                System.out.print(i);
+            }
+        }
+        System.out.println("");
+        
         for (int i = 0; i <= korkeus; i++) {
             for (int j = 0; j <= leveys; j++) {
                 System.out.print(taul[i][j] + " ");
             }
-            System.out.println();
+            if (i != 0) {
+                System.out.println(" " + i);
+            } else {
+                System.out.println(" y");
+            }
         }
+    }
+
+    private void vaaranlainenKomento(String komennot) {
+        System.out.println("Sallitut komennot: " + komennot + "\n > ");
     }
 
     private static boolean onkoNumero(String sana) {

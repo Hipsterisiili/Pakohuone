@@ -30,6 +30,7 @@ public class Labyrintti {
      * kuten avaimista, ovista, seinistä, huoneista, sekä avainten ja ovien
      * välisistä yhteyksistä. Osan näistä tiedoista olio saa sen sisältämältä
      * oliolta HuoneidenEtsija huoEts.
+     *
      * @param taulukko = taulukko char-arvoja, johon labyrintti perustuu
      */
     public Labyrintti(char[][] taulukko) {
@@ -72,7 +73,7 @@ public class Labyrintti {
         if (jarjestykset[0] == null) {
             System.out.println("Ei reittejä");
             return 0;
-        }
+        };
         return jarjestykset.length;
     }
 
@@ -115,21 +116,23 @@ public class Labyrintti {
         }
         nre = new NopeimmanReitinEtsija(jarjestykset, this);
         String nopeinReitti = nre.laskeNopeinReitti();
-        System.out.println("Nopein reitti = " + nopeinReitti);
+        //System.out.println("Nopein reitti = " + nopeinReitti);
         return nopeinReitti;
     }
+
     /**
-     * Tarkistetaan onko labyrintissä seiniä. HUOM. jos seiniä ei ole, 
-     * tiedetään että labyrinstissä voi kulkea vapaasti lyhintä tietä maaliin
+     * Tarkistetaan onko labyrintissä seiniä. HUOM. jos seiniä ei ole, tiedetään
+     * että labyrinstissä voi kulkea vapaasti lyhintä tietä maaliin
+     *
      * @return onko labyrintissä seiniä
      */
-    private boolean onkoLabyrintissaSeinia(){
+    private boolean onkoLabyrintissaSeinia() {
         int j = 1;
-        for(int i = 1 ; i < korkeus; i++){
-            if(j < leveys -1){
+        for (int i = 1; i < korkeus; i++) {
+            if (j < leveys - 1) {
                 j++;
             }
-            if(kuva[i][j] == '#'){
+            if (kuva[i][j] == '#') {
                 return true;
             }
         }
@@ -168,6 +171,7 @@ public class Labyrintti {
     /**
      * Tulostaa labyrintin siten, että kussakin ruudussa on numero, joka kertoo
      * mihin huoneeseen kyseinen ruutu kuuluu.
+     *
      * @return taulukon huoeet kuvattuna matriisina
      */
     public String tulostaHuoneet() {

@@ -3,7 +3,7 @@ package Algoritmitestit;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import pakohuone.sovelluslogiikka.Labyrintti;
-import pakohuone.Main.LabyrintinLuoja;
+import pakohuone.ui.LabyrintinLuoja;
 
 public class HuoneidenEtsijaTest {
     //testattu käytännössä jo Labyrintti-luokan testeissä, mutta tässä luokassa

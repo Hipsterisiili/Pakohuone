@@ -276,7 +276,11 @@ public class ReittienEtsija {
     /**
      * Luokka palauttaa parametrina annetun luvun kertoman. Palautusarvoa
      * käytetään taulukon avainlista koon määrittelemiseen. (kun avaimia on n,
-     * pahimmassa mahdollisessa tapauksessa mahdollisia rtkaisuja on n+1!)
+     * pahimmassa mahdollisessa tapauksessa mahdollisia ratkaisuja on n+1!)
+     * Jos ratkaisuja on enemmän kuin 650.000.000, reittien etsiminen on
+     * mahdotonta, sillä kun tämä java-sovellus pyrkii pitämään yllä tietoa
+     * yli 650.000.000 mahdollisesta reitistä, virtuaalimuistin rajat tulevat
+     * vastaan.
      *
      * @param luku = Avainten määrä
      * @return kuinka monta mahdollista avainjärjestystä n avaimesta voi seurata
@@ -289,8 +293,8 @@ public class ReittienEtsija {
             for (int i = luku; i >= a; i--) {
                 juoksija = juoksija * i;
             }
-            if (palautus + juoksija < 0) {
-                return Integer.MAX_VALUE;
+            if (palautus + juoksija < 0 || palautus + juoksija >= 650000000) {
+                return (650000000);
             }
             palautus += juoksija;
             //System.out.println("palautus: " + palautus);

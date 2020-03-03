@@ -1,4 +1,4 @@
-package pakohuone.Main;
+package pakohuone.ui;
 
 import pakohuone.sovelluslogiikka.Labyrintti;
 
@@ -246,6 +246,102 @@ public class LabyrintinLuoja {
         labyrintti[10][4] = 'H';
         labyrintti[11][5] = 'I';
         labyrintti[12][12] = 'J';
+
+        labyrintti[korkeus][leveys] = '#'; // ASCIIssa 35
+
+        return new Labyrintti(labyrintti);
+    }
+    
+    public Labyrintti LuoLabyrintti5() {
+
+        /* Syntyy seuraavanlainen labyrintti:
+    x 1 2 3 4 5 6 7 8 9 101112131415
+    # # # # # # # # # # # # # # # #   y
+    # + a f . # . . . . . . # . . #   1
+    # . b g . # . . . . . . # . . #   2
+    # . c h . # . . . . . . # . . #   3
+    # . d i . # . . . . . . # . . #   4
+    # . e j . # . . . . . . # . . #   5
+    # A B C D # # # # # # # # # # #   6
+    # . . . . # . . . . . . # . . #   7
+    # . . . . # . . . . . . # . . #   8
+    # . . . . # . . . . . . # . . #   9
+    # E F G H # # # # # # # # # # #   10
+    # . . . . I . . . . . . J . . #   11
+    # . . . . # . . . . . . # . . #   12
+    # . . . . # . . . . . . # . . #   13
+    # . . . . # . . . . . . # . * #   14
+    # # # # # # # # # # # # # # # #   15      
+
+         */
+        korkeus = 20;
+        //Luotavan labyrintin leveys
+        leveys = 25;
+        char[][] labyrintti = new char[korkeus + 1][leveys + 1];
+
+        for (int i = 0; i < korkeus; i++) {
+            for (int j = 0; j < leveys; j++) {
+                labyrintti[i][j] = '.';
+            }
+        }
+        //Luodaan seiniä labyrinttiin, # = seinä Labyrintin reunat ovat aina seiniä
+        for (int i = 0; i < leveys; i++) {
+            labyrintti[0][i] = '#';
+            labyrintti[korkeus][i] = '#';
+            labyrintti[5][i] = '#';
+            labyrintti[10][i] = '#';
+            labyrintti[15][i] = '#';
+        }
+
+        for (int i = 0; i < korkeus; i++) {
+            labyrintti[i][0] = '#';
+            labyrintti[i][leveys] = '#';
+            labyrintti[i][5] = '#';
+            labyrintti[i][10] = '#';
+            labyrintti[i][15] = '#';
+            labyrintti[i][20] = '#';
+        }
+        //Iso kirjain A = ovi ja pieni kirjain a = avain. avain avaa aina
+        //sen kirjainta vastaaman ison kirjaimen omaavan oven
+        labyrintti[3][3] = 'a';
+        labyrintti[3][8] = 'b';
+        labyrintti[3][13] = 'c';
+        labyrintti[3][18] = 'd';
+        labyrintti[3][23] = 'e';
+        labyrintti[8][3] = 'f';
+        labyrintti[8][8] = 'g';
+        labyrintti[8][13] = 'h';
+        labyrintti[8][18] = 'i';
+        labyrintti[8][23] = 'j';
+        labyrintti[13][3] = 'k';
+        labyrintti[13][8] = 'l';
+        labyrintti[13][13] = 'm';
+        labyrintti[13][18] = 'n';
+        labyrintti[13][23] = 'o';
+        labyrintti[18][3] = 'p';
+        labyrintti[18][8] = 'q';
+        labyrintti[18][13] = 'r';
+        labyrintti[18][18] = 's';
+
+        labyrintti[3][5] = 'A';
+        labyrintti[3][10] = 'B';
+        labyrintti[3][15] = 'C';
+        labyrintti[3][20] = 'D';
+        labyrintti[5][3] = 'E';
+        labyrintti[8][5] = 'F';
+        labyrintti[8][10] = 'G';
+        labyrintti[8][15] = 'H';
+        labyrintti[8][20] = 'I';
+        labyrintti[10][3] = 'J';
+        labyrintti[13][5] = 'K';
+        labyrintti[13][10] = 'L';
+        labyrintti[13][15] = 'M';
+        labyrintti[13][20] = 'N';
+        labyrintti[15][3] = 'O';
+        labyrintti[18][5] = 'P';
+        labyrintti[18][10] = 'Q';
+        labyrintti[18][15] = 'R';
+        labyrintti[18][20] = 'S';
 
         labyrintti[korkeus][leveys] = '#'; // ASCIIssa 35
 

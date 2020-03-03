@@ -3,7 +3,7 @@ package Algoritmitestit;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
-import pakohuone.Main.LabyrintinLuoja;
+import pakohuone.ui.LabyrintinLuoja;
 import pakohuone.sovelluslogiikka.Labyrintti;
 
 public class ReittienEtsijaTest {

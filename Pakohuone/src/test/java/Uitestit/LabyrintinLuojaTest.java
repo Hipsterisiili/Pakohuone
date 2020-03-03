@@ -1,7 +1,9 @@
+package Uitestit;
+
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-import pakohuone.Main.LabyrintinLuoja;
+import pakohuone.ui.LabyrintinLuoja;
 import pakohuone.sovelluslogiikka.Labyrintti;
 
 public class LabyrintinLuojaTest {

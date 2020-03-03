@@ -1,7 +1,6 @@
 package pakohuone.ui;
 
 import java.util.Scanner;
-import pakohuone.Main.LabyrintinLuoja;
 import pakohuone.sovelluslogiikka.Labyrintti;
 
 public class Kayttoliittyma {
@@ -42,14 +41,17 @@ public class Kayttoliittyma {
         Ohjelman suoritus päättyy
      */
     public void aja() {
+        
+        uusiLabyrintti();
+        
         String komento;
         while (!keskeytys) {
-            System.out.println("1 = luo\n"
+            System.out.print("1 = luo\n"
                     + "2 = tulosta\n"
                     + "3 = etsi reitit\n"
                     + "4 = etsi paras reitti\n"
                     + "5 = aikavaativuusilmoitukset päälle/pois\n"
-                    + "6 = keskeytä");
+                    + "6 = keskeytä\n > ");
             komento = lukija.nextLine();
             if (komento.equals("1")) {
                 uusiLabyrintti();
@@ -64,15 +66,15 @@ public class Kayttoliittyma {
             } else if (komento.equals("6")) {
                 lopetus();
             } else {
-                vaaranlainenKomento();
+                vaaranlainenKomento("1, 2, 3, 4, 5, 6");
             }
         }
     }
 
     private void uusiLabyrintti() {
-        System.out.println("Minkälainen labyrintti luodaan?\n"
-                + "1 - 3 = valmiita labyrinttejä\n"
-                + "4 = luo oma labyrintti");
+        System.out.print("Minkälainen labyrintti luodaan?\n"
+                + "1 - 5 = valmiita labyrinttejä\n"
+                + "6 = luo oma labyrintti\n > ");
         reititEtsitty = false;
         
         String komento;
@@ -96,9 +98,21 @@ public class Kayttoliittyma {
                     break;
                 } else if (komento.equals("4")) {
                     alku = System.nanoTime();
+                    laby = automaatti.LuoLabyrintti4();
+                    loppu = System.nanoTime();
+                    break;
+                } else if (komento.equals("5")) {
+                    alku = System.nanoTime();
+                    laby = automaatti.LuoLabyrintti5();
+                    loppu = System.nanoTime();
+                    break;
+                } else if (komento.equals("6")) {
+                    alku = System.nanoTime();
                     laby = rakennus.aja();
                     loppu = System.nanoTime();
                     break;
+                } else {
+                    vaaranlainenKomento("1, 2, 3, 4, 5, 6");
                 }
             }
         }
@@ -106,7 +120,7 @@ public class Kayttoliittyma {
     }
 
     private void labyrintinTulostus() {
-        System.out.println("Tulostetaanko labyrintti (1) vai huoneet (2)?");
+        System.out.print("Tulostetaanko labyrintti (1) vai huoneet (2)?\n > ");
         String komento;
         while (true) {
             komento = lukija.nextLine();
@@ -117,6 +131,8 @@ public class Kayttoliittyma {
                 } else if (komento.equals("2")) {
                     System.out.println(laby.tulostaHuoneet());
                     return;
+                } else {
+                    vaaranlainenKomento("1, 2");
                 }
             }
         }
@@ -124,8 +140,8 @@ public class Kayttoliittyma {
 
     private void reittienEtsinta() {
         reititEtsitty = true;
-        System.out.println("Reittien määrä (1) vai kaikki reitit (2)? "
-                + "\n(huom. 2 vaatii enemmän aikaa)");
+        System.out.print("Reittien määrä (1) vai kaikki reitit (2)? "
+                + "\n(huom. 2 vaatii enemmän aikaa)\n > ");
         
         String teksti;
         String komento;
@@ -146,6 +162,8 @@ public class Kayttoliittyma {
                     System.out.println(teksti);
                     aikavaativuus();
                     return;
+                } else {
+                    vaaranlainenKomento("1, 2");
                 }
             }
         }
@@ -176,9 +194,8 @@ public class Kayttoliittyma {
         keskeytys = true;
     }
 
-    private void vaaranlainenKomento() {
-        System.out.println("Tämä komento ei kelpaa.");
-        System.out.println("Sallitut komennot: 1, 2, 3, 4, 5");
+    private void vaaranlainenKomento(String komennot) {
+        System.out.println("Sallitut komennot: "+ komennot + "\n > ");
     }
 
     private void aikavaativuus() {

@@ -2,6 +2,7 @@ package pakohuone.Main;
 //import pakohuone.sovelluslogiikka.Avain;
 //import pakohuone.sovelluslogiikka.Ovi;
 
+import pakohuone.ui.LabyrintinLuoja;
 import pakohuone.sovelluslogiikka.Avain;
 import pakohuone.sovelluslogiikka.Huone;
 import pakohuone.sovelluslogiikka.Labyrintti;
