@@ -5,22 +5,37 @@ import pakohuone.sovelluslogiikka.Labyrintti;
 
 public class LabyrintinRakennus {
 
+    //taul = taulukko jota lopulta käytetään palautettavan labyrintin parametrina
     private char[][] taul;
+    //korkeus, leveys = taul:n mitat
     private int korkeus;
     private int leveys;
+    // avaintenMaara, seinaRuutujenMaara = labyrintin avainten ja seinien määrä
     private int avaintenMaara;
     private int seinaRuutujenMaara;
+    // lukija = Scanner joka lukee käyttäjän merkkijonosyötteitä
     private Scanner lukija;
+    // keskeytaAvaimenJaOvenLuonti = haluaako käyttäjä keskeyttää avaimen ja oven luonnin
     private boolean keskeytaAvaimenJaOvenLuonti;
+    // Arvot, joiden avulla uusia avaimia ja ovia lisätään taul:n
     private int avainX, avainY, oviX, oviY;
     private char avainKirjain, oviKirjain;
-    //private long alku;
-    //private long loppu;
 
+    /**
+     * LabyrintinRakennus on käyttöliittymäolio, joka ottaa käyttäjältä vastaan
+     * merkkijonokomentoja ja rakentaa niiden perusteella labyrintin.
+     */
     public LabyrintinRakennus() {
         lukija = new Scanner(System.in);
     }
 
+    /**
+     * Metodi pitää labyrinttia rakenavan käyttöliittymän käynnissä kunnes
+     * käyttäjä tappaa sen komennolla 3. Komennolla 1 aloitetaan seinän
+     * luominen. Komennolla w aloitetaan avaimen ja oven luominen. kunkin
+     * komennon toteuttamisen jälkeen tulostetaan miltä labyrintti näyttäisi,
+     * jos se luotaisiin nyt.
+     */
     public Labyrintti aja() {
         korkeusJaLeveys();
         alustaLabyrintti();
@@ -52,6 +67,9 @@ public class LabyrintinRakennus {
         }
     }
 
+    /**
+     * Metodi määrittelee luotavan labyrintin mitat.
+     */
     private void korkeusJaLeveys() {
         String komento;
         System.out.print("Mikä on halutun labyrintin korkeus? (min 2, max 50)\n > ");
@@ -80,6 +98,9 @@ public class LabyrintinRakennus {
         }
     }
 
+    /**
+     * Luokka luo taulukon char annettujen korkeuden ja leveyden.
+     */
     private void alustaLabyrintti() {
         taul = new char[korkeus + 1][leveys + 1];
         for (int i = 1; i < korkeus; i++) {
@@ -99,6 +120,11 @@ public class LabyrintinRakennus {
         tulosta();
     }
 
+    /**
+     * Kun metodissa aja() annetaan komento 1: Luokka aloittaa seinän luomisen
+     * taulukkoon taul. Käyttäjä saa päättää luodaanko pysty- (1) vai vaakasuora
+     * seinä (2). Komennolla 99 keskeytetään seinän luominen
+     */
     private void luoSeina() {
         System.out.print("Seinän rakentamisen voi keskeyttää komennolla (99)\n");
         System.out.print("Haluatko rakentaa pysty- (1) vai vaakaseinän (2)?\n > ");
@@ -125,6 +151,12 @@ public class LabyrintinRakennus {
         }
     }
 
+    /**
+     * Kun metodissa luoSeina() annetaan komento 1: Luokka aloittaa pystyseinän
+     * luomisen taulukkoon taul. Käyttäjä saa päättää mihin seinä luodaan.
+     * Tarkistetaan saako tähän rakentaa seinän. Jos saa, aloitetaan
+     * rakentaminen, Komennolla 99 keskeytetään seinän luominen
+     */
     private void luoPystyseina() {
         String komento;
         int luku;
@@ -147,6 +179,12 @@ public class LabyrintinRakennus {
         }
     }
 
+    /**
+     * Kun metodissa luoSeina() annetaan komento 2: Luokka aloittaa vaakaseinän
+     * luomisen taulukkoon taul. Käyttäjä saa päättää mihin seinä luodaan.
+     * Tarkistetaan saako tähän rakentaa seinän. Jos saa, aloitetaan
+     * rakentaminen, Komennolla 99 keskeytetään seinän luominen
+     */
     private void luoVaakaseina() {
         String komento;
         int luku;
@@ -169,6 +207,11 @@ public class LabyrintinRakennus {
         }
     }
 
+    /**
+     * Lisätään merkit '#' labyrinttiin siten että halutussa kohdassa on seinä.
+     *
+     * @param Integer luku = mille korkeudelle seinä rakennetaan labyrinttiin
+     */
     private void rakennaVaakaseina(int luku) {
         for (int i = 1; i < leveys; i++) {
             if (taul[luku][i] != '#') {
@@ -178,6 +221,11 @@ public class LabyrintinRakennus {
         }
     }
 
+    /**
+     * Lisätään merkit '#' labyrinttiin siten että halutussa kohdassa on seinä.
+     *
+     * @param Integer luku = Mille leveydelle seinä rakennetaan labyrinttiin.
+     */
     private void rakennaPystyseina(int luku) {
         for (int i = 1; i < korkeus; i++) {
             if (taul[i][luku] != '#') {
@@ -187,6 +235,14 @@ public class LabyrintinRakennus {
         }
     }
 
+    /**
+     * Tarkistetaan onko halutun seinän rakentaminen mahdollista. Jos seinä on
+     * toisen samansuuntaisen seinän vieressä, ei voi Jos seinän tiellä on ovi
+     * tai avain, ei voi. Muuten voi.
+     *
+     * @param Integer luku = Mille leveydelle seinä halutaan rakentaa?
+     * @return boolean Voiko tämän seinän rakentaa?
+     */
     private boolean voikoPystySeinanRakentaa(int luku) {
         if (taul[1][luku - 1] == '#' || taul[1][luku + 1] == '#') {
             System.out.print("Seinän viereen ei voi rakentaa toista seinää\n > ");
@@ -201,6 +257,14 @@ public class LabyrintinRakennus {
         return true;
     }
 
+    /**
+     * Tarkistetaan onko halutun seinän rakentaminen mahdollista. Jos seinä on
+     * toisen samansuuntaisen seinän vieressä, ei voi Jos seinän tiellä on ovi
+     * tai avain, ei voi Muuten voi.
+     *
+     * @param Integer luku = mille korkeudelle seinä halutaan rakentaa.
+     * @return boolean voiko tämän seinän rakentaa.
+     */
     private boolean voikoVaakaSeinanRakentaa(int luku) {
         if (taul[luku - 1][1] == '#' || taul[luku + 1][1] == '#') {
             System.out.print("Seinän viereen ei voi rakentaa toista seinää\n > ");
@@ -215,6 +279,13 @@ public class LabyrintinRakennus {
         return true;
     }
 
+    /**
+     * Kun metodissa aja() annetaan komento 2: Jos seinien ovien rakentaminen on
+     * mahdotonta tai avaimia on jo liikaa, ei tehdä mitään. Luokka aloittaa
+     * avaimen ja oven luomisen taulukkoon taul. Lopuksi kutsutaan luoAvain() ja
+     * luoOvi(). Jos on annettu sopivat arvot, avain ja ovi luodaan. Tämän voi
+     * keskeyttää milloin vain komennolla 99.
+     */
     private void luoAvainJaOvi() {
         if (seinaRuutujenMaara <= 0) {
             System.out.println("Labyrintissä ei ole seinää, johon oven voisi sijoittaa");
@@ -243,6 +314,11 @@ public class LabyrintinRakennus {
         tulosta();
     }
 
+    /**
+     * Metodi kysyy käyttäjältä mihin koordinaatteihin avain halutaan luoda. Jos
+     * ovea ei voi luoda näihin koordinaatteihin, pyydetään uudet koordinaatit.
+     * Prosessin voi keskeyttää milloin vain komennolla 99.
+     */
     private void luoAvain() {
         char kirjain = (char) (avaintenMaara + 97);
         String komento;
@@ -281,9 +357,9 @@ public class LabyrintinRakennus {
                     }
                 }
             }
-            if (taul[y][x] == '.' && 
-                    !((y == 1) && (x == 1)) && 
-                    !((y == korkeus) && x == leveys)) {
+            if (taul[y][x] == '.'
+                    && !((y == 1) && (x == 1))
+                    && !((y == korkeus) && x == leveys)) {
                 break;
             }
         }
@@ -292,6 +368,11 @@ public class LabyrintinRakennus {
         avainKirjain = kirjain;
     }
 
+    /**
+     * Metodi kysyy käyttäjältä mihin koordinaatteihin ovi halutaan luoda. Jos
+     * ovea ei voi rakentaa näihin koordinaatteihin pyydetään uudet
+     * koordinaatit. Prosessin voi keskeyttää milloin vain komennolla 99.
+     */
     private void luoOvi() {
         char kirjain = (char) (avaintenMaara + 65);
         String komento;
@@ -341,6 +422,15 @@ public class LabyrintinRakennus {
         oviKirjain = kirjain;
     }
 
+    /**
+     * Metodi selvittää onko parametreinä annettuihin koordinaatteihin sellittua
+     * rakentaa ovi (eli onko annettu ruutu seinässä ja sen molemmilla puolilla
+     * on eri huone.
+     *
+     * @param Integer y = halutun oven sijainti korkeussuunnassa.
+     * @param Integer x = halutun oven sijainti leveyssuunnassa.
+     * @return boolean onko haluttu ovi mahdollista rakentaa.
+     */
     private boolean voikoTahanTehdaOven(int y, int x) {
         if (taul[y][x] != '#') {
             System.out.print("Ovi täytyy rakentaa seinään\n > ");
@@ -357,6 +447,10 @@ public class LabyrintinRakennus {
         return true;
     }
 
+    /**
+     * Metodi tulostaa sen minkälainen labyrintti syntyisi, jos se luotaisiin
+     * nyt.
+     */
     private void tulosta() {
         System.out.println("Labyrintti näyttää nyt tältä:");
         System.out.print("x ");
@@ -368,23 +462,41 @@ public class LabyrintinRakennus {
             }
         }
         System.out.println("");
-        
+
         for (int i = 0; i <= korkeus; i++) {
             for (int j = 0; j <= leveys; j++) {
-                System.out.print(taul[i][j] + " ");
+                if (i == 1 & j == 1) {
+                    System.out.println("+ ");
+                } else if (i == korkeus && j == leveys) {
+                    System.out.println("* ");
+                } else {
+                    System.out.print(taul[i][j] + " ");
+                }
             }
             if (i != 0) {
                 System.out.println(" " + i);
-            } else if ( i != korkeus) {
+            } else if (i != korkeus) {
                 System.out.println(" y");
             }
         }
     }
 
+    /**
+     * Kun jossakin vaiheessa käyttäjä on antanut vääränlaisen komennon
+     * Tulostetaan lista oikeista komennoista
+     * @param String komennot = sallitut komennot listattuna merkkijonoon.
+     */
     private void vaaranlainenKomento(String komennot) {
         System.out.println("Sallitut komennot: " + komennot + "\n > ");
     }
-
+    
+    /**
+     * Kun käyttäjä on antanut jonkin komennon
+     * Tarkastetaan onko annettu komento tulkittavissa (eli onko se numero)
+     *
+     * @param String sana = tarkasteltava sana.
+     * @ret Boolean totuus = Oliko sana muutettavissa lukuarvoksi.
+     */
     private static boolean onkoNumero(String sana) {
         if (sana == null) {
             return false;

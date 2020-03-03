@@ -5,45 +5,41 @@ import pakohuone.sovelluslogiikka.Labyrintti;
 
 public class Kayttoliittyma {
 
+    // laby = Tällä hetkellä tarkasteltavissa oleva labyrintti
     private Labyrintti laby;
+    // automaatti = olio joka luo ennaltamuotoiltuja labyrintteja
     private LabyrintinLuoja automaatti = new LabyrintinLuoja();
+    // rakennus = olio jonka avulla käyttäjä voi luoda omia labyrintteja
     private LabyrintinRakennus rakennus = new LabyrintinRakennus();
+    // reititEtsitty = onko labyrintista vielä etsitty kaikki mahdolliset reitit
     private boolean reititEtsitty = false;
+    // keskeytys = pyöritetäänkö käyttöliittymää vielä vai onko keskeytys käsketty
     private boolean keskeytys = false;
+    // halutaankoAikaIlmoituksia = tulostetaanko algoritmin suorituksen jälkeen kulunut aika
     private boolean halutaanAikaIlmoituksia = false;
+    // loppu, alku ovat arvoja joiden avulla aikavaativuuksia arvioidaan
     private long alku;
     private long loppu;
+    // lukija = Scanner, jolla luetaan käyttäjältä merkkijonosyötteitä.
     private Scanner lukija = new Scanner(System.in);
 
+    /**
+     * Kayttoliittyma on luokka, joka toimii rajapintana sovelluksen laskennan
+     * ja käyttäjän välillä. Käyttäjä kontrolloi sovelluksen toimintaa antamalla
+     * näppäimistöllä numeroita Käyttoliittyman lukija-Scannerille
+     */
     public Kayttoliittyma() {
 
     }
 
-    /* 
-    1 = Luo uusi labyrintti jota tutkitaan. Tutkittavana voi olla yksi 
-    labyrintti kerrallaan, eli se joka on viimeksi luotu.
-        1 = valmis1
-        2 = valmis2
-        3 = valmis3
-        4 = valmis4
-        5 = rakenna itse
-            -> Käynnistä rakennus
-    2 = Tulosta labyrintti
-        1 = Tulostetaan labyrintin sisältö
-        2 = Tulostetaan labyrintin huoneet
-    3 = Etsi reitit 
-        1 = reitien määrä
-        2 = reittien tulostus
-    4 = Etsi lyhin reitti
-        Tulostetaan lyhin reitti
-        Tulostetaan lyhimmän reitin pituus
-    5 = Keskeytä
-        Ohjelman suoritus päättyy
+    /**
+     * Ajetaan käyttöliittymää. Luokka tarkastelee käyttäjän antamia komentoja
+     * ja aloittaa niitä vastaavat toimenpiteet.
      */
     public void aja() {
-        
+
         uusiLabyrintti();
-        
+
         String komento;
         while (!keskeytys) {
             System.out.print("1 = luo\n"
@@ -71,12 +67,18 @@ public class Kayttoliittyma {
         }
     }
 
+    /**
+     * Kun luokassa aja() annettiin komento 1: Kysytään käyttäjältä minkälainen
+     * labyrintti luodaan. Vaihtoehdot 1-5 ovat valmiita
+     * "LabyrintinLuoja"-luokassa rakennettavia labyrintteja. Vaihtoehto 6
+     * aloittaa labyrintin rakentamisen käsin käyttäjän toimesta
+     */
     private void uusiLabyrintti() {
         System.out.print("Minkälainen labyrintti luodaan?\n"
                 + "1 - 5 = valmiita labyrinttejä\n"
                 + "6 = luo oma labyrintti\n > ");
         reititEtsitty = false;
-        
+
         String komento;
         while (true) {
             komento = lukija.nextLine();
@@ -119,6 +121,13 @@ public class Kayttoliittyma {
         aikavaativuus();
     }
 
+    /**
+     * Kun metodissa aja() annettiin komento 2: Kysytään käyttäjältä
+     * tulostetaanko koko labyrintti vai annetaanko raportti huoneiden
+     * nimeämisestä (periaatteessa huondien nimet on käyttäjälle turhaa tietoa,
+     * mutta tulostus toimii todisteena sille, että HuoneidenEtsinta.etsi() on
+     * tehty labyrinttiä luodessa.
+     */
     private void labyrintinTulostus() {
         System.out.print("Tulostetaanko labyrintti (1) vai huoneet (2)?\n > ");
         String komento;
@@ -138,11 +147,16 @@ public class Kayttoliittyma {
         }
     }
 
+    /**
+     * Kun metodissa aja() annettiin komento 3: Kysytään käyttäjältä
+     * tulostetaanko maaliin johtavien reittien määrä vai tulostetaanko reitit
+     * maaliin ja tämän jälkeen etsitään ja tulostetaan mitä käyttäjä pyysi
+     */
     private void reittienEtsinta() {
         reititEtsitty = true;
         System.out.print("Reittien määrä (1) vai kaikki reitit (2)? "
                 + "\n(huom. 2 vaatii enemmän aikaa)\n > ");
-        
+
         String teksti;
         String komento;
         while (true) {
@@ -169,6 +183,11 @@ public class Kayttoliittyma {
         }
     }
 
+    /**
+     * Kun metodissa aja() annettiin komento 4: Etsitään ja tulostetaan lyhin
+     * reitti labyrintista. Jos reittejä ei ole vielä etsitty alkuunkaan,
+     * selvitetään ensin kaikki reitit. Tämä ei vaikuta aikavaativuusraporttiin.
+     */
     private void lyhimmanReitinEtsinta() {
         if (!reititEtsitty) {
             laby.etsiReitit();
@@ -180,6 +199,11 @@ public class Kayttoliittyma {
         aikavaativuus();
     }
 
+    /**
+     * Kun metodissa aja() annettiin komento 5: Jos aikavaativuusraportit olivat
+     * päällä, laitetaan ne toisin päin Jos ne olivat pois päältä, laitetaan ne
+     * päälle.
+     */
     private void flipHalutaanAikailmoituksia() {
         if (halutaanAikaIlmoituksia) {
             System.out.println("Aikavaativuusraportit pois päältä");
@@ -189,27 +213,49 @@ public class Kayttoliittyma {
         halutaanAikaIlmoituksia = !halutaanAikaIlmoituksia;
     }
 
+    /**
+     * Kun metodissa aja() annettiin komento 6: Lopetetaan käyttöliittymän
+     * ajaminen.
+     */
     private void lopetus() {
         System.out.println("Lopetetaan ohjelman suoritus");
         keskeytys = true;
     }
 
+    /**
+     * Kun jossakin metodissa on annettu kelvoton komento. Tulostetaan mitkä
+     * komennot ovat sallittuja tässä vaiheessa
+     *
+     * @param String komennot = sallitut komennot täsmennettynä merkkijonona.
+     */
     private void vaaranlainenKomento(String komennot) {
-        System.out.println("Sallitut komennot: "+ komennot + "\n > ");
+        System.out.println("Sallitut komennot: " + komennot + "\n > ");
     }
 
+    /**
+     * Kutsutaan kunkin algoritmin toeutuksen jälkeen Jos
+     * aikavaativuusilmoitukset on päällä, tulostetaan viimeisimpään operaatioon
+     * kulunut aika.
+     */
     private void aikavaativuus() {
         if (halutaanAikaIlmoituksia) {
             System.out.println("AIKAA OPERAATIOON KULUI: " + (((double) (loppu - alku)) / 1000000000) + "sekuntia");
         }
     }
 
+    /**
+     * Kun käyttäjä on antanut jonkin komennon
+     * Tarkastetaan onko annettu komento tulkittavissa (eli onko se numero)
+     *
+     * @param String sana = tarkasteltava sana.
+     * @ret Boolean totuus = oliko sana muutettavissa lukuarvoksi
+     */
     private static boolean onkoNumero(String sana) {
         if (sana == null) {
             return false;
         }
         try {
-            double d = Double.parseDouble(sana);
+            int d = Integer.parseInt(sana);
         } catch (NumberFormatException nfe) {
             return false;
         }

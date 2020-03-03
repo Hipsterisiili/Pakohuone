@@ -11,15 +11,24 @@ import pakohuone.algoritmit.ReittienEtsija;
 
 public class Labyrintti {
 
+    // kuva ylläpitää tietoa labyrintin ruutujen sisällöistä
     private char[][] kuva;
+    // huoneTaulukko ylläpitää tietoa siitä missä huoneessa kukin ruutu on
     private int[][] huoneTaulukko;
+    // leveys, korkeus = labyrintin mitat
     private int leveys, korkeus;
+    // avaintenMaara, huoneidenMaara = montako avainta ja ovea labyrintissa on
     private int avaintenMaara;
     private int huoneidenMaara;
+    // onkoReittejaEtsitty = onko ReittienEtsinta.etsi() jo ajettu
     private boolean onkoReittejaEtsitty;
+    // huoEts = olio joka selvittää mihin huoneeseen kukin ruutu kuuluu
     private HuoneidenEtsija huoEts;
+    // reiEts = olio joka selvittää maaliin johtavat reitit
     private ReittienEtsija reiEts;
+    // nre = olio joka selvittää nopeimman reitin maaliin
     private NopeimmanReitinEtsija nre;
+    // Taulukot, jotka sisältävät labyrintin sisällön olioina:
     private Ovi[] ovet;
     private Avain[] avaimet;
     private Huone[] huoneet;
@@ -51,15 +60,13 @@ public class Labyrintti {
         huoneidenMaara = huoneTaulukko[korkeus - 1][leveys - 1];
         reiEts = new ReittienEtsija(this);
     }
-
-    public char[][] getKuva() {
-        return kuva;
-    }
-
-    public int[][] getHuoneTaulukko() {
-        return huoneTaulukko;
-    }
-
+    
+    /**
+     * Metodi käynnistää maaliin johtavien reittien etsimisen käyttäen apuna
+     * ReittienEtsijaa reiEts
+     *
+     * @ret Integer montako mahodllista reittiä on.
+     */
     public int etsiReitit() {
         onkoReittejaEtsitty = true;
         if (!onkoLabyrintissaSeinia()) {
@@ -77,6 +84,12 @@ public class Labyrintti {
         return jarjestykset.length;
     }
 
+    /**
+     * Metodi käynnistää maaliin johtavien reittien etsimisen käyttäen apuna
+     * ReittienEtsijaa reiEts
+     *
+     * @return String kaikki maaliin johtavat reitit listattuna merkkijonoon
+     */
     public String etsiJaTulostaReitit() {
         onkoReittejaEtsitty = true;
         if (!onkoLabyrintissaSeinia()) {
@@ -103,6 +116,12 @@ public class Labyrintti {
         return palautus;
     }
 
+    /**
+     * Metodi käynnistää parhaan reitin etsimisen käyttäen apuna
+     * NopeimmanReitinEtsijaa nre
+     *
+     * @return String paras maaliin johtava reitti merkkijonona
+     */
     public String etsiParasReitti() {
         if (!onkoReittejaEtsitty) {
             return "Reittejä ei ole vielä etsitty";
@@ -187,6 +206,14 @@ public class Labyrintti {
             palautus = palautus + "\n";
         }
         return palautus;
+    }
+    
+    public char[][] getKuva() {
+        return kuva;
+    }
+
+    public int[][] getHuoneTaulukko() {
+        return huoneTaulukko;
     }
 
     public Ovi[] getOvet() {
