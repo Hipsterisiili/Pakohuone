@@ -19,14 +19,17 @@ Käyttöliittymän testaus:
 ![ui](https://github.com/Hipsterisiili/Pakohuone/blob/master/Dokumentointikansio/Kuvat/Testikattavuus2.png?raw=true)
 Labyrinttien luominen on testattu. Main-luokan ja käyttöliittymäluokkien testaaminen ei ole mielekästä, sillä main:ssa ei ole testattavaa koodia ja käyttöliittymän suoritus riippuu käyttäjän komennoista ja niiden generoiminen testejä varten ei ole mielekästä.
 
+Algoritmien testaus:
 ![algoritmit](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Dokumentointikansio/Kuvat/testikattavuus3.png)
 Kaikki algoritmien laskennalliset toiminnallisuudet on testattu. Ainoastaan verkon tulostava metodi (joka ei palauta mitään vaan ainoastaan tulostaa) on testaamatta, samoin kaksi tuhoisaa virheitä tarkistavaa if-looppia, jotka keskeyttävät toiminnan. Niihin ei ole tarkoituskaan päästä sisään ohjelmaa käyttäessä enkä usko että sellaista virhettä on mahdollista myöskään saada aikaan. Ne on silti hyvä tarkistaa koodissa.
 99% testikattavuus
 
+Työkalujen testaus:
 ![työkalut](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Dokumentointikansio/Kuvat/Testikattavuus4.png)
 Kaikki toiminnallisuudet on testattu. Ainoastaan verkko-luokan debuggaamiseen käytetty tulosta()-metodi on testaamatta, samoin yksi virheentarkistus (samanlainen kuin algoritmipaketissa) on testaamatta, sillä niitä ei voi testata.
 99% testikattavuus
 
+Sovelluslogiikka testaus:
 ![sovelluslogiikka](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Dokumentointikansio/Kuvat/Testikattavuus5.png)
 100% testikattavuus
 
