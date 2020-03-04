@@ -12,11 +12,11 @@
  
 ### Käyttöliittymän tulkinta:
 
-##### Luodaan labyrintti
+#### Luodaan labyrintti
     Antamalla komennoksi jotakin valmista labyrinttia vastaavan luvun 1 - 5, luot valmiin labyrintin
     komennolla 6 luot itse käsin labyrintin (tarkemmin kohdassa "Labyrintin rakentaminen käsin")
     
-##### Tarkastellaan tällä hetkellä käytössä olevaa labyrinttia:
+#### Tarkastellaan tällä hetkellä käytössä olevaa labyrinttia:
 
     1 = Luo uusi labyrintti jota tutkitaan. Tutkittavana voi olla yksi labyrintti kerrallaan, eli se joka on viimeksi luotu.
         1 = 12\*11 labyrintti, jossa 4 huonetta ja 4 avainta1
@@ -48,7 +48,7 @@
     6 = Keskeytä
         Ohjelman suoritus päättyy
         
-##### Labyrintin rakentaminen käsin:
+#### Labyrintin rakentaminen käsin:
 
     Anna halutun labyrintin korkeus (2 - 50)
     Anna halutun labyrintin leveys (2 - 50)
