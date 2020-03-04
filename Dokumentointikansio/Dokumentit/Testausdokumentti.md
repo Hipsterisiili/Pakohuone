@@ -14,7 +14,7 @@ Projektin testikattavuuden saa selvittettyä komentorivillä projektin juurikans
 Koko:
 ![Kaikki](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Dokumentointikansio/Kuvat/Testikattavuus1.jpg)
 
-![Kaikki](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Dokumentointikansio/Kuvat/Testikattavuus2.png)
+![Kaikki](https://github.com/Hipsterisiili/Pakohuone/blob/master/Dokumentointikansio/Kuvat/Testikattavuus2.png?raw=true)
 
 ![Kaikki](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Dokumentointikansio/Kuvat/testikattavuus3.png)
 
