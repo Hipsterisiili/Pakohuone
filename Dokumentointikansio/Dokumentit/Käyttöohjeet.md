@@ -11,8 +11,10 @@
     
 4a. aja tiedosto samassa kansiossa komennolla 
     java -jar target/Pakohuone-1.0-SNAPSHOT-jar-with-dependencies.jar
+    
 4b. Jos tarvitset enemmän muistitilaa ohjelman suoritukselle, ala tiedosto esim komennolla: 
     java -Xmx4096m -jar target/Pakohuone-1.0-SNAPSHOT-jar-with-dependencies.jar
+    
  
 ### Käyttöliittymän tulkinta:
 
