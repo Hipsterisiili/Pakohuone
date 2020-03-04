@@ -35,6 +35,19 @@ Kaikki toiminnallisuudet on testattu. Ainoastaan verkko-luokan debuggaamiseen k�
 
 Algoritmien ajankäyttöä voi seurata käyttöjärjestelmässä pyytämällä aikavaativuusraportteja komennolla 5
 
+Lopullisen toteutuksen aikavaativuudet poikkeavat jonkin verran alunperin määrittelydokumentissa lasketuista (Alla ne laskettuna tarkemmin)
+
+*Labyrintin luomisen* aikavaativus riippuu lähes pelkästään labyrintin koosta. Suuri avainten ja ovien määrä kasvattaa sitä.
+Aikavaativuus on siis *O(x\*y)*, missä x ja y ovat labyrintin mitat
+
+*Reittien etsinnän* aikavaativuus riippuu pääosin mahdollisten kuljettavien (ei välttämättä maaliin johtavien) reittien määrästä. Jos paljon avaimia on saatavilla aikaisessa vaiheessa, mahdollisia reittejä on paljon
+Aikavaativuus on siis *O ((a a) + (a a-1) + (a a-2) ... + (a 1))* (missä a = avainten määrä ja (x y) kuvaa "montako y kokoista permutaatiota x alkiosta voi muodostaa) 
+
+*Parhaan reitin etsinnän* aikavaativuus riippuu maaliin johtavien reittien määrästä sekä niiden pituuksista (Suuri kuljettavien ovien määrä kasvattaa reittien pituuksia.) Dijkstran aikavaativuus on O ( n + (n^2 \* log(n^2) ) missä n = avainten määrä. (kaaria on pahimmassa tapauksessa n^2 eli jokaisesta avaimesta ja ovesta jokaiseen avaimeen ja oveen) Jokaiselle reitille toteutetaan dijkstran algoritmi niin monta kertaa kuin reitillä on avaimia + 1 (matka viimeisestä avaimesta maaliin) 
+Aikavaativuus on siis *O( X \* (a+1) (a + (a^2 \* log(a^2) ) )* (missä a kuvaa avainten määrää, X kuvaa reittien etsinnän aikavativuutta)
+
+Tosiasiassa mikään tämän algoritmin todellinen toteutus ei yllä edes tämän worst case scenarion murto-osaan, sillä se worst case scenario on laskettu käytännössä mahdottomasta tilanteesta, jossa jokainen avainpermutaatio johtaa maaliin ja jokainen avainpermutaatio sisältää kaikki avaimet sekä jokaisen avaimen ja oven välisen matkan kulkemiseksi täytyy kulkea jokaisen avaimen ja oven kautta. 
+
 ### Siisteys
 
 Kun projekti on ensin rakennettu komennolla *mcn compile package*, javadocin voi generoida komennolla *mvn javadoc:javadoc* ja tämän jälkeen sitä voi tarkastella komennolla *firefox target/site/apidocs/index.html*.
