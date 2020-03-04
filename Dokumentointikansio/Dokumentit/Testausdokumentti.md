@@ -1,6 +1,6 @@
 # Testausdokumentti
 
-Testaaminen toteutetaan JUNIT-kirjaston työkalujen avulla lukuisien yksikkötestien muodossa. Testikattavuutta voi seurata projektitiedostoon lisätynn jacoco-työkalun avulla. 
+Testaaminen toteutetaan JUNIT-kirjaston työkalujen avulla lukuisien yksikkötestien muodossa. Testikattavuutta voi seurata projektitiedostoon lisätyn jacoco-työkalun avulla. 
 
 ## Ohjeet testaamiseen
 
