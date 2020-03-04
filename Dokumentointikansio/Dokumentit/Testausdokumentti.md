@@ -12,15 +12,15 @@ Projektin testikattavuuden saa selvittettyä komentorivillä projektin juurikans
 
 ### Testikattavuus:
 Koko:
-https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Dokumentointikansio/Kuvat/Testikattavuus1.jpg
+![Kaikki](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Dokumentointikansio/Kuvat/Testikattavuus1.jpg)
 
-https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Dokumentointikansio/Kuvat/Testikattavuus2.jpg
+![Kaikki](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Dokumentointikansio/Kuvat/Testikattavuus3.jpg)
 
-https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Dokumentointikansio/Kuvat/testikattavuus3.jpg
+![Kaikki](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Dokumentointikansio/Kuvat/testikattavuus3.jpg)
 
-https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Dokumentointikansio/Kuvat/Testikattavuus4.jpg
+![Kaikki](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Dokumentointikansio/Kuvat/Testikattavuus4.jpg)
 
-https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Dokumentointikansio/Kuvat/Testikattavuus5.jpg
+![Kaikki](https://raw.githubusercontent.com/Hipsterisiili/Pakohuone/master/Dokumentointikansio/Kuvat/Testikattavuus5.jpg)
 
 
 ### Aikatestaus
