@@ -1,6 +1,6 @@
 # Testausdokumentti
 
-Testaaminen toteutetaan JUNIT-kirjaston työkalujen avulla lukuisien yksikkötestien muodossa. Testikattavuutta voi seurata projektitiedostoon lisätynn jacoco-työkalun avulla. 
+Testaaminen toteutetaan JUNIT-kirjaston työkalujen avulla lukuisien yksikkötestien muodossa. Testikattavuutta voi seurata projektitiedostoon lisätyn jacoco-työkalun avulla. 
 
 ## Ohjeet testaamiseen
 
@@ -8,7 +8,7 @@ Projektin testikattavuuden saa selvittettyä komentorivillä projektin juurikans
 
 ## Testien nykytilanne
 
-Tällä hetkellä projektin testikattavuus on kokonaisuudessaan 96%. Tämä luku kuulostaa todellista tilannetta huonommalta, sillä siihen lasketaan mukaan myös main-pakkauksen tiedostojen testikattavuus. Eism kaikkia Main-paketin luokkia ei ole tarkoituksenmukaista testata kovin syvällisesti, sillä sen sisäiset toiminnallisuudet muuttuvat todella paljon eivätkä ne ole ohjelman kasassa pysymisen kannalta tärkeimpiä 
+Tällä hetkellä projektin testikattavuus on kokonaisuudessaan 96%. Tämä luku kuulostaa todellista tilannetta huonommalta, sillä siihen lasketaan mukaan myös main-pakkauksen tiedostojen testikattavuus. Esim. kaikkia Main-paketin luokkia ei ole tarkoituksenmukaista testata kovin syvällisesti, sillä sen sisäiset toiminnallisuudet muuttuvat todella paljon eivätkä ne ole ohjelman kasassa pysymisen kannalta tärkeimpiä 
 
     pakohuone.Main: testikattavuus: 92%
 
@@ -18,4 +18,4 @@ Tällä hetkellä projektin testikattavuus on kokonaisuudessaan 96%. Tämä luku
 
     pakohuone.sovelluslogiikka: testikattavuus 99%
 
-Tyokalut-paketin testaus on näyttävästä testiattavuusraportista huolimatta mielestäni vielä erittäin vaiheessa, sillä suurten luokkien "verkkO" ja "dijkstra" testaamiseen ei ole toteutettu pieniä ykisttäistestejä vaan niiden testaus taoahtuu testatessa isompia algoritmeja, jotka käyttävät niitä. 
+Tyokalut-paketin testaus on näyttävästä testikattavuusraportista huolimatta mielestäni vielä erittäin vaiheessa, sillä suurten luokkien "verkko" ja "dijkstra" testaamiseen ei ole toteutettu pieniä ykisttäistestejä vaan niiden testaus taoahtuu testatessa isompia algoritmeja, jotka käyttävät niitä. 
