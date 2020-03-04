@@ -50,7 +50,7 @@ Tosiasiassa mikään tämän algoritmin todellinen toteutus ei yllä edes tämä
 
 ### Siisteys
 
-Kun projekti on ensin rakennettu komennolla *mcn compile package*, javadocin voi generoida komennolla **mvn javadoc:javadoc** ja tämän jälkeen sitä voi tarkastella komennolla **firefox target/site/apidocs/index.html**.
+Kun projekti on ensin rakennettu komennolla **mvn compile package**, javadocin voi generoida komennolla **mvn javadoc:javadoc** ja tämän jälkeen sitä voi tarkastella komennolla **firefox target/site/apidocs/index.html**.
 
 Projektin checkstyle-muotoilu mahdollistetaan komennolla **mvn jxr:jxr checkstyle:checkstyle**. Tämän jälkeen checkstyleä voi tarkastella komennolla **firefox target/site/checkstyle.html**.
 Checkstyle-virheitä on koodissa paljon, sillä en ole vaivautunut perehtymään kovin syvällisesti checkstylen configurointiin kurssin aikana. Yritin muuttaa checkstyleä vähemmän vaativaksi, jotta se karsisi vain virheet, jotka olen aikeissa korjata, mutta en tahtonut saada ominaisuutta toimimaan. Tämän vuoksi checkstyle-raportti sisältää paljon mielestäni turhia virheitä, kuten puutteellista javadoc-dokumentaatiota joissakin muuttujissa tai magic numberien käyttö.
