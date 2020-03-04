@@ -8,7 +8,7 @@ Kaikki alla esitellyt komennot voi ajaa projektin juurikansiossa (sama kansio, j
 ### Yksikkötestaus
 Testaaminen toteutetaan JUNIT-kirjaston työkalujen avulla lukuisien yksikkötestien muodossa. Testikattavuutta voi seurata projektitiedostoon lisätyn jacoco-työkalun avulla. 
 
-Projektin testikattavuuden saa selvittettyä komentorivillä projektin juurikansiossa. Jotta ohjelmaa voi testata, se tulee ensin rakentaa komennolla _mvn compile_. Kun ohjelma on rakennettu, sen testit voi ajaa komennolla _mvn test_ ja tämän jälkeen testikatavuusraportti sijaitsee html-tiedostona sijainnissa *target/site/jacoco/index.html*. Raportin voi avata esimerkiksi firefox-verkkoselaimella komennolla *firefox target/site/index.html*. 
+Projektin testikattavuuden saa selvittettyä komentorivillä projektin juurikansiossa. Jotta ohjelmaa voi testata, se tulee ensin rakentaa komennolla **mvn compile**. Kun ohjelma on rakennettu, sen testit voi ajaa komennolla **mvn test** ja tämän jälkeen testikatavuusraportti sijaitsee html-tiedostona sijainnissa **target/site/jacoco/index.html**. Raportin voi avata esimerkiksi firefox-verkkoselaimella komennolla **firefox target/site/index.html**. 
 
 ### Testikattavuus:
 
@@ -37,20 +37,20 @@ Algoritmien ajankäyttöä voi seurata käyttöjärjestelmässä pyytämällä a
 
 Lopullisen toteutuksen aikavaativuudet poikkeavat jonkin verran alunperin määrittelydokumentissa lasketuista (Alla ne laskettuna tarkemmin)
 
-*Labyrintin luomisen* aikavaativus riippuu lähes pelkästään labyrintin koosta. Suuri avainten ja ovien määrä kasvattaa sitä.
+**Labyrintin luomisen** aikavaativus riippuu lähes pelkästään labyrintin koosta. Suuri avainten ja ovien määrä kasvattaa sitä.
 Aikavaativuus on siis *O(x\*y)*, missä x ja y ovat labyrintin mitat
 
-*Reittien etsinnän* aikavaativuus riippuu pääosin mahdollisten kuljettavien (ei välttämättä maaliin johtavien) reittien määrästä. Jos paljon avaimia on saatavilla aikaisessa vaiheessa, mahdollisia reittejä on paljon
+**Reittien etsinnän** aikavaativuus riippuu pääosin mahdollisten kuljettavien (ei välttämättä maaliin johtavien) reittien määrästä. Jos paljon avaimia on saatavilla aikaisessa vaiheessa, mahdollisia reittejä on paljon
 Aikavaativuus on siis *O ((a a) + (a a-1) + (a a-2) ... + (a 1))* (missä a = avainten määrä ja (x y) kuvaa "montako y kokoista permutaatiota x alkiosta voi muodostaa) 
 
-*Parhaan reitin etsinnän* aikavaativuus riippuu maaliin johtavien reittien määrästä sekä niiden pituuksista (Suuri kuljettavien ovien määrä kasvattaa reittien pituuksia.) Dijkstran aikavaativuus on O ( n + (n^2 \* log(n^2) ) missä n = avainten määrä. (kaaria on pahimmassa tapauksessa n^2 eli jokaisesta avaimesta ja ovesta jokaiseen avaimeen ja oveen) Jokaiselle reitille toteutetaan dijkstran algoritmi niin monta kertaa kuin reitillä on avaimia + 1 (matka viimeisestä avaimesta maaliin) 
+**Parhaan reitin etsinnän** aikavaativuus riippuu maaliin johtavien reittien määrästä sekä niiden pituuksista (Suuri kuljettavien ovien määrä kasvattaa reittien pituuksia.) Dijkstran aikavaativuus on O ( n + (n^2 \* log(n^2) ) missä n = avainten määrä. (kaaria on pahimmassa tapauksessa n^2 eli jokaisesta avaimesta ja ovesta jokaiseen avaimeen ja oveen) Jokaiselle reitille toteutetaan dijkstran algoritmi niin monta kertaa kuin reitillä on avaimia + 1 (matka viimeisestä avaimesta maaliin) 
 Aikavaativuus on siis *O( X \* (a+1) (a + (a^2 \* log(a^2) ) )* (missä a kuvaa avainten määrää, X kuvaa reittien etsinnän aikavativuutta)
 
 Tosiasiassa mikään tämän algoritmin todellinen toteutus ei yllä edes tämän worst case scenarion murto-osaan, sillä se worst case scenario on laskettu käytännössä mahdottomasta tilanteesta, jossa jokainen avainpermutaatio johtaa maaliin ja jokainen avainpermutaatio sisältää kaikki avaimet sekä jokaisen avaimen ja oven välisen matkan kulkemiseksi täytyy kulkea jokaisen avaimen ja oven kautta. 
 
 ### Siisteys
 
-Kun projekti on ensin rakennettu komennolla *mcn compile package*, javadocin voi generoida komennolla *mvn javadoc:javadoc* ja tämän jälkeen sitä voi tarkastella komennolla *firefox target/site/apidocs/index.html*.
+Kun projekti on ensin rakennettu komennolla *mcn compile package*, javadocin voi generoida komennolla **mvn javadoc:javadoc** ja tämän jälkeen sitä voi tarkastella komennolla **firefox target/site/apidocs/index.html**.
 
-Projektin checkstyle-muotoilu mahdollistetaan komennolla *mvn jxr:jxr checkstyle:checkstyle*. Tämän jälkeen checkstyleä voi tarkastella komennolla *firefox target/site/checkstyle.html*.
+Projektin checkstyle-muotoilu mahdollistetaan komennolla **mvn jxr:jxr checkstyle:checkstyle**. Tämän jälkeen checkstyleä voi tarkastella komennolla **firefox target/site/checkstyle.html**.
 Checkstyle-virheitä on koodissa paljon, sillä en ole vaivautunut perehtymään kovin syvällisesti checkstylen configurointiin kurssin aikana. Yritin muuttaa checkstyleä vähemmän vaativaksi, jotta se karsisi vain virheet, jotka olen aikeissa korjata, mutta en tahtonut saada ominaisuutta toimimaan. Tämän vuoksi checkstyle-raportti sisältää paljon mielestäni turhia virheitä, kuten puutteellista javadoc-dokumentaatiota joissakin muuttujissa tai magic numberien käyttö.
