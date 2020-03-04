@@ -13,28 +13,34 @@ import pakohuone.sovelluslogiikka.Ovi;
  * voi poimia ja muodostaa niistä järjestyksistä merkkijonoja muodossa abcdefg
  */
 public class ReittienEtsija {
-
+    /** Labyrintit, jota tutkitaan*/
     private Labyrintti l;
+    /** Labyrintin korkeus*/
     private int korkeus;
+    /** Labyrintin leveys*/
     private int leveys;
+    /** Labyrintin huoneet olioina*/
     private Huone[] huoneLista;
+    /** Labyrintin avaimet olioina*/
     private String[] avainLista;
+    /** Montako reittiä maaliin on löydetty*/
     private int mahdollisetReitit = 0;
+    /** Montako avainta labyrintissa on*/
     private int avaintenMaara;
+    /** Tietorakenne, joka pitää yllä tietoa poimituista avaimista*/
     private Kirjainpino sana;
+    /** Algiritmi, joka tutkii mihin labyrintissa on mahdollista pääst'*/
     private Syvyyshaku syvyyshaku = new Syvyyshaku();
 
-    //onkoAvainTutkittu[n] = onko kirjain n jo merkkijonossa
+    /**onkoAvainTutkittu[n] = onko kirjain n jo merkkijonossa*/
     private boolean[] onkoAvainTutkittu;
-    //onkoOviAuki[n] = onko ovea n vastaava avain jo poimittu
+    /**onkoOviAuki[n] = onko ovea n vastaava avain jo poimittu*/
     private boolean[] onkoOviAuki;
-    //onkoHuoneSaavutettu[n] = onko huone n nyt auki olevassa osassa labyrinttia
-    //private boolean[] onkoHuoneSaavutettu;
-    //avaimetTarjolla[n] > 0 -> Avain on tällä hetkellä auki olevassa osassa labyrinttia
+    /**avaimetTarjolla[n] > 0 -> Avain on tällä hetkellä auki olevassa osassa labyrinttia*/
     private int[] avaimetTarjolla;
-    //huoneMatriisi[a][b] kertoo aukeaako huone b kun a aukeaa.
+    /**huoneMatriisi[a][b] kertoo aukeaako huone b kun a aukeaa.*/
     private int[][] huoneMatriisi;
-    //huonetaulukko[a][b] = onko ruudussa seinä, vai huonetta (seinä = 0, huone = huoneen numero)
+    /**huonetaulukko[a][b] = onko ruudussa seinä, vai huonetta (seinä = 0, huone = huoneen numero)*/
     private int[][] huonetaulukko;
 
     public ReittienEtsija(Labyrintti parametri) {
@@ -53,7 +59,6 @@ public class ReittienEtsija {
         this.huoneMatriisi = new int[l.getHuoneidenMaara() + 1][l.getHuoneidenMaara() + 1];
         Arrays.fill(onkoAvainTutkittu, Boolean.FALSE);
         Arrays.fill(onkoOviAuki, Boolean.FALSE);
-        //Arrays.fill(onkoHuoneSaavutettu, Boolean.FALSE);
         Arrays.fill(avaimetTarjolla, 0);
         for (int i = 0; i <= l.getHuoneidenMaara(); i++) {
             Arrays.fill(huoneMatriisi[i], 0);
@@ -90,8 +95,6 @@ public class ReittienEtsija {
             if (a.getKirjain() == '@') {
                 continue;
             }
-            //System.out.println((int) a.getKirjain() - 97);
-            //System.out.println(avaintenMaara);
             avaimetTarjolla[(int) a.getKirjain() - 97]++;
         }
         hajaannu();
@@ -102,7 +105,6 @@ public class ReittienEtsija {
      * jokaisela vielä huoneessa h olevalle noutamattomalle avaimelle
      */
     private void hajaannu() {
-        //System.out.println("\nHAJAANNU /// sana: " + sana + "\n");
         int huoneAlku;
         int huoneLoppu;
         int kirjaimenArvo;
@@ -125,10 +127,8 @@ public class ReittienEtsija {
                 huoneLoppu = huonetaulukko[oviX.getLoppuX()][oviX.getLoppuY()];
 
                 sana.add(a.getKirjain());
-                //System.out.println("YhdistaHuoneet ------------- ALKU // sana: " + sana.toString());
                 YhdistaHuoneet(huoneAlku, huoneLoppu);
 
-                //System.out.println("YhdistaHuoneet ------------- LOPPU // sana: " + sana.toString());
                 sana.pop();
 
                 onkoOviAuki[kirjaimenArvo] = false;
@@ -154,20 +154,16 @@ public class ReittienEtsija {
         boolean saavutettuB = syvyyshaku.haeArvolla(huoneMatriisi, b);
 
         if (saavutettuA && saavutettuB) {
-            //System.out.println(a + " oli saavutettu, " + b + " oli saavutettu");
             huoneidenLinkitys(a, b);
             onkoMaaliSaavutettavissa();
             hajaannu();
         } else if (saavutettuA && !saavutettuB) {
-            //System.out.println(a + " oli saavutettu, " + b + " ei ollut saavutettu");
             huoneidenLinkitys(a, b);
             OnJaEi(a, b);
         } else if (!saavutettuA && saavutettuB) {
-            //System.out.println(b + " oli saavutettu, " + a + " ei ollut saavutettu");
             huoneidenLinkitys(a, b);
             OnJaEi(b, a);
         } else if (!saavutettuA && !saavutettuB) {
-            //System.out.println(a + " ei ollut saavutettu, " + b + " ei ollut saavutettu");
             huoneidenLinkitys(a, b);
             EiJaEi(a, b);
         }
@@ -191,8 +187,6 @@ public class ReittienEtsija {
         }
         onkoMaaliSaavutettavissa();
         hajaannu();
-        //Poista saavutetuista avaimista äsken lisätyt avaimet
-        //System.out.println("ONJAEI LOPPU (" + a + "," + b + ")");
         for (int i = 0; i < huoneLista[b].getAvaintenMaara(); i++) {
             avaimetTarjolla[(int) huoneLista[b].getAvaimet()[i].getKirjain() - 97]--;
         }
@@ -200,13 +194,9 @@ public class ReittienEtsija {
     }
 
     private void EiJaEi(int a, int b) {
-        //System.out.println("EIJAEI ALKU (" + a + "," + b + ")");
-
         onkoMaaliSaavutettavissa();
         hajaannu();
-
-        //System.out.println("EIJAEI LOPPU (" + a + "," + b + ")");
-    }
+}
 
     /**
      * Metodi "yhdistää" kaksi huonetta kasvattamalla huoneMatriisi[a][b] arvoa.
@@ -245,13 +235,9 @@ public class ReittienEtsija {
      * labyrintissä olevien huoneiden määrä)
      */
     private boolean onkoMaaliSaavutettavissa() {
-        //tulostaHuonematriisi();
-        //System.out.println(syvyyshaku.hae(this.huoneMatriisi));
         if (syvyyshaku.hae(this.huoneMatriisi)) {
             avainLista[mahdollisetReitit] = sana.toString();
             mahdollisetReitit++;
-            //System.out.println("TUTKIMATON AVAIN");
-            //System.out.println("\n#####\nLÖYTYI UUSI REITTI: " + sana.toString() + "\n#####\n");
             return true;
         }
         return false;
@@ -297,9 +283,7 @@ public class ReittienEtsija {
                 return (650000000);
             }
             palautus += juoksija;
-            //System.out.println("palautus: " + palautus);
         }
-        //Vertailu siltä varalta, että palautus + 1 >= Integer.MAX_VALUE
         return Math.max(palautus, palautus + 1);
     }
 
@@ -311,5 +295,4 @@ public class ReittienEtsija {
             System.out.println("");
         }
     }
-
 }

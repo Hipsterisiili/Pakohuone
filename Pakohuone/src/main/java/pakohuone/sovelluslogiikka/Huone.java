@@ -1,11 +1,23 @@
 package pakohuone.sovelluslogiikka;
 
+    /**
+     * Huone on tietorakenne, joka sisältää tiedot siihen kuuluvista
+     * avaimista ja ovista olioina.
+     */
 public class Huone {
+    /**Huoneen sisältämät ovet olioina.*/
     private Ovi[] ovet;
+    /**huoneen sisältämät avaimet olioina*/
     private Avain[] avaimet;
+    /**huoneen sisältämien avainten määrä*/
     private int avaintenMaara = 0;
+    /**huoneen sisältämien ovien määrä*/
     private int ovienMaara = 0;
     
+    /**
+     * Huoneen konstruktori.
+     * Annetaan huoneelle vielä placeholder-arvot.
+     */
     public Huone(){
         ovet = new Ovi[30];
         avaimet = new Avain[30];

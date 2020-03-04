@@ -1,12 +1,14 @@
 package pakohuone.tyokalut;
-
+    /**
+     * Työkalu, jolla voi etsiä kahden pisteen välisiä etäisyyksiä ruudukossa.
+     */
 public class EtaisyydenEtsija {
 
     /**
-     * Konstruktori ainoastaan luo uuden työkalun etäisyyden etsintään
-     * Työkalulla voi etsiä kahden pisteen välisiä etäisyyksiä ruudukossa
+     * Konstruktori uuden EtaisyydenEtsijan luomiselle.
      */
     public EtaisyydenEtsija() {
+        
     }
 
     /**

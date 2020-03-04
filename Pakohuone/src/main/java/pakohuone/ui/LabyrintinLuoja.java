@@ -354,29 +354,4 @@ public class LabyrintinLuoja {
 
         return new Labyrintti(labyrintti);
     }
-
-    public Labyrintti LuoTest() {
-        korkeus = 5;
-        leveys = 5;
-        char[][] taul = new char[korkeus + 1][leveys + 1];
-        for (int i = 0; i < korkeus; i++) {
-            for (int j = 0; j < leveys; j++) {
-                taul[i][j] = '.';
-            }
-        }
-        for (int i = 0; i < korkeus; i++) {
-            taul[0][i] = '#';
-            taul[korkeus][i] = '#';
-            taul[3][i] = '#';
-        }
-        for (int i = 0; i < leveys; i++) {
-            taul[i][0] = '#';
-            taul[i][leveys] = '#';
-        }
-
-        taul[4][2] = 'a';
-        taul[3][3] = 'A';
-
-        return new Labyrintti(taul);
-    }
 }

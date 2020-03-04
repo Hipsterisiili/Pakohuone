@@ -8,7 +8,12 @@ import pakohuone.sovelluslogiikka.Ovi;
 import pakohuone.algoritmit.HuoneidenEtsija;
 import pakohuone.algoritmit.NopeimmanReitinEtsija;
 import pakohuone.algoritmit.ReittienEtsija;
-
+    /**
+     * Labyrintti on olio, joka sisältää tiedon kaikesta mitä sen sisällä on,
+     * kuten avaimista, ovista, seinistä, huoneista, sekä avainten ja ovien
+     * välisistä yhteyksistä. Osan näistä tiedoista olio saa sen sisältämältä
+     * oliolta HuoneidenEtsija huoEts.
+     */
 public class Labyrintti {
 
     // kuva ylläpitää tietoa labyrintin ruutujen sisällöistä
@@ -35,10 +40,7 @@ public class Labyrintti {
     private String[] jarjestykset;
 
     /**
-     * Labyrintti on olio, joka sisältää tiedon kaikesta mitä sen sisällä on,
-     * kuten avaimista, ovista, seinistä, huoneista, sekä avainten ja ovien
-     * välisistä yhteyksistä. Osan näistä tiedoista olio saa sen sisältämältä
-     * oliolta HuoneidenEtsija huoEts.
+     * Labyrintin konstruktori
      *
      * @param taulukko = taulukko char-arvoja, johon labyrintti perustuu
      */

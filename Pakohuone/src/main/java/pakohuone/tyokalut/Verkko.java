@@ -37,7 +37,8 @@ public class Verkko {
 
     /**
      * Verkon konstruktori.
-     * @param Labyrintti l =  labyrintti, josta verkko muodostetaan.
+     *
+     * @param Labyrintti l = labyrintti, josta verkko muodostetaan.
      */
     public Verkko(Labyrintti l) {
         this.laby = l;
@@ -153,21 +154,22 @@ public class Verkko {
         int pNumero = (laby.getKuva()[px][py] - 64 + avaintenMaara);
         yhdistaKohteet(ox, oy, oNumero, px, py, pNumero);
     }
-
+    /**
+     * Metodi rakentaa yhteydet ensimmäisen huoneen kohteiden ja maalin välille.
+     */
     private void luoYhteydetLahtoon() {
         Huone h = laby.getHuoneet()[1];
         for (Avain a : h.getAvaimet()) {
-            if(a.getKirjain() == '@'){
+            if (a.getKirjain() == '@') {
                 continue;
             }
             int ax = a.getSijaintiX();
             int ay = a.getSijaintiY();
             int aNumero = ((int) a.getKirjain() - 96);
-            //System.out.println("Lähtö, avain: "+ax+", "+ay+", "+aNumero);
             yhdistaKohteet(ax, ay, aNumero, 1, 1, 0);
         }
         for (Ovi o : h.getOvet()) {
-            if(o.getAlkuX() == 0 && o.getAlkuY() == 0){
+            if (o.getAlkuX() == 0 && o.getAlkuY() == 0) {
                 continue;
             }
             int ox = (o.getAlkuX() + o.getLoppuX()) / 2;
@@ -177,28 +179,31 @@ public class Verkko {
             yhdistaKohteet(ox, oy, oNumero, 1, 1, 0);
         }
     }
-
+    
+    /**
+     * Metodi rakentaa yhteydet viimeisen huoneen kohteiden ja maalin välille.
+     */
     private void luoYhteydetMaaliin() {
         Huone h = laby.getHuoneet()[laby.getHuoneidenMaara()];
         for (Avain a : h.getAvaimet()) {
-            if(a.getKirjain() == '@'){
+            if (a.getKirjain() == '@') {
                 continue;
             }
             int ax = a.getSijaintiX();
             int ay = a.getSijaintiY();
             int aNumero = ((int) a.getKirjain() - 96);
             //System.out.println("Maali, avain: "+ax+", "+ay+", "+aNumero);
-            yhdistaKohteet(ax, ay, aNumero, laby.getKorkeus() - 1, laby.getLeveys() - 1, verkko[0].length -1);
+            yhdistaKohteet(ax, ay, aNumero, laby.getKorkeus() - 1, laby.getLeveys() - 1, verkko[0].length - 1);
         }
         for (Ovi o : h.getOvet()) {
-            if(o.getAlkuX() == 0 && o.getAlkuY() == 0){
+            if (o.getAlkuX() == 0 && o.getAlkuY() == 0) {
                 continue;
             }
             int ox = (o.getAlkuX() + o.getLoppuX()) / 2;
             int oy = (o.getAlkuY() + o.getLoppuY()) / 2;
             int oNumero = (laby.getKuva()[ox][oy] - 64 + avaintenMaara);
             //System.out.println("Maali, ovi: "+ox+", "+oy+", "+oNumero);
-            yhdistaKohteet(ox, oy, oNumero, laby.getKorkeus() - 1, laby.getLeveys() - 1, verkko[0].length -1);
+            yhdistaKohteet(ox, oy, oNumero, laby.getKorkeus() - 1, laby.getLeveys() - 1, verkko[0].length - 1);
         }
     }
 
@@ -235,21 +240,36 @@ public class Verkko {
         }
     }
 
+    /**
+     * Metodi selvittää käyttäen Dijkstra-oliota kuinka pitkä reitti parametrien
+     * edustamien ruutujen välillä on.
+     *
+     * @param Integer alku = Mistä alkaen reitti selvitetään
+     * @param Integer loppu = Mihin asti reitti selvitetään
+     */
     public long etsiReitti(int alku, int loppu) {
         return d.hae(alku, loppu, onkoYhteysKaytossa);
     }
 
+    /**
+     * Metodi "avaa" uusia polkuja labyrintissa
+     *
+     * @param Integer i = Mistä alkaen avataan uusia yhteyksiä
+     */
     public void avaaYhteyksia(int i) {
         onkoYhteysKaytossa[i] = true;
-        //System.out.println("AVATTIIN YHTEYS ALKAEN " + i );
     }
 
+    /**
+     * Metodi "sulkee" uusia polkuja labyrintissa
+     *
+     * @param Integer i = Mistä alkaen suljetaan yhteydet
+     */
     public void suljeYhteys(int i) {
-        onkoYhteysKaytossa[i] = false;
-        //System.out.println("SULJETTIIN YHTEYS ALKAEN " + i );
+        onkoYhteysKaytossa[i] = false;;
     }
-    
-    public int getLeveys(){
+
+    public int getLeveys() {
         return verkko[0].length;
     }
 }

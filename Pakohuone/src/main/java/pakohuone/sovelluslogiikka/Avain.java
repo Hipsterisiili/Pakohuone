@@ -1,12 +1,4 @@
 package pakohuone.sovelluslogiikka;
-
-public class Avain {
-
-    private int sijaintiX;
-    private int sijaintiY;
-    private char kirjain;
-    private Ovi ovi;
-
     /**
      * Avaimet ovat olioita, jotka tuntevat oman sijaintinsa koordinaatin, 
      * avainta kuvastavan kirjaimen sekä oven, joka avaimen on tarkoitus avata.
@@ -15,6 +7,22 @@ public class Avain {
      * avain, jolle ei ole vielä määritetty ovea.
      * Avain tuntee oven, jonka se avaa, mutta oven ei ole tarpeellista tuntea
      * sen avaavaa avainta.
+     */
+public class Avain {
+    /**Avaimen sijainti x-akselilla*/
+    private int sijaintiX;
+    /**Avaimen sijainti y-akselilla*/
+    private int sijaintiY;
+    /**Avaimen kirjain*/
+    private char kirjain;
+    /**Ovi, jonka avain avaa*/
+    private Ovi ovi;
+
+    /**
+     * Avaimen konstruktori.
+     * @param sijaintiX = avaimen sijainti x-akselilla.
+     * @param sijaintiY = avaimen sijainti y-akselilla.
+     * @param c = avaimen kirjain.
      */
     public Avain(int sijaintiX, int sijaintiY, char c) {
         this.sijaintiX = sijaintiX;
@@ -36,7 +44,7 @@ public class Avain {
         return ovi;
     }
     /**
-   * Annetaan avaimelle ovi.
+   * Sijoitetaan avaimelle ovi.
    * @param ovi on avaimelle annettava uusi ovi
    */
     public void setOvi(Ovi ovi) {

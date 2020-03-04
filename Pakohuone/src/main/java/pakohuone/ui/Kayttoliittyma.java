@@ -5,22 +5,23 @@ import pakohuone.sovelluslogiikka.Labyrintti;
 
 public class Kayttoliittyma {
 
-    // laby = Tällä hetkellä tarkasteltavissa oleva labyrintti
+    /** Tällä hetkellä tarkasteltavissa oleva labyrintti. */
     private Labyrintti laby;
-    // automaatti = olio joka luo ennaltamuotoiltuja labyrintteja
+    /** Olio joka luo ennaltamuotoiltuja labyrintteja. */
     private LabyrintinLuoja automaatti = new LabyrintinLuoja();
-    // rakennus = olio jonka avulla käyttäjä voi luoda omia labyrintteja
+    /** Olio jonka avulla käyttäjä voi luoda omia labyrintteja. */
     private LabyrintinRakennus rakennus = new LabyrintinRakennus();
-    // reititEtsitty = onko labyrintista vielä etsitty kaikki mahdolliset reitit
+    /** Onko labyrintista vielä etsitty kaikki mahdolliset reitit. */
     private boolean reititEtsitty = false;
-    // keskeytys = pyöritetäänkö käyttöliittymää vielä vai onko keskeytys käsketty
+    /** Pyöritetäänkö käyttöliittymää vielä vai onko keskeytys käsketty. */
     private boolean keskeytys = false;
-    // halutaankoAikaIlmoituksia = tulostetaanko algoritmin suorituksen jälkeen kulunut aika
+    /** Tulostetaanko algoritmin suorituksen jälkeen kulunut aika. */
     private boolean halutaanAikaIlmoituksia = false;
-    // loppu, alku ovat arvoja joiden avulla aikavaativuuksia arvioidaan
+    /** Loppu ja alku ovat arvoja joiden avulla aikavaativuuksia arvioidaan. */
     private long alku;
+    /** Loppu ja alku ovat arvoja joiden avulla aikavaativuuksia arvioidaan. */
     private long loppu;
-    // lukija = Scanner, jolla luetaan käyttäjältä merkkijonosyötteitä.
+    /** Skanneri, jolla luetaan käyttäjältä merkkijonosyötteitä. */
     private Scanner lukija = new Scanner(System.in);
 
     /**
@@ -239,7 +240,7 @@ public class Kayttoliittyma {
      */
     private void aikavaativuus() {
         if (halutaanAikaIlmoituksia) {
-            System.out.println("AIKAA OPERAATIOON KULUI: " + (((double) (loppu - alku)) / 1000000000) + "sekuntia");
+            System.out.println("AIKAA OPERAATIOON KULUI: " + (((double) (loppu - alku)) / 1000000000) + " sekuntia");
         }
     }
 

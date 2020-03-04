@@ -5,18 +5,28 @@ import pakohuone.sovelluslogiikka.Huone;
 import pakohuone.sovelluslogiikka.Ovi;
 
 public class HuoneidenEtsija {
-
+    /** Matriisi, joka kertoo mitä kussakin ruudussa on. */
     private char[][] labyrintti;
+    /** Matriisi, joka kertoo mihin huoneeseen kukin ruutu kuuluu */
     private int[][] huoneTaulukko;
+    /** Taulukko, johon listataan kaikki labyrintin avaimet olioina */
     private Avain[] avaimet;
+    /** Taulukko, johon listataan kaikki labyrintin ovet olioina */
     private Ovi[] ovet;
+    /** Taulukko, johon listataan kaikki labyrintin huoneet olioina */
     private Huone[] huoneet;
+    /** Labyrintin korkeus */
     private int korkeus;
+    /** Labyrintin leveys */
     private int leveys;
+    /** Montako avainta labyrintissa on */
     private int avaintenMaara = 0;
-
+    /** Montako huonetta labyrintissa on */
     private int huoneidenMaara = 0;
+    
+    /** Merkki, joka kuvaa seinäruutua*/
     private char seina = '#';
+    /** Merkki, joka kuvaa lattiaruutua*/
     private char tyhja = '.';
 
     /**

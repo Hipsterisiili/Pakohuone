@@ -9,12 +9,15 @@ import pakohuone.tyokalut.Verkko;
  * selvittää mikä niistä on lyhin.
  */
 public class NopeimmanReitinEtsija {
-
+    /**Taulukko, joka sisältää löytyneet reitit merkkijonoina*/
     private String[] kaikkiReitit;
+    /** Labyrintti, jota tutkitaan*/
     private Labyrintti laby;
+    /** Verkko, joka labyrintista luodaan*/
     Verkko v;
-    //private int[][] huoneMatriisi;
+    /** Nopein tähän asti löydetty reitti*/
     private String nopeinReitti = "Nopeinta reittiä ei ole vielä selvitetty";
+    /** Nopeimman tähän asti löydetyn reitin pituus*/
     private long nopeimmanReitinPituus;
 
     /**
