@@ -1,14 +1,18 @@
 ## Pakohuoneen käyttöohjeet
 
 ### Ohjelman ajaminen:
+
 1. Kloonaa tiedosto<br>
+
 2. Navigoi kansioon Pakohuone-master/Pakohuone/<br>
+
 3. "puhdista" tiedosto tässä kansiossa komennolla 
     mvn clean package<br>
+    
 4a. aja tiedosto samassa kansiossa komennolla 
-    java -jar target/Pakohuone-1.0-SNAPSHOT-jar-with-dependencies.jar 
+    java -jar target/Pakohuone-1.0-SNAPSHOT-jar-with-dependencies.jar
 4b. Jos tarvitset enemmän muistitilaa ohjelman suoritukselle, ala tiedosto esim komennolla: 
-    java -Xmx4096m -jar target/Pakohuone-1.0-SNAPSHOT-jar-with-dependencies.jar 
+    java -Xmx4096m -jar target/Pakohuone-1.0-SNAPSHOT-jar-with-dependencies.jar
  
 ### Käyttöliittymän tulkinta:
 
