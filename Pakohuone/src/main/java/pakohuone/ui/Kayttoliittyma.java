@@ -164,7 +164,7 @@ public class Kayttoliittyma {
             if (onkoNumero(komento)) {
                 if (komento.equals("1")) {
                     alku = System.nanoTime();
-                    teksti = ("Labyrintistä löytyy " + laby.etsiReitit() + "reittiä");
+                    teksti = ("Labyrintistä löytyy " + laby.etsiReitit() + " reittiä");
                     loppu = System.nanoTime();
                     System.out.println(teksti);
                     aikavaativuus();

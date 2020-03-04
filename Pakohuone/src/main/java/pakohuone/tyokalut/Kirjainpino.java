@@ -19,11 +19,11 @@ public class Kirjainpino {
     }
     
     public char pop(){
+        if(pinta <= 0){
+            return '@';
+        }
         char palautus = pino[pinta - 1];
         pinta--;
-        if(pinta < 0){
-            pinta = 0;
-        }
         return palautus;
     }
     
@@ -34,6 +34,7 @@ public class Kirjainpino {
         return pino[pinta - 1];
     }
     
+    @Override
     public String toString(){
         String palautus = "";
         for(int i = 0; i < pinta ; i++){

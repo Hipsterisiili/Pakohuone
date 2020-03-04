@@ -466,9 +466,9 @@ public class LabyrintinRakennus {
         for (int i = 0; i <= korkeus; i++) {
             for (int j = 0; j <= leveys; j++) {
                 if (i == 1 & j == 1) {
-                    System.out.println("+ ");
+                    System.out.print("+ ");
                 } else if (i == korkeus && j == leveys) {
-                    System.out.println("* ");
+                    System.out.print("* ");
                 } else {
                     System.out.print(taul[i][j] + " ");
                 }

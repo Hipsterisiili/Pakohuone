@@ -21,7 +21,6 @@ public class KirjainpinoTest {
 
     @Test
     public void PopToimii() {
-
         Kirjainpino k = new Kirjainpino();
         k.add('a');
         assertTrue(k.pop() == 'a');
@@ -29,6 +28,15 @@ public class KirjainpinoTest {
         k.add('b');
         k.pop();
         assertTrue(k.peek() == 'a');
+    }
+    
+    @Test
+    public void PopKunLiikaaPoistoja() {
+        Kirjainpino k = new Kirjainpino();
+        k.add('a');
+        k.pop();
+        k.pop();
+        assertTrue(k.peek() == '@');
     }
 
     @Test

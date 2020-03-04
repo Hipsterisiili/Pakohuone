@@ -36,9 +36,8 @@ public class Verkko {
     private Dijkstra d;
 
     /**
-     * Verkon konstruktori
-     *
-     * @param l labyrintti, josta verkko muodostetaan
+     * Verkon konstruktori.
+     * @param Labyrintti l =  labyrintti, josta verkko muodostetaan.
      */
     public Verkko(Labyrintti l) {
         this.laby = l;
@@ -57,7 +56,6 @@ public class Verkko {
         luoYhteydetMaaliin();
 
         d = new Dijkstra(verkko);
-        //tulostaVerkko();
     }
 
     /**

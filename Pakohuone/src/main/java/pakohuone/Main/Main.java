@@ -8,6 +8,7 @@ import pakohuone.sovelluslogiikka.Huone;
 import pakohuone.sovelluslogiikka.Labyrintti;
 import pakohuone.sovelluslogiikka.Ovi;
 import pakohuone.tyokalut.Syvyyshaku;
+import pakohuone.tyokalut.Verkko;
 import pakohuone.ui.Kayttoliittyma;
 
 //import pakohuone.sovelluslogiikka.Huone;
@@ -16,8 +17,15 @@ import pakohuone.ui.Kayttoliittyma;
 public class Main {
 
     public static void main(String[] args) {
-        
-        
+        LabyrintinLuoja ll = new LabyrintinLuoja();
+        Verkko v1 = new Verkko(ll.LuoLabyrintti1());
+        System.out.println(v1.etsiReitti(0, 9));
+        v1.avaaYhteyksia(1);
+        v1.avaaYhteyksia(5);
+        v1.avaaYhteyksia(4);
+        v1.avaaYhteyksia(8);
+        v1.suljeYhteys(4);
+        System.out.println(v1.etsiReitti(0, 9));
 
         LabyrintinLuoja labyrintinLuoja = new LabyrintinLuoja();
         /*

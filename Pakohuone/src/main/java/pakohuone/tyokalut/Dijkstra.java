@@ -30,12 +30,8 @@ public class Dijkstra {
     }
 
     private long rekursio(int a, int b) {
-        //System.out.println("\nDijkstra käy /// a = " + a + " /// b = " + b);
-
         for (int i = 0; i < verkko[0].length; i++) {
-            //System.out.println("Ensimmäinen askel " + i + ": " + lyhinMatka[i] + " &&& " + (lyhinMatka[a] + verkko[a][i]));
             if (verkko[a][i] > 0) {
-                //System.out.println("muutos alussa! Matka "+ i + ":n on " + verkko[a][i] );
                 lyhinMatka[i] = verkko[a][i];
             }
         }
@@ -45,35 +41,25 @@ public class Dijkstra {
         long uusi;
         int lahimpana = mihinOnPieninMatka();
         while (lahimpana != -1) {
-
             if (lahimpana == b) {
-                //System.out.println("Keskeytetään while, matka " + b + ":n on " + lyhinMatka[b]);
                 break;
             }
-
-            //System.out.println("dijkstra while");
             if (kasitelty[lahimpana]) {
                 continue;
             }
             kasitelty[lahimpana] = true;
-
+            
             for (int i = 0; i < verkko[0].length; i++) {
                 if (verkko[i][lahimpana] != 0) {
-                    ///System.out.println(i + ": " + lyhinMatka[i] + " VRT " + (lyhinMatka[lahimpana] + verkko[i][lahimpana]));
                     nyky = lyhinMatka[i];
                     uusi = lyhinMatka[lahimpana] + verkko[i][lahimpana];
                     if (uusi < nyky) {
-                        //System.out.println("muutos! nyky = " + nyky + " /// uusi = " + uusi);
                         lyhinMatka[i] = uusi;
                     }
                 }
             }
             lahimpana = mihinOnPieninMatka();
         }
-        /*for (int i = 0; i < lyhinMatka.length; i++) {
-            System.out.println("i = " + i + " /// " + lyhinMatka[i] + " /// " + onkoYhteysKaytossa[i] + " /// " + kasitelty[i]);
-        }*/
-
         return lyhinMatka[b];
     }
 
