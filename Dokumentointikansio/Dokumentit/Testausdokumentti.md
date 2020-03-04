@@ -8,7 +8,7 @@ Kaikki alla esitellyt komennot voi ajaa projektin juurikansiossa (sama kansio, j
 ### Yksikkötestaus
 Testaaminen toteutetaan JUNIT-kirjaston työkalujen avulla lukuisien yksikkötestien muodossa. Testikattavuutta voi seurata projektitiedostoon lisätyn jacoco-työkalun avulla. 
 
-Projektin testikattavuuden saa selvittettyä komentorivillä projektin juurikansiossa. Jotta ohjelmaa voi testata, se tulee ensin rakentaa komennolla *mvn compile*. Kun ohjelma on rakennettu, sen testit voi ajaa komennolla *mvn test* ja tämän jälkeen testikatavuusraportti sijaitsee html-tiedostona sijainnissa *target/site/jacoco/index.html*. Raportin voi avata esimerkiksi firefox-verkkoselaimella komennolla *firefox target/site/index.html*. 
+Projektin testikattavuuden saa selvittettyä komentorivillä projektin juurikansiossa. Jotta ohjelmaa voi testata, se tulee ensin rakentaa komennolla _mvn compile_. Kun ohjelma on rakennettu, sen testit voi ajaa komennolla _mvn test_ ja tämän jälkeen testikatavuusraportti sijaitsee html-tiedostona sijainnissa *target/site/jacoco/index.html*. Raportin voi avata esimerkiksi firefox-verkkoselaimella komennolla *firefox target/site/index.html*. 
 
 ### Testikattavuus:
 
