@@ -79,7 +79,7 @@
         
     3 = Labyrintti on valmis. Annetaan se käyttöliittymälle tutkittavaksi.
     
-##### Huomioita:
+### Huomioita:
 **Muistivaatimukset:**<br>
 Jos sovellukselle vaatii liikaa muistia, se kaatuu virheeseen (stackoverflow). Helppo keino toteuttaa tämä on etsiä labyrintistä useita kertoja peräkkäin kaikkia reittejä. Algoritmin on varauduttava siihen että kaikki mahdolliset ja kaiken pituiset avainpermutaatiot ovat mahdollisia ratkaisuja, mutta kun avaimia on esim. 20, niistä voi muodostaa lähes 21! erilaista avainyhdistelmää.<br>
 Tämän ongelman helpottamiseksi ohjelma valmistautuu käsittelemään korkeintaan 650 000 000 erilaista ratkaisua jotta muistitila riittäisi. Suurimmassa osassa labyrinteistä oikea ratkaisujen määrä on häviävän pieni verrattuna worst case scenarioon jossa ratkaisuja on lähes (a+1)!, missä a = avainten määrä. Esimerkkilabyrintti 4, jossa on 10 heti saavutettavissa olevaa avainta, on luotu sillä ajatuksella että se vielä selviää juuri ja juuri muistivaatimuksista.<br>
