@@ -17,6 +17,11 @@
 4b. Jos tarvitset enemmän muistitilaa ohjelman suoritukselle, ala tiedosto esim komennolla:<br>
     java -Xmx4096m -jar target/Pakohuone-1.0-SNAPSHOT-jar-with-dependencies.jar
     <br>
+    
+### Ohjelman testaaminen:
+
+[Ohjeet testaamiseen testausdekumentissa](https://github.com/Hipsterisiili/Pakohuone/blob/master/Dokumentointikansio/Dokumentit/Testausdokumentti.md).
+
  
 ### Käyttöliittymän tulkinta:
 
