@@ -13,8 +13,8 @@
 ### Käyttöliittymän tulkinta:
 
 ##### Luodaan labyrintti
-    Antamalla komennoksi jotakin valmista labyrinttia vastaavan luvun, luot valmiin labyrintin
-    Voit myös luoda itse käsin labyrintin (tarkemmin kohdassa "Labyrintin rakentaminen käsin")
+    Antamalla komennoksi jotakin valmista labyrinttia vastaavan luvun 1 - 5, luot valmiin labyrintin
+    komennolla 6 luot itse käsin labyrintin (tarkemmin kohdassa "Labyrintin rakentaminen käsin")
     
 ##### Tarkastellaan tällä hetkellä käytössä olevaa labyrinttia:
 
@@ -23,7 +23,7 @@
         2 = 14\*19 labyrintti jossa 6 huonetta 7 avainta
         3 = 14\*14 labyrintti jossa 9 huonetta ja 10 avainta (vähän ratkaisuja)
         4 = 14\*14 labyrintti jossa 9 huonetta ja 10 avainta (suuri määrä ratkaisuja, suuri aikavaativuus)
-        5 = 19\*24 labyrintti jossa 20 huonetta ja 19 avainta (vähän ratkaisuja, suuri muistivaativuus)
+        5 = 19\*24 labyrintti jossa 20 huonetta ja 20 avainta (vähän ratkaisuja, suuri muistivaativuus)
         6 = rakenna itse
             -> Käynnistä labyrintin rakenaminen käsin (ks. "Labyrintin rakentaminen käsin")
             
