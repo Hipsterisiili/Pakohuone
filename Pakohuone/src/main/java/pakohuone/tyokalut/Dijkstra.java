@@ -14,16 +14,17 @@ import java.util.Arrays;
      */
 public class Dijkstra {
 
-    // alku, loppu = Minkä kahden pisteen välistä pienientä etäisyyttä selvitetään
+    /** Mistä alkaen etäisyyttä selvitetään. */
     private int alku;
+    /** Mihin asti etäisyyttä selvitetään. */
     private int loppu;
-    // onkoYhteysKaytossa = onko labyrintissä nyt mahdollista päästä tähän kohteeseen
+    /** Onko labyrintissä nyt mahdollista päästä tähän kohteeseen. */
     private boolean[] onkoYhteysKaytossa;
-    // lyhinMatka = mikä on lyhin tähän asti löydetty matka kohteeseen
+    /** Mikä on lyhin tähän asti löydetty matka kohteeseen. */
     private long[] lyhinMatka;
-    // verkko = matriisi, joka kuvaa verkkoa, jossa etäisyyksiä selvitetään
+    /** Matriisi, joka kuvaa verkkoa, jossa etäisyyksiä selvitetään. */
     private int[][] verkko;
-    // kasitelty[i] = onko lyhin reitti i:hin jo selvitetty lopullisesti
+    /** kasitelty[i] = onko lyhin reitti i:hin jo selvitetty lopullisesti. */
     private boolean[] kasitelty;
     
     /**

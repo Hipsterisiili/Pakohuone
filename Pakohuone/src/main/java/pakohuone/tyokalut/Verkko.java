@@ -18,21 +18,29 @@ import pakohuone.sovelluslogiikka.Ovi;
  * saavutettavissa labyrintin alkupisteestä
  */
 public class Verkko {
-
+    /** Labyrintti, johon tämä verkko perustuu.*/
     private Labyrintti laby;
+    /** Montako avainta labyrintissä on.*/
     private int avaintenMaara;
+    /** Montako huonetta labyrintissä on.*/
     private int huoneidenMaara;
-    //verkko kertoo pisteiden etäisyydet toisiinsa
-    //0 = lähtöpiste.
-    //1 - avaintenMaara = avaimia
-    //avaintenMaara - 2*avaintenMaara+1 = ovia
-    //2*avaintenMaara + 2 = maali
+    /**
+     * Verkko kertoo pisteiden etäisyydet toisiinsa
+    * 0 = lähtöpiste.
+    * 1 - avaintenMaara = avaimia.
+    * avaintenMaara - 2*avaintenMaara+1 = ovia.
+    * 2*avaintenMaara + 2 = maali.
+    */
     private int[][] verkko;
-    //onkoYhteysKaytossa kertoo mitä yhteyksiä on käytössä.
-    //Tämä riippuu siitä mitä huoneita on saavutettu.
-    //onkoYhteysKaytossa[n] kertoo käytännössä onko kohde n vielä saavutettu
+    /**
+    * onkoYhteysKaytossa kertoo mitä yhteyksiä on käytössä.
+    * Tämä riippuu siitä mitä huoneita on saavutettu.
+    * onkoYhteysKaytossa[n] = käytännössä onko kohde n vielä saavutettu.
+    */
     private boolean[] onkoYhteysKaytossa;
+    /** Työkalu, joka selvittää pisteiden välisiä etäisyyksiä.*/
     private EtaisyydenEtsija etaEts = new EtaisyydenEtsija();
+    /** Työkalu, joka selittää pisteiden välisien reittien pituuksia.*/
     private Dijkstra d;
 
     /**

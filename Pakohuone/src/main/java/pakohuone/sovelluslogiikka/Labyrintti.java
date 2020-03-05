@@ -67,7 +67,7 @@ public class Labyrintti {
      * Metodi käynnistää maaliin johtavien reittien etsimisen käyttäen apuna
      * ReittienEtsijaa reiEts
      *
-     * @ret Integer montako mahodllista reittiä on.
+     * @return Integer montako mahodllista reittiä on.
      */
     public int etsiReitit() {
         onkoReittejaEtsitty = true;

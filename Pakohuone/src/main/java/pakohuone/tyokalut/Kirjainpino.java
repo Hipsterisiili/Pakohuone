@@ -5,8 +5,9 @@ package pakohuone.tyokalut;
  * ovat char-muuttujia. Kirjainpinolla on metodit add, pop sekä peek.
  */
 public class Kirjainpino {
-
+    /** Taulukko, joka sisältää pinoon lisätyt kirjaimet.*/
     private char[] pino;
+    /** Pinon pinta (pinnan yläpuolisia arvoja ei käsitellä.*/
     int pinta;
 
     /**

@@ -1,17 +1,21 @@
 package pakohuone.tyokalut;
 
 import java.util.Arrays;
-
+    /**
+     * Syvyyshaku kykenee suorittamaan syvyyshaun kaksiuloitteisessa neliön 
+     * muotoisessa boolean[][] matriisissa. Metodi hae palauttaa tiedon onko
+     * reittiä olemassa. Lyhintä reittiä ei tällä metodilla selvitetä.
+     */
 public class Syvyyshaku {
-
+    /** Onko tie maaliin jo löytynyt.*/
     boolean onkoTieLoytynyt;
+    /** Matriisi, joka tuntee etäisyydet kustakin avaimesta ja ovesta toisiinsa huoneiden sisällä.*/
     int[][] taul;
+    /** Taulukko, joka sisältää tiedon siitä mihin huoneisiin jo pääsee.*/
     boolean[] vierailtu;
 
     /**
-     * Leveyshaku kykenee suorittamaan syvyyshaun kaksiuloitteisessa neliön 
-     * muotoisessa boolean[][] matriisissa. Metodi hae palauttaa tiedon onko
-     * reittiä olemassa. Lyhintä reittiä ei tällä metodilla selvitetä
+     * Syvyyshaun konstruktori.
      */
     public Syvyyshaku() {
         

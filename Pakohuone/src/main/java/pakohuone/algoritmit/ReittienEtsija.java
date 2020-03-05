@@ -70,8 +70,8 @@ public class ReittienEtsija {
      * Luokka etsii annetusta labyrintistä kaikki mahdolliset järjestykset,
      * joissa avaimia voi poimia, siten että päädytään maaliin.
      *
-     * @ret avainLista = taulukko merkkijonoja, jotka kuvaavat mahdollisia
-     * ratkaisuja labyrintissa
+     * @return avainLista = taulukko merkkijonoja, jotka kuvaavat mahdollisia
+     * ratkaisuja labyrintissa.
      */
     public String[] etsi() {
         this.mahdollisetReitit = 0;
